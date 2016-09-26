@@ -34,10 +34,18 @@
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
 					<li><a href="{{ url('/') }}">Home</a></li>
+					<li><a href="{{ url('/players]') }}">Players</a></li>
+					@if(Auth::user()->role == 'b')
+						<li><a href="{{ url('/expansions') }}">Expansions</a></li>
+						<li><a href="{{ url('/roles') }}">Roles</a></li>
+						<li><a href="{{ url('/teams') }}">Teams</a></li>
+						<li><a href="{{ url('/statuses') }}">Statuses</a></li>
+						<li><a href="{{ url('/scenarios') }}">Scenarios</a></li>
+					@endif
 				</ul>
 
 				<ul class="nav navbar-nav navbar-right">
-					@if (Auth::guest())
+					@if(Auth::guest())
 						<li><a href="{{ url('/auth/login') }}">Login</a></li>
 						<li><a href="{{ url('/auth/register') }}">Register</a></li>
 					@else
