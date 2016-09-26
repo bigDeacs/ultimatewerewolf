@@ -22,7 +22,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	 *
 	 * @var array
 	 */
-	protected $fillable = ['name', 'email', 'password'];
+	protected $fillable = ['name', 'email', 'password', 'role'];
 
 	/**
 	 * The attributes excluded from the model's JSON form.
@@ -30,5 +30,27 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	 * @var array
 	 */
 	protected $hidden = ['password', 'remember_token'];
+
+	/**
+	 * One To One Relationship
+	 * A logged in user can create one Game
+	 *
+	 * @var array
+	 */
+	public function game()
+  {
+      return $this->hasOne('App\Game');
+  }
+
+	/**
+	 * One To Many Relationship
+	 * A logged in user can create as many players as they want
+	 *
+	 * @var array
+	 */
+	public function players()
+  {
+      return $this->hasMany('App\Player');
+  }
 
 }

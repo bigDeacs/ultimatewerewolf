@@ -15,8 +15,8 @@ return [
 	*/
 
 	'mailgun' => [
-		'domain' => '',
-		'secret' => '',
+		'domain' => 'ozboardgamer.com',
+		'secret' => 'key-17cd24ee7e04d9e750c57655300a8ad1',
 	],
 
 	'mandrill' => [

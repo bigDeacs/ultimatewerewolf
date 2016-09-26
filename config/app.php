@@ -39,7 +39,7 @@ return [
 	|
 	*/
 
-	'timezone' => 'UTC',
+	'timezone' => 'Australia/Brisbane',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -145,6 +145,9 @@ return [
 		'App\Providers\EventServiceProvider',
 		'App\Providers\RouteServiceProvider',
 
+		'Illuminate\Html\HtmlServiceProvider',
+		'Intervention\Image\ImageServiceProvider',
+
 	],
 
 	/*
@@ -192,6 +195,10 @@ return [
 		'URL'       => 'Illuminate\Support\Facades\URL',
 		'Validator' => 'Illuminate\Support\Facades\Validator',
 		'View'      => 'Illuminate\Support\Facades\View',
+
+		'Form'      => 'Illuminate\Html\FormFacade',
+    'Html'      => 'Illuminate\Html\HtmlFacade',
+    'Image'			=> 'Intervention\Image\Facades\Image',
 
 	],
 
