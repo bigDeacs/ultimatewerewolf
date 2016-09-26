@@ -27,23 +27,3 @@ Route::resource('players', 'PlayerController');
 //Route::resource('scenarios', 'ScenarioController');
 Route::resource('teams', 'TeamController');
 Route::resource('statuses', 'StatusController');
-
-Route::post('/roles/reposition', function()
-{
-	if(Request::has('item'))
-	{
-		$i = 0;
-		foreach(Request::get('item') as $id)
-		{
-			$i++;
-			$item = Role::find($id);
-			$item->order = $i;
-			$item->save();
-		}
-		return Response::json(array('success' => true));
-	}
-	else
-	{
-		return Response::json(array('success' => false));
-	}
-});
