@@ -1,4 +1,4 @@
-@extends('appAdmin')
+@extends('app')
 
 @section('meta')
     <title>Create new Player</title>
