@@ -21,27 +21,29 @@ Route::controllers([
 ]);
 
 Route::resource('games', 'GameController');
-Route::get('games/{games}/activate', ['as' => 'games.activate', 'uses' => 'GameController@activate']);
-Route::get('games/{gamesgames}/deactivate', ['as' => 'games.deactivate', 'uses' => 'GameController@deactivate']);
-
 Route::resource('expansions', 'ExpansionController');
-Route::get('expansions/{expansions}/activate', ['as' => 'expansions.activate', 'uses' => 'ExpansionControlleractivate']);
-Route::get('expansions/{expansions}/deactivate', ['as' => 'expansions.deactivate', 'uses' => 'ExpansionController@deactivate']);
-
 Route::resource('roles', 'RoleController');
-Route::get('roles/{roles}/activate', ['as' => 'roles.activate', 'uses' => 'RoleController@activate']);
-Route::get('roles/{roles}/deactivate', ['as' => 'roles.deactivate', 'uses' => 'RoleController@deactivate']);
-
 Route::resource('players', 'PlayerController');
-
-Route::resource('scenarios', 'ScenarioController');
-Route::get('scenarios/{scenarios}/activate', ['as' => 'scenarios.activate', 'uses' => 'ScenarioController@activate']);
-Route::get('scenarios/{scenarios}/deactivate', ['as' => 'scenarios.deactivate', 'uses' => 'ScenarioController@deactivate']);
-
+//Route::resource('scenarios', 'ScenarioController');
 Route::resource('teams', 'TeamController');
-Route::get('teams/{teams}/activate', ['as' => 'teams.activate', 'uses' => 'TeamController@activate']);
-Route::get('teams/{teams}/deactivate', ['as' => 'teams.deactivate', 'uses' => 'TeamController@deactivate']);
+Route::resource('statuses', 'StatusController');
 
-Route::resource('games', 'GameController');
-Route::get('games/{games}/activate', ['as' => 'games.activate', 'uses' => 'GameController@activate']);
-Route::get('games/{games}/deactivate', ['as' => 'games.deactivate', 'uses' => 'GameController@deactivate']);
+Route::post('/roles/reposition', function()
+{
+	if(Request::has('item'))
+	{
+		$i = 0;
+		foreach(Request::get('item') as $id)
+		{
+			$i++;
+			$item = Role::find($id);
+			$item->order = $i;
+			$item->save();
+		}
+		return Response::json(array('success' => true));
+	}
+	else
+	{
+		return Response::json(array('success' => false));
+	}
+});

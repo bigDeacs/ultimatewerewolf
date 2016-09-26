@@ -19,7 +19,7 @@ class Game extends Model {
 	protected $fillable = ['total', 'balance', 'status', 'user_id'];
 
 	/**
-	 * One To One Relationship
+	 * One To Many Relationship
 	 * A Game belongs to a specific User
 	 *
 	 * @var array

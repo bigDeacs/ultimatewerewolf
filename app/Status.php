@@ -18,7 +18,7 @@ class Status extends Model {
 	 * colour = colour on the background, nullable.
 	 * icon = font awesome icon
 	 */
-	protected $fillable = ['name', 'description', 'icon', 'colour'];
+	protected $fillable = ['name', 'description', 'icon', 'colour', 'role_id'];
 
 	/**
 	 * Many To Many Relationship
@@ -37,19 +37,14 @@ class Status extends Model {
 	}
 
 	/**
-	 * Many To Many Relationship
-	 * A Status can belong to many Roles
+	 * One To One Relationship
+	 * A Status belongs to one Role
 	 *
 	 * @var array
 	 */
- 	public function roles()
- 	{
- 	 		return $this->belongsToMany('App\Role');
- 	}
-
-	public function getRoleListAttribute()
+	public function role()
 	{
-			return $this->roles->lists('id');
+			return $this->belongsTo('App\Role');
 	}
 
 }

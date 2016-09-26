@@ -47,19 +47,14 @@ class Role extends Model {
  	}
 
 	/**
-	 * Many To Many Relationship
-	 * A Role can have many Statuses
+	 * One To One Relationship
+	 * A Game has one Time
 	 *
 	 * @var array
 	 */
- 	public function statuses()
- 	{
- 	 		return $this->belongsToMany('App\Status');
- 	}
-
-	public function getStatusListAttribute()
-	{
-			return $this->statuses->lists('id');
-	}
+	public function status()
+  {
+      return $this->hasOne('App\Status');
+  }
 
 }

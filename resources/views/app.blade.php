@@ -4,9 +4,15 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Laravel</title>
+	<title>Ultimate Werewolf</title>
 
+	<link rel="stylesheet" href="/css/pick-a-color-1.2.3.min.css">
 	<link href="{{ asset('/css/app.css') }}" rel="stylesheet">
+	<link href="{{ asset('/css/jquery-ui.min.css') }}" rel="stylesheet">
+
+	<link href="https://cdn.datatables.net/1.10.10/css/jquery.dataTables.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+	<link href="{{ asset('/css/select2.min.css') }}" rel="stylesheet" />
 
 	<!-- Fonts -->
 	<link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
@@ -67,6 +73,25 @@
 
 	<!-- Scripts -->
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<script src="/js/jquery-ui.min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
+  <script src="https://cdn.datatables.net/1.10.10/js/jquery.dataTables.min.js"></script>
+	<script src="/js/select2.min.js"></script>
+	<script src="/js/pick-a-color-1.2.3.min.js"></script>
+	<script src="/js/tinycolor-0.9.15.min.js"></script>
+	<script>
+      $(document).ready(function() {
+        $('.dataTable').DataTable( {
+          stateSave: true,
+          "pagingType": "full_numbers"
+        });
+      });
+			$(".pick-a-color").pickAColor({
+				showSavedColors : false,
+				showBasicColors : false,
+				inlineDropdown	: true
+			});
+    </script>
+		@yield('scripts')
 </body>
 </html>

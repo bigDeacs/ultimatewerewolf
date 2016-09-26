@@ -32,14 +32,14 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	protected $hidden = ['password', 'remember_token'];
 
 	/**
-	 * One To One Relationship
+	 * One To Many Relationship
 	 * A logged in user can create one Game
 	 *
 	 * @var array
 	 */
-	public function game()
+	public function games()
   {
-      return $this->hasOne('App\Game');
+      return $this->hasMany('App\Game');
   }
 
 	/**

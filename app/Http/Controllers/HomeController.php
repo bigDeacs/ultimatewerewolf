@@ -1,5 +1,9 @@
 <?php namespace App\Http\Controllers;
 
+use Auth;
+use Game;
+use Player;
+
 class HomeController extends Controller {
 
 	/*
@@ -30,7 +34,10 @@ class HomeController extends Controller {
 	 */
 	public function index()
 	{
-		return view('home');
+		$user = Auth::user();
+		$games = $user->games;
+		$players = $user->players;
+		return view('home', compact('user', 'games', 'players'));
 	}
 
 }

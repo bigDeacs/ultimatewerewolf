@@ -8,7 +8,24 @@
 				<div class="panel-heading">Home</div>
 
 				<div class="panel-body">
-					You are logged in!					
+					{{ $user->name }}<br />
+					Games:
+					@foreach($games as $game)
+						@if($game->status == 'started')
+							Finish the game you started
+							<?php break; ?>
+						@endif
+					@endforeach
+			    @foreach($games as $game)
+						{{ $game->name }}
+					  {{ $game->status }}<br />
+					@endforeach
+					<hr />
+					Players:
+					@foreach($players as $player)
+						{{ $player->name }}
+					@endforeach
+					<br />
 				</div>
 			</div>
 		</div>
