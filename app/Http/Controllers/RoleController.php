@@ -1,6 +1,6 @@
 <?php namespace App\Http\Controllers;
 
-use Request;
+use Illuminate\Http\Request;
 use App\Role;
 use App\Expansion;
 use App\Response;
@@ -36,9 +36,9 @@ class RoleController extends Controller {
 	public function index()
 	{
 		$expansions = Expansion::all();
-		if(Request::has('filter'))
+		if(\Request::has('filter'))
 		{
-			$roles = Role::where('expansion_id', '=', Request::input('filter'))->get();
+			$roles = Role::where('expansion_id', '=', \Request::input('filter'))->get();
 		} else {
 			$roles = Role::all();
 		}

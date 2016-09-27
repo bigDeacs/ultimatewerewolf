@@ -6,7 +6,7 @@
           <input type="text" name="name" id="name" class="form-control" value="{{ isset($role) ? $role->name : old('name') }}" placeholder="" required>
           <br />
           <label for="name">Description</label>
-          {!! Form::textarea('description', null, ['class' => 'form-control textarea', 'id' => 'description', 'rows' => '10']) !!}
+          {!! Form::textarea('description', null, ['class' => 'form-control textarea', 'id' => 'description', 'rows' => '5']) !!}
       </div>
       <div class="col-sm-3 col-xs-12">
             <label for="image">Featured Image</label>
@@ -18,7 +18,7 @@
             <small>600px X 600px</small>
             <br />
             <label for="name">Expansion</label>
-            {!! Form::select('expansion_id', $expansions, null, ['id' => 'expansion_id', 'class' => 'form-control', 'multiple', 'style' => 'width: 100%']) !!}
+            {!! Form::select('expansion_id', $expansions, null, ['id' => 'expansion_id', 'class' => 'form-control', 'style' => 'width: 100%']) !!}
       </div>
 </div>
 
@@ -36,7 +36,7 @@
 	          <input type="text" name="max" id="max" class="form-control" value="{{ isset($role) ? $role->max : old('max') }}" placeholder="" required>
       </div>
       <div class="col-sm-3 col-xs-12">
-            <label for="name">Position</label>
+            <label for="position">Position</label>
 	          <input type="text" name="position" id="position" class="form-control" value="{{ isset($role) ? $role->position : old('position') }}" placeholder="">
       </div>
 </div>
