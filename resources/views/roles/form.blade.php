@@ -36,11 +36,3 @@
 	          <input type="text" name="max" id="max" class="form-control" value="{{ isset($role) ? $role->max : old('max') }}" placeholder="" required>
       </div>
 </div>
-
-<div class="form-group row">
-  
-      <div class="col-sm-4 col-xs-12">
-            <label for="position">Position</label>
-            <input type="text" name="position" id="position" class="form-control" value="{{ isset($role) ? $role->position : old('position') }}" placeholder="" required>
-      </div>
-</div>

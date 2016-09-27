@@ -27,6 +27,7 @@
 					</div>
 				@endif
 				{!! Form::open(['files'=> true, 'url' => '/roles']) !!}
+					<input type="hidden" name="position" value="1">
 					@include('roles.form')
 					<div class="form-group btn-submit-top">
 						<button type="submit" class="btn btn-success btn-block">Create</button>
