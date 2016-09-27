@@ -10,6 +10,7 @@
 			<div class="panel panel-default panel-shadow">
 			  <div class="panel-heading">
 			    <h1 class="panel-title"><strong>Roles</strong></h1>
+          <?php echo Session::get('message'); ?>
 			  </div>
 			  <div class="panel-body">
           <div class="pull-left">
@@ -94,7 +95,7 @@
           'data': requestData,
           'success': function(data) {
               if (data.success) {
-                  console.log('Saved!');
+                  location.reload();
               } else {
                   console.error(data.errors);
               }
