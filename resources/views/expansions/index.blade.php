@@ -21,11 +21,14 @@
 					<div class="col-sm-12">
 						<p><strong>Expansions:</strong></p>
 						<div class="table-responsive">
-						  <table class="table dataTable table-striped table-hover">
+						  <table class="table dataTable table-striped table-hover">						   
+			                <col width="60%">
+			                <col width="20%">
+			                <col width="20%">
 						    <thead>
 						    	<tr>
 						    		<th>Name</th>
-                    <th></th>
+                    				<th></th>
 						    		<th></th>
 						    	</tr>
 						    </thead>

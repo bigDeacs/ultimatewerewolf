@@ -22,9 +22,14 @@
 						<p><strong>Team:</strong></p>
 						<div class="table-responsive">
 						  <table class="table dataTable table-striped table-hover">
+							<col width="20%">
+						  	<col width="40%">
+			                <col width="20%">
+			                <col width="20%">
 						    <thead>
 						    	<tr>
-						    		<th>Name</th>
+						    		<th>Name</th>                    
+                    <th>Notes</th>
                     <th>Icon</th>
 						    		<th></th>
 						    	</tr>
@@ -33,7 +38,8 @@
 						    	@foreach($teams as $team)
 							      <tr>
                       <td scope="row">{{ $team->name }}</td>
-                      <td scope="row">
+                      <td>{{ $team->notes }}</td>
+                      <td>
                         @if($team->icon !== null)
                           <i class="fa {{ $team->icon }} fa-2x" style="color: #{{ $team->colour }};" aria-hidden="true"></i></td>
                         @endif
