@@ -2,6 +2,6 @@
 
 return [
     'entities' => [
-        'roles' => '\App\Role'
+        'roles' => '\App\Role',
     ],
 ];

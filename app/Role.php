@@ -2,9 +2,9 @@
 
 use Illuminate\Database\Eloquent\Model;
 
-use \Rutorika\Sortable\SortableTrait;
-
 class Role extends Model {
+
+	use \Rutorika\Sortable\SortableTrait;
 
 	/**
 	 * The database table used by the model.

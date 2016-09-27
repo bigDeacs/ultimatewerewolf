@@ -84,7 +84,8 @@
       $(document).ready(function() {
         $('.dataTable').DataTable( {
           stateSave: true,
-          "pagingType": "full_numbers"
+          "pagingType": "full_numbers",
+					"pageLength": 500
         });
       });
 			$(".pick-a-color").pickAColor({

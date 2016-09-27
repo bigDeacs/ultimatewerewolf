@@ -1,6 +1,6 @@
 <?php namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use Request;
 use App\Role;
 use App\Expansion;
 use App\Response;
@@ -35,8 +35,14 @@ class RoleController extends Controller {
 	 */
 	public function index()
 	{
-    $roles = Role::all();
-    return view('roles.index', compact('roles'));
+		$expansions = Expansion::all();
+		if(Request::has('filter'))
+		{
+			$roles = Role::where('expansion_id', '=', Request::input('filter'))->get();
+		} else {
+			$roles = Role::all();
+		}
+    return view('roles.index', compact('roles', 'expansions'));
 	}
 
   /**

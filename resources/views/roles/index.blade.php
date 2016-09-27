@@ -12,7 +12,22 @@
 			    <h1 class="panel-title"><strong>Roles</strong></h1>
 			  </div>
 			  <div class="panel-body">
-			  	<div class="pull-right"><a href="/roles/create" class="btn btn-primary">Create Role <i class="fa fa-plus-square"></i></a></div>
+          <div class="pull-left">
+              <span>Filter by: </span>
+              <form id="filterForm">
+              <select class="form-control" onchange="filterRoles()" name="filter" id="filter">
+                @foreach($expansions as $expansion)
+                  <option value="{{ $expansion->id }}" {{ (Request::input('filter') == $expansion->id) ? 'selected' : "" }}>{{ $expansion->name }}</option>
+                @endforeach
+              </select>
+            </form>
+            <script>
+              function filterRoles() {
+                    document.getElementById("filterForm").submit();
+                }
+            </script>
+          </div>
+          <div class="pull-right"><a href="/roles/create" class="btn btn-primary">Create Role <i class="fa fa-plus-square"></i></a></div>
 			  	<div style="clear:both;"></div>
 			  	<div class="row">
 					<div class="col-sm-12">
@@ -21,10 +36,9 @@
               <table class="table dataTable table-striped table-hover">
 						    <thead>
 						    	<tr>
-                    <th></th>
+                    <th>#</th>
 						    		<th>Name</th>
                     <th></th>
-                    <th>Position</th>
                     <th>Impact</th>
                     <th>Expansion</th>
                     <th>Status</th>
@@ -35,10 +49,9 @@
 						    <tbody class="sortable" data-entityname="roles">
 						    	@foreach($roles as $role)
 							      <tr data-itemId="{{ $role->id }}">
-                      <td scope="row" class="id-column">{{ $role->id }}</td>
+                      <td scope="row" class="id-column">{{ $role->position }}</td>
                       <td>{{ $role->name }}</td>
                       <td><img src="{{ $role->image }}" class="img-responsive" /></td>
-                      <td>{{ $role->position }}</td>
                       <td>{{ $role->impact }}</td>
                       <td>{{ $role->expansion->name }}</td>
                       <td>
@@ -75,7 +88,8 @@
           'type': 'POST',
           'headers': {
               'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
-              'XSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+              'XSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+              'X-XSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
           },
           'data': requestData,
           'success': function(data) {

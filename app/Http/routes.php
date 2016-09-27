@@ -24,7 +24,7 @@ Route::resource('games', 'GameController');
 Route::resource('expansions', 'ExpansionController');
 Route::resource('roles', 'RoleController');
 Route::resource('players', 'PlayerController');
-//Route::resource('scenarios', 'ScenarioController');
+Route::resource('scenarios', 'ScenarioController');
 Route::resource('teams', 'TeamController');
 Route::resource('statuses', 'StatusController');
 
