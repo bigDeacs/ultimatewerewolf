@@ -73,7 +73,7 @@ class RoleController extends Controller {
    */
   public function store(Request $request)
   {
-			Role::increment('order');
+			Role::increment('position');
       $role = Role::create($request->all());
       $role->save();
 			if($request->hasFile('image'))
@@ -129,25 +129,6 @@ class RoleController extends Controller {
       return redirect('/roles');
   }
 
-	public function order(Request $request)
-  {
-		if($request->has('item'))
-		{
-			$i = 0;
-			foreach($request->get('item') as $id)
-			{
-				$i++;
-				$item = Role::find($id);
-				$item->order = $i;
-				$item->save();
-			}
-			return Response::json(array('success' => true));
-		}
-		else
-		{
-			return Response::json(array('success' => false));
-		}
-	}
 
 
 }
