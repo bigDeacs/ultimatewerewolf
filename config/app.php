@@ -147,6 +147,7 @@ return [
 
 		'Illuminate\Html\HtmlServiceProvider',
 		'Intervention\Image\ImageServiceProvider',
+		'Rutorika\Sortable\SortableServiceProvider',
 
 	],
 

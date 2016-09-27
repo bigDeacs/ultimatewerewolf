@@ -25,6 +25,7 @@
 						    <thead>
 						    	<tr>
 						    		<th>Name</th>
+                    <th></th>
 						    		<th></th>
 						    	</tr>
 						    </thead>
@@ -32,6 +33,7 @@
 						    	@foreach($expansions as $expansion)
 							      <tr>
                       <td scope="row">{{ $expansion->name }}</td>
+                      <td><img src="{{ $expansion->image }}" class="img-responsive" /></td>
 						    		  <td><a href="/expansions/{{ $expansion->id }}/edit" class="btn btn-warning">Edit <i class="fa fa-pencil-square-o"></i></a></td>
 						    	  </tr>
 						    	@endforeach

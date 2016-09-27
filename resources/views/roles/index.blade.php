@@ -1,10 +1,7 @@
 @extends('app')
 
-@section('meta')
-    <title>Roles</title>
-@endsection
-
 @section('head')
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
 @endsection
 
 @section('content')
@@ -21,11 +18,13 @@
 					<div class="col-sm-12">
 						<p><strong>Roles:</strong></p>
 						<div class="table-responsive">
-						  <table class="table dataTable table-striped table-hover">
+              <table class="table dataTable table-striped table-hover">
 						    <thead>
 						    	<tr>
+                    <th></th>
 						    		<th>Name</th>
-                    <th>Order</th>
+                    <th></th>
+                    <th>Position</th>
                     <th>Impact</th>
                     <th>Expansion</th>
                     <th>Status</th>
@@ -33,18 +32,21 @@
                     <th></th>
 						    	</tr>
 						    </thead>
-						    <tbody>
+						    <tbody class="sortable" data-entityname="roles">
 						    	@foreach($roles as $role)
-							      <tr>
-                      <td scope="row">{{ $role->name }}</td>
-                      <td scope="row">{{ $role->order }}</td>
-                      <td scope="row">{{ $role->impact }}</td>
-                      <td scope="row">{{ $role->expansion->name }}</td>
-                      <td scope="row">
+							      <tr data-itemId="{{ $role->id }}">
+                      <td scope="row" class="id-column">{{ $role->id }}</td>
+                      <td>{{ $role->name }}</td>
+                      <td><img src="{{ $role->image }}" class="img-responsive" /></td>
+                      <td>{{ $role->position }}</td>
+                      <td>{{ $role->impact }}</td>
+                      <td>{{ $role->expansion->name }}</td>
+                      <td>
                         @if($role->status)
                           <i class="fa {{ $role->status->icon }} fa-2x" style="color: #{{ $role->status->colour }};" aria-hidden="true"></i>
                         @endif
 						    		  <td><a href="/roles/{{ $role->id }}/edit" class="btn btn-warning">Edit <i class="fa fa-pencil-square-o"></i></a></td>
+                      <td class="sortable-handle"><span class="glyphicon glyphicon-sort"></span></td>
 						    	  </tr>
 						    	@endforeach
 						    </tbody>
@@ -59,5 +61,73 @@
 @endsection
 
 @section('scripts')
+  <script>
+  /**
+   *
+   * @param type string 'insertAfter' or 'insertBefore'
+   * @param entityName
+   * @param id
+   * @param positionId
+   */
+  var changePosition = function(requestData){
+      $.ajax({
+          'url': '/sort',
+          'type': 'POST',
+          'headers': {
+              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+              'XSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+          },
+          'data': requestData,
+          'success': function(data) {
+              if (data.success) {
+                  console.log('Saved!');
+              } else {
+                  console.error(data.errors);
+              }
+          },
+          'error': function(){
+              console.error('Something wrong!');
+          }
+      });
+  };
 
+  $(document).ready(function(){
+      var $sortableTable = $('.sortable');
+      if ($sortableTable.length > 0) {
+          $sortableTable.sortable({
+              handle: '.sortable-handle',
+              axis: 'y',
+              update: function(a, b){
+
+                  var entityName = $(this).data('entityname');
+                  var $sorted = b.item;
+
+                  var $previous = $sorted.prev();
+                  var $next = $sorted.next();
+
+                  if ($previous.length > 0) {
+                      changePosition({
+                          parentId: $sorted.data('parentid'),
+                          type: 'moveAfter',
+                          entityName: entityName,
+                          id: $sorted.data('itemid'),
+                          positionEntityId: $previous.data('itemid')
+                      });
+                  } else if ($next.length > 0) {
+                      changePosition({
+                          parentId: $sorted.data('parentid'),
+                          type: 'moveBefore',
+                          entityName: entityName,
+                          id: $sorted.data('itemid'),
+                          positionEntityId: $next.data('itemid')
+                      });
+                  } else {
+                      console.error('Something wrong!');
+                  }
+              },
+              cursor: "move"
+          });
+      }
+  });
+  </script>
 @endsection

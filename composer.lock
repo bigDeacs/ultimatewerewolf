@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "4d9bce51d69f3f9e04a8c8134e738354",
-    "content-hash": "c3482b59a74c4d7e1f7d2dfaf3326fff",
+    "hash": "b544f631fb0b0ea6fcc61dceaa2e3e03",
+    "content-hash": "700d1a78250b837deb40c43c2fdc883c",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -1215,6 +1215,59 @@
                 "shell"
             ],
             "time": "2015-03-26 18:43:54"
+        },
+        {
+            "name": "rutorika/sortable",
+            "version": "3.2.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/boxfrommars/rutorika-sortable.git",
+                "reference": "3d5c54c443067ad9b70bcc1806961fc137910d84"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/boxfrommars/rutorika-sortable/zipball/3d5c54c443067ad9b70bcc1806961fc137910d84",
+                "reference": "3d5c54c443067ad9b70bcc1806961fc137910d84",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "5.*",
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "orchestra/testbench": "3.*",
+                "phpunit/phpunit": "~4.4"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Rutorika\\Sortable": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Dmitry Groza",
+                    "email": "boxfrommars@gmail.com"
+                }
+            ],
+            "description": "Adds sortable behavior and ordering to Laravel Eloquent models. Grouping and many to many supported.",
+            "keywords": [
+                "eloquent",
+                "laravel",
+                "laravel4",
+                "laravel5",
+                "order",
+                "orderable",
+                "ordering",
+                "sort",
+                "sortable",
+                "sorting"
+            ],
+            "time": "2016-09-25 14:52:29"
         },
         {
             "name": "swiftmailer/swiftmailer",

@@ -2,6 +2,8 @@
 
 use Illuminate\Database\Eloquent\Model;
 
+use \Rutorika\Sortable\SortableTrait;
+
 class Role extends Model {
 
 	/**
@@ -22,7 +24,7 @@ class Role extends Model {
 	 * night = which night they wake: 1, 2, 3, etc, -99, 0
 	 * admin panel, make this a live drag drop.
 	 */
-	protected $fillable = ['name', 'description', 'image', 'impact', 'order', 'night', 'max', 'expansion_id'];
+	protected $fillable = ['name', 'description', 'image', 'impact', 'position', 'night', 'max', 'expansion_id'];
 
 	/**
 	 * One To Many Relationship

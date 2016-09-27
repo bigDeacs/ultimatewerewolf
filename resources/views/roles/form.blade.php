@@ -1,5 +1,5 @@
 <input type="hidden" name="_token" value="{{ csrf_token() }}">
-<input type="hidden" name="order" value="null">
+<input type="hidden" name="position" value="0">
 
 <div class="form-group row">
       <div class="col-sm-9 col-xs-12">

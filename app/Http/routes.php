@@ -27,3 +27,5 @@ Route::resource('players', 'PlayerController');
 //Route::resource('scenarios', 'ScenarioController');
 Route::resource('teams', 'TeamController');
 Route::resource('statuses', 'StatusController');
+
+Route::post('sort', '\Rutorika\Sortable\SortableController@sort');
