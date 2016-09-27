@@ -23,20 +23,16 @@
 </div>
 
 <div class="form-group row">
-      <div class="col-sm-3 col-xs-12">
+      <div class="col-sm-4 col-xs-12">
             <label for="name">Impact</label>
 	          <input type="text" name="impact" id="impact" class="form-control" value="{{ isset($role) ? $role->impact : old('impact') }}" placeholder="" required>
       </div>
-      <div class="col-sm-3 col-xs-12">
+      <div class="col-sm-4 col-xs-12">
             <label for="name">Night</label>
 	          <input type="text" name="night" id="night" class="form-control" value="{{ isset($role) ? $role->night : old('night') }}" placeholder="" required>
       </div>
-      <div class="col-sm-3 col-xs-12">
+      <div class="col-sm-4 col-xs-12">
             <label for="name">Max</label>
 	          <input type="text" name="max" id="max" class="form-control" value="{{ isset($role) ? $role->max : old('max') }}" placeholder="" required>
-      </div>
-      <div class="col-sm-3 col-xs-12">
-            <label for="position">Position</label>
-	          <input type="text" name="position" id="position" class="form-control" value="{{ isset($role) ? $role->position : old('position') }}" placeholder="">
       </div>
 </div>
