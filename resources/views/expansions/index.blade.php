@@ -21,14 +21,16 @@
 					<div class="col-sm-12">
 						<p><strong>Expansions:</strong></p>
 						<div class="table-responsive">
-						  <table class="table dataTable table-striped table-hover">						   
-			                <col width="60%">
+						  <table class="table dataTable table-striped table-hover">
+			                <col width="40%">
+                      <col width="20%">
 			                <col width="20%">
 			                <col width="20%">
 						    <thead>
 						    	<tr>
 						    		<th>Name</th>
-                    				<th></th>
+                    <th># of Roles</th>
+                    <th></th>
 						    		<th></th>
 						    	</tr>
 						    </thead>
@@ -36,6 +38,7 @@
 						    	@foreach($expansions as $expansion)
 							      <tr>
                       <td scope="row">{{ $expansion->name }}</td>
+                      <td>{{ count($expansion->roles) }}</td>
                       <td><img src="{{ $expansion->image }}" class="img-responsive" /></td>
 						    		  <td><a href="/expansions/{{ $expansion->id }}/edit" class="btn btn-warning">Edit <i class="fa fa-pencil-square-o"></i></a></td>
 						    	  </tr>

@@ -28,7 +28,7 @@ class Recipe extends Model {
 	 */
 	public function roles()
 	{
-			return $this->belongsToMany('App\Role');
+			return $this->belongsToMany('App\Role')->withPivot('total');
 	}
 
 	public function getRoleListAttribute()

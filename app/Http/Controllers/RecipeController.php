@@ -61,7 +61,7 @@ class RecipeController extends Controller {
    */
   public function create()
   {
-			$roles = Role::all()->lists('name', 'id');
+			$roles = Role::all();
 			return view('recipes.create', compact('roles'));
   }
 
@@ -73,9 +73,9 @@ class RecipeController extends Controller {
    */
   public function store(Request $request)
   {
-      $recipe = Role::create($request->all());
+      $recipe = Recipe::create($request->all());
       $recipe->save();
-			if(is_array($request->input('game_list'))) {
+			if(is_array($request->input('role_list'))) {
 					$currentRoles = array_filter($request->input('role_list'), 'is_numeric');
 			} else {
 					$currentRoles = [];
@@ -95,7 +95,7 @@ class RecipeController extends Controller {
   public function edit($id)
   {
       $recipe = Recipe::where('id', '=', $id)->firstOrFail();
-			$roles = Role::all()->lists('name', 'id');
+			$roles = Role::all();
 			return view('recipes.edit', compact('recipe', 'roles'));
   }
 
@@ -112,12 +112,13 @@ class RecipeController extends Controller {
       $recipe->update($request->all());
       $recipe->save();
 
-			if(is_array($request->input('game_list'))) {
+			if(is_array($request->input('role_list'))) {
 					$currentRoles = array_filter($request->input('role_list'), 'is_numeric');
-			} else {
-					$currentGames = [];
+					$recipe->roles()->detach();
+					foreach ($currentRoles as $key => $role) {
+						$recipe->roles()->attach($key, ['total' => $role]);
+					}
 			}
-			$recipe->games()->sync($currentGames);
 
       return redirect('/recipes');
   }

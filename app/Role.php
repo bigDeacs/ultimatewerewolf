@@ -45,7 +45,7 @@ class Role extends Model {
 	 */
 	public function recipes()
 	{
-			return $this->belongsToMany('App\Recipe');
+			return $this->belongsToMany('App\Recipe')->withPivot('total');
 	}
 
 	public function getRecipeListAttribute()

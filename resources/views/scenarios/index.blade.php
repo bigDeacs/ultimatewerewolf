@@ -24,16 +24,16 @@
 						  <table class="table dataTable table-striped table-hover">
 						    <thead>
 						    	<tr>
-						    		<th>Name</th>
-                    <th></th>
+						    		<th>Description</th>
+                    <th># of Deaths</th>
 						    		<th></th>
 						    	</tr>
 						    </thead>
 						    <tbody>
 						    	@foreach($scenarios as $scenario)
 							      <tr>
-                      <td scope="row">{{ $scenario->name }}</td>
-                      <td><img src="{{ $scenario->image }}" class="img-responsive" /></td>
+                      <td scope="row">{{ $scenario->description }}</td>
+                      <td>{{ $scenario->deaths }}</td>
 						    		  <td><a href="/scenarios/{{ $scenario->id }}/edit" class="btn btn-warning">Edit <i class="fa fa-pencil-square-o"></i></a></td>
 						    	  </tr>
 						    	@endforeach
