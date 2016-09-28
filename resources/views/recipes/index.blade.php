@@ -31,7 +31,6 @@
 						    	</tr>
 						    </thead>
 						    <tbody>
-                  <?php $count = 0; ?>
 						    	@foreach($recipes as $recipe)
 							      <tr>
                       <td scope="row">{{ $recipe->name }}</td>
@@ -39,11 +38,10 @@
                         @foreach($recipe->roles as $role)
                           @if($recipe->roles()->wherePivot('total','>', 0)->wherePivot('role_id','=', $role->id)->get())
                             {{ $role->name }},
-                            <?php $count += $role->pivot->total; ?>
                           @endif
                         @endforeach
                       </td>
-                      <td>{{ $count }}</td>
+                      <td>{{ $recipe->players }}</td>
 						    		  <td><a href="/recipes/{{ $recipe->id }}/edit" class="btn btn-warning">Edit <i class="fa fa-pencil-square-o"></i></a></td>
 						    	  </tr>
 						    	@endforeach

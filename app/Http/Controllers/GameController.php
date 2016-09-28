@@ -2,6 +2,11 @@
 
 use Illuminate\Http\Request;
 use App\Game;
+use App\Expansion;
+use App\Role;
+use App\Status;
+use App\Player;
+use App\Recipe;
 
 class GameController extends Controller {
 
@@ -59,7 +64,9 @@ class GameController extends Controller {
    */
   public function create()
   {
-      return view('games.create');
+			$expansions = Expansion::all();
+			$recipes = Recipe::all();
+      return view('games.create', compact('expansions', 'recipes'));
   }
 
   /**
@@ -103,6 +110,68 @@ class GameController extends Controller {
       $game->save();
       return redirect('/games');
   }
+
+	public function build(Request $request)
+  {
+			if($request->input('recipe') != null)
+			{
+				$recipe = Recipe::find($request->input('recipe'));
+				dd($recipe->roles);
+				// build game
+			} else {
+				$roles = Role::whereRaw("expansion_id IN (".implode(", ", $request->input('expansions')).")")->get();
+				return view('games.build', compact('roles'));
+			}
+  }
+
+	public function start(Request $request)
+  {
+			foreach($request->input('role_list') as $key => $role)
+			{
+				if(Status::where('role_id', '=', $key)->exists())
+				{
+					$statusCollection[] = Status::where('role_id', '=', $key)->firstOrFail();
+				}
+        for($x = 1; $x <= $role; $x++)
+				{
+					$roleCollection[] = Role::find($key);
+        }
+			}
+			$statuses = collect($statusCollection);
+			$roles = collect($roleCollection)->sortBy('position');
+			$players = Player::where('user_id', '=', \Auth::user()->id)->get();
+
+			return view('games.names', compact('roles', 'statuses', 'players'));
+
+  }
+
+	public function names(Request $request)
+  {
+			$game = Game::create($request->all());
+
+			if(is_array($request->input('name_list'))) {
+					$currentPlayers = array_filter($request->input('name_list'), 'is_numeric');
+					$newPlayers = array_diff($request->input('name_list'), $currentPlayers);
+					foreach($newPlayers as $newPlayer)
+					{
+							if($player = Player::create(['name' => $newPlayer, 'user_id' => \Auth::user()->id]))
+							{
+									$currentPlayers[] = "$player->id";
+							}
+					}
+			} else {
+					$currentPlayers = [];
+			}
+			$game->players()->sync($currentPlayers);
+			foreach($request->input('role_list') as $key => $role)
+			{
+				$player = Player::find($currentPlayers[$key]);
+				$player->role_id = $role;
+				$player->save();
+			}
+			dd($game);
+  }
+
 
 
 }

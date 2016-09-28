@@ -26,26 +26,19 @@
 						</ul>
 					</div>
 				@endif
-				{!! Form::open(['url' => '/games/build']) !!}
+				{!! Form::open(['url' => '/games/start']) !!}
           <input type="hidden" name="_token" value="{{ csrf_token() }}">
           <div class="form-group row">
               <div class="col-sm-6 col-xs-12">
-                  <label for="name">Chose a Recipe</label>
-                  <select name="recipe" class="form-control">
-                    <option></option>
-                    @foreach($recipes as $recipe)
-                      <option value="{{ $recipe->id }}">{{ $recipe->name }}</option>
-                    @endforeach
+                @foreach($roles as $role)
+                  {{ $role->name }}
+                  <select name="role_list[{{ $role->id }}]" class="form-control">
+                    @for($x = 0; $x <= $role->max; $x++)
+                        <option value="{{ $x }}">{{ $x }}</option>
+                    @endfor
                   </select>
-              </div>
-              <div class="col-sm-6 col-xs-12">
-                <label for="name">Chose expansions</label>
-                <select name="expansions[]" multiple class="form-control">
-                  <option></option>
-                  @foreach($expansions as $expansion)
-                    <option value="{{ $expansion->id }}">{{ $expansion->name }}</option>
-                  @endforeach
-                </select>
+                  <br />
+                @endforeach
               </div>
           </div>
           <div class="form-group btn-submit-top">

@@ -30,3 +30,7 @@ Route::resource('teams', 'TeamController');
 Route::resource('statuses', 'StatusController');
 
 Route::post('sort', '\Rutorika\Sortable\SortableController@sort');
+
+Route::post('games/build', 'GameController@build');
+Route::post('games/start', 'GameController@start');
+Route::post('games/names', 'GameController@names');

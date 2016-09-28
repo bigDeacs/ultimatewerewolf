@@ -75,12 +75,20 @@ class RecipeController extends Controller {
   {
       $recipe = Recipe::create($request->all());
       $recipe->save();
+
+			$players = 0;
 			if(is_array($request->input('role_list'))) {
 					$currentRoles = array_filter($request->input('role_list'), 'is_numeric');
-			} else {
-					$currentRoles = [];
+					$recipe->roles()->detach();
+					foreach ($currentRoles as $key => $role) {
+						$recipe->roles()->attach($key, ['total' => $role]);
+						$players += $role;
+					}
 			}
 			$recipe->roles()->sync($currentRoles);
+
+			$recipe->players = $players;
+      $recipe->save();
       return redirect('/recipes');
   }
 
@@ -112,13 +120,18 @@ class RecipeController extends Controller {
       $recipe->update($request->all());
       $recipe->save();
 
+			$players = 0;
 			if(is_array($request->input('role_list'))) {
 					$currentRoles = array_filter($request->input('role_list'), 'is_numeric');
 					$recipe->roles()->detach();
 					foreach ($currentRoles as $key => $role) {
 						$recipe->roles()->attach($key, ['total' => $role]);
+						$players += $role;
 					}
 			}
+
+			$recipe->players = $players;
+      $recipe->save();
 
       return redirect('/recipes');
   }
