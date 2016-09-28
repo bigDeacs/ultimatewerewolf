@@ -46,6 +46,7 @@
 						@if(Auth::user()->role == 'b')
 							<li><a href="{{ url('/expansions') }}">Expansions</a></li>
 							<li><a href="{{ url('/roles') }}">Roles</a></li>
+							<li><a href="{{ url('/recipes') }}">Recipes</a></li>
 							<li><a href="{{ url('/teams') }}">Teams</a></li>
 							<li><a href="{{ url('/statuses') }}">Statuses</a></li>
 							<li><a href="{{ url('/scenarios') }}">Scenarios</a></li>
