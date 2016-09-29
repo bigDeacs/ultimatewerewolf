@@ -26,6 +26,7 @@
 						</ul>
 					</div>
 				@endif
+        
 				{!! Form::open(['url' => '/games/start']) !!}
           <input type="hidden" name="_token" value="{{ csrf_token() }}">
           <div class="form-group row">

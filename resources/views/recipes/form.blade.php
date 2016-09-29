@@ -13,8 +13,12 @@
           {{ $role->name }}
           <select name="role_list[{{ $role->id }}]" class="form-control">
             @for($x = 0; $x <= $role->max; $x++)
-              @if(!$recipe->roles()->wherePivot('total','=', $x)->wherePivot('role_id','=', $role->id)->get()->isEmpty())
-                <option value="{{ $x }}" selected="selected">{{ $x }}</option>
+              @if(isset($recipe))
+                @if(!$recipe->roles()->wherePivot('total','=', $x)->wherePivot('role_id','=', $role->id)->get()->isEmpty())
+                  <option value="{{ $x }}" selected="selected">{{ $x }}</option>
+                @else
+                  <option value="{{ $x }}">{{ $x }}</option>
+                @endif
               @else
                 <option value="{{ $x }}">{{ $x }}</option>
               @endif

@@ -52,6 +52,7 @@ class GameController extends Controller {
   public function show($id)
   {
       $game = Game::where('id', '=', $id)->firstOrFail();
+			dd($game->roles);
       return view('games.show', compact('game'));
   }
 
@@ -126,29 +127,44 @@ class GameController extends Controller {
 
 	public function start(Request $request)
   {
+			// has list of roles, and names.
+			// attach names to game.
+			// count # of roles
+			$total = 0;
+			$balance = 0;
 			foreach($request->input('role_list') as $key => $role)
 			{
-				if(Status::where('role_id', '=', $key)->exists())
-				{
-					$statusCollection[] = Status::where('role_id', '=', $key)->firstOrFail();
-				}
-        for($x = 1; $x <= $role; $x++)
-				{
-					$roleCollection[] = Role::find($key);
-        }
+					for($x = 1; $x <= $role; $x++)
+					{
+						$total ++;
+						$balance += Role::find($key)->impact;
+	        }
 			}
-			$statuses = collect($statusCollection);
-			$roles = collect($roleCollection)->sortBy('position');
 			$players = Player::where('user_id', '=', \Auth::user()->id)->get();
+			// Create a game
+			$game = Game::create(['total' => $total, 'balance' => $balance, 'user_id' => \Auth::user()->id, 'name' => 'Game: '.date('d-m-Y')]);
 
-			return view('games.names', compact('roles', 'statuses', 'players'));
+			foreach($request->input('role_list') as $key => $role)
+			{
+					for($x = 1; $x <= $role; $x++)
+					{
+						$roleCollection[] = Role::find($key);
+	        }
+					$game->roles()->attach($key, ['total' => $role]);
+			}
+			if($total <= 0)
+			{
+				$roleCollection = null;
+			}
+			$roles = collect($roleCollection)->sortBy('position')->values();
+
+			return view('games.names', compact('roles', 'players', 'game'));
 
   }
 
 	public function names(Request $request)
   {
-			$game = Game::create($request->all());
-
+			// Attach players to game
 			if(is_array($request->input('name_list'))) {
 					$currentPlayers = array_filter($request->input('name_list'), 'is_numeric');
 					$newPlayers = array_diff($request->input('name_list'), $currentPlayers);
@@ -156,20 +172,15 @@ class GameController extends Controller {
 					{
 							if($player = Player::create(['name' => $newPlayer, 'user_id' => \Auth::user()->id]))
 							{
-									$currentPlayers[] = "$player->id";
+									$currentPlayers[] = $player->id;
 							}
 					}
 			} else {
 					$currentPlayers = [];
 			}
 			$game->players()->sync($currentPlayers);
-			foreach($request->input('role_list') as $key => $role)
-			{
-				$player = Player::find($currentPlayers[$key]);
-				$player->role_id = $role;
-				$player->save();
-			}
-			dd($game);
+
+			return redirect('/games/'.$game->id);
   }
 
 

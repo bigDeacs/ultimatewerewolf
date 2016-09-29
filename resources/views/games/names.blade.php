@@ -27,27 +27,29 @@
                   <col width="45%">
                   <col width="45%">
 						    	<tr>
-						    		<th>ID</th>
+						    		<th>Position</th>
 						    		<th>Role</th>
                     <th>Player</th>
 						    	</tr>
 						    </thead>
 						    <tbody>
                   {!! Form::open(['url' => '/games/names']) !!}
-  						    	@foreach($roles as $key => $role)
-  							      <tr>
-                        <td scope="row">{{ $key }}</td>
-                        <td>{{ $role->name }}</td>
-                        <td>
-                          <select name="name_list[{{ $key }}]" class="name_list" class="form-control" style="width:100%;">
-                            @foreach($players as $player)
-                              <option value="{{ $player->id }}">{{ $player->name }}</option>
-                            @endforeach
-                          </select>
-                          <input type="hidden" name="role_list[]" value="{{ $role->id }}"
-                        </td>
-  						    	  </tr>
-  						    	@endforeach
+                    <input type="hidden" name="game" value="{{ $game->id }}">                 
+                    @unless($roles == null)
+                      @foreach($roles as $key => $role)
+    							      <tr>
+                          <td scope="row">{{ $key+1 }}</td>
+                          <td>{{ $role->name }}</td>
+                          <td>
+                            <select name="name_list[{{ $key }}]" class="name_list" class="form-control" style="width:100%;">
+                              @foreach($players as $player)
+                                <option value="{{ $key }}">{{ $player->name }}</option>
+                              @endforeach
+                            </select>
+                          </td>
+    						    	  </tr>
+    						    	@endforeach
+                    @endunless
                     <tr>
                       <td colspan="3"><button type="submit" class="btn btn-success btn-block">Next</button></td>
                     </tr>

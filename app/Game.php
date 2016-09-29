@@ -16,7 +16,7 @@ class Game extends Model {
 	 *
 	 * @var array
 	 */
-	protected $fillable = ['total', 'balance', 'status', 'user_id'];
+	protected $fillable = ['name', 'total', 'balance', 'status', 'user_id'];
 
 	/**
 	 * One To Many Relationship
@@ -70,6 +70,22 @@ class Game extends Model {
 	public function getExpansionListAttribute()
 	{
 			return $this->expansions->lists('id');
+	}
+
+	/**
+	 * Many To Many Relationship
+	 * A Player can have many Statuses
+	 *
+	 * @var array
+	 */
+	public function roles()
+	{
+			return $this->belongsToMany('App\Role')->withPivot('total');
+	}
+
+	public function getRoleListAttribute()
+	{
+			return $this->roles->lists('id');
 	}
 
 }

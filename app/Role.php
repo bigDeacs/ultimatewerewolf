@@ -54,6 +54,22 @@ class Role extends Model {
 	}
 
 	/**
+	 * Many To Many Relationship
+	 * A Player can have many Statuses
+	 *
+	 * @var array
+	 */
+	public function games()
+	{
+			return $this->belongsToMany('App\Game');
+	}
+
+	public function getGameListAttribute()
+	{
+			return $this->games->lists('id');
+	}
+
+	/**
 	 * One To Many Relationship
 	 * A Role belongs to a specific Expansion
 	 *

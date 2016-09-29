@@ -37,7 +37,7 @@ class HomeController extends Controller {
 		$user = Auth::user();
 		$games = $user->games;
 		$players = $user->players;
-		return view('home', compact('user', 'games', 'players'));
+		return view('home', compact('user', 'games', 'players', 'roles'));
 	}
 
 }
