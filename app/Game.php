@@ -58,22 +58,6 @@ class Game extends Model {
 
 	/**
 	 * Many To Many Relationship
-	 * A Game has many Expansions
-	 *
-	 * @var array
-	 */
-	public function expansions()
-	{
-			return $this->belongsToMany('App\Expansion');
-	}
-
-	public function getExpansionListAttribute()
-	{
-			return $this->expansions->lists('id');
-	}
-
-	/**
-	 * Many To Many Relationship
 	 * A Player can have many Statuses
 	 *
 	 * @var array

@@ -29,20 +29,4 @@ class Expansion extends Model {
 			return $this->hasMany('App\Role');
 	}
 
-	/**
-	 * Many To Many Relationship
-	 * An Expansion belongs to many Games
-	 *
-	 * @var array
-	 */
-	public function games()
-	{
-			return $this->belongsToMany('App\Game');
-	}
-
-	public function getGameListAttribute()
-	{
-			return $this->games->lists('id');
-	}
-
 }

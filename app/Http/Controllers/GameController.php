@@ -164,6 +164,7 @@ class GameController extends Controller {
 
 	public function names(Request $request)
   {
+			$game += Role::find($request->input('game'));
 			// Attach players to game
 			if(is_array($request->input('name_list'))) {
 					$currentPlayers = array_filter($request->input('name_list'), 'is_numeric');
