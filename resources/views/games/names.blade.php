@@ -34,7 +34,7 @@
 						    </thead>
 						    <tbody>
                   {!! Form::open(['url' => '/games/names']) !!}
-                    <input type="hidden" name="game" value="{{ $game->id }}">                 
+                    <input type="hidden" name="game" value="{{ $game->id }}">
                     @unless($roles == null)
                       @foreach($roles as $key => $role)
     							      <tr>
@@ -43,7 +43,7 @@
                           <td>
                             <select name="name_list[{{ $key }}]" class="name_list" class="form-control" style="width:100%;">
                               @foreach($players as $player)
-                                <option value="{{ $key }}">{{ $player->name }}</option>
+                                <option value="{{ $player->id }}">{{ $player->name }}</option>
                               @endforeach
                             </select>
                           </td>

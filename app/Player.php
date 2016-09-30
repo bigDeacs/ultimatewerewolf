@@ -41,15 +41,20 @@ class Player extends Model {
 	 }
 
   /**
-	 * One To Many Relationship
+	 * Many To Many Relationship
 	 * A Player has a specific Role
 	 *
 	 * @var array
 	 */
-	public function team()
-	{
-		 return $this->belongsTo('App\Team');
+	public function teams()
+ 	{
+ 	 		return $this->belongsToMany('App\Team');
  	}
+
+	public function getTeamListAttribute()
+	{
+			return $this->teams->lists('id');
+	}
 
  	/**
 	 * Many To Many Relationship

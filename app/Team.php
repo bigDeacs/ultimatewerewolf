@@ -25,8 +25,13 @@ class Team extends Model {
 	 * @var array
 	 */
 	public function players()
+ 	{
+ 	 		return $this->belongsToMany('App\Player');
+ 	}
+
+	public function getPlayerListAttribute()
 	{
-			return $this->hasMany('App\Player');
+			return $this->players->lists('id');
 	}
 
 }

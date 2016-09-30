@@ -52,8 +52,17 @@ class GameController extends Controller {
   public function show($id)
   {
       $game = Game::where('id', '=', $id)->firstOrFail();
-			dd($game->roles);
-      return view('games.show', compact('game'));
+			$roles = $game->roles;
+			foreach($roles as $role)
+			{
+				$roleIds[] = $role->id;
+			}
+			$statuses = Status::whereRaw("role_id IN (".implode(", ", $roleIds).")")->get();
+
+			$players = $game->players;
+			// $player->teams where game_id == this.
+
+      return view('games.show', compact('game', 'roles', 'players', 'statuses'));
   }
 
   /**
@@ -164,7 +173,7 @@ class GameController extends Controller {
 
 	public function names(Request $request)
   {
-			$game += Role::find($request->input('game'));
+			$game = Game::find($request->input('game'));
 			// Attach players to game
 			if(is_array($request->input('name_list'))) {
 					$currentPlayers = array_filter($request->input('name_list'), 'is_numeric');
