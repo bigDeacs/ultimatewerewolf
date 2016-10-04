@@ -95,7 +95,16 @@ color: #5d5d5d;
                   </th>
                   @foreach($statuses as $status)
                     @if($status->icon)
-                      <th class="text-center"><button type="button" style="padding: 2px 5px;" class="btn btn-default" id="{{ lcfirst($status->name) }}" data-container="body" data-toggle="popover" data-placement="top" data-trigger="focus" data-content="{{ $status->notes }}"><i class="fa {{ $status->icon }} fa-1x" style="color: #{{ $status->colour }};" aria-hidden="true"></i></button></th>
+                      <th class="text-center">
+                        <a tabindex="0" role="button" style="padding: 2px 5px;" class="btn btn-default" id="{{ lcfirst($status->name) }}"
+                            data-container="body"
+                            data-toggle="popover"
+                            data-placement="top"
+                            data-trigger="focus"
+                            data-content="{{ $status->notes }}">
+                          <i class="fa {{ $status->icon }} fa-1x" style="color: #{{ $status->colour }};" aria-hidden="true"></i>
+                        </a>
+                      </th>
                     @endif
                   @endforeach
                 </tr>

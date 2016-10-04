@@ -76,6 +76,7 @@
 	<!-- Scripts -->
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 	<script src="/js/jquery-ui.min.js"></script>
+	<script src="/js/jquery.ui.touch-punch.min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
   <script src="https://cdn.datatables.net/1.10.10/js/jquery.dataTables.min.js"></script>
 	<script src="/js/select2.min.js"></script>
