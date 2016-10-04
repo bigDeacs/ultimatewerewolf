@@ -84,9 +84,14 @@ color: #5d5d5d;
                 <tr height="50px">
                   <th>Player</th>
                   <th class="text-center">
-                    <button type="button" style="padding: 2px 5px;" class="btn btn-default" id="status" data-container="body" data-trigger="focus" data-toggle="popover" data-placement="top" data-content="This person has died">
+                    <a tabindex="0" role="button" style="padding: 2px 5px;" class="btn btn-default" id="status"
+                        data-container="body"
+                        data-trigger="focus"
+                        data-toggle="popover"
+                        data-placement="top"
+                        data-content="This person has died">
                       <i class="fa fa-user-times fa-1x" style="color: #c61515;" aria-hidden="true"></i>
-                    </button>
+                    </a>
                   </th>
                   @foreach($statuses as $status)
                     @if($status->icon)
