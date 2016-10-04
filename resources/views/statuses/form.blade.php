@@ -22,3 +22,10 @@
         <input type="text" name="colour" id="colour" class="pick-a-color form-control" value="{{ isset($status) ? $status->colour : old('colour') }}" placeholder="" required>
       </div>
 </div>
+
+<div class="form-group row">
+      <div class="col-xs-12">
+        <label for="name">Notes</label>
+        {!! Form::textarea('notes', null, ['class' => 'form-control textarea', 'id' => 'notes', 'rows' => '5']) !!}
+      </div>
+</div>

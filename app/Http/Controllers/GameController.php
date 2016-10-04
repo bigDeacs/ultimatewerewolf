@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use App\Game;
+use App\Time;
 use App\Expansion;
 use App\Role;
 use App\Status;
@@ -42,28 +43,6 @@ class GameController extends Controller {
     return view('games.index', compact('games'));
 	}
 
-  /**
-   * Show the specified photo comment.
-   *
-   * @param  int  $photoId
-   * @param  int  $commentId
-   * @return Response
-   */
-  public function show($id)
-  {
-      $game = Game::where('id', '=', $id)->firstOrFail();
-			$roles = $game->roles;
-			foreach($roles as $role)
-			{
-				$roleIds[] = $role->id;
-			}
-			$statuses = Status::whereRaw("role_id IN (".implode(", ", $roleIds).")")->get();
-
-			$players = $game->players;
-			// $player->teams where game_id == this.
-
-      return view('games.show', compact('game', 'roles', 'players', 'statuses'));
-  }
 
   /**
    * Edit the specified user.
@@ -129,7 +108,7 @@ class GameController extends Controller {
 				dd($recipe->roles);
 				// build game
 			} else {
-				$roles = Role::whereRaw("expansion_id IN (".implode(", ", $request->input('expansions')).")")->get();
+				$roles = Role::whereRaw("expansion_id IN (".implode(", ", $request->input('expansions')).")")->orderBy('position', 'asc')->get();
 				return view('games.build', compact('roles'));
 			}
   }
@@ -152,14 +131,17 @@ class GameController extends Controller {
 			$players = Player::where('user_id', '=', \Auth::user()->id)->get();
 			// Create a game
 			$game = Game::create(['total' => $total, 'balance' => $balance, 'user_id' => \Auth::user()->id, 'name' => 'Game: '.date('d-m-Y')]);
-
+			$time = Time::create(['round' => 1, 'status' => 'night', 'game_id' => $game->id]);
+			$count = 0;
 			foreach($request->input('role_list') as $key => $role)
 			{
 					for($x = 1; $x <= $role; $x++)
 					{
 						$roleCollection[] = Role::find($key);
+						$game->roles()->attach($key, ['position' => $count]);
+						$count++;
 	        }
-					$game->roles()->attach($key, ['total' => $role]);
+
 			}
 			if($total <= 0)
 			{
@@ -188,11 +170,48 @@ class GameController extends Controller {
 			} else {
 					$currentPlayers = [];
 			}
-			$game->players()->sync($currentPlayers);
+			foreach($currentPlayers as $key => $player)
+			{
+					$game->players()->attach($player, ['position' => $key]);
+			}
 
 			return redirect('/games/'.$game->id);
   }
 
+	/**
+	 * Show the specified photo comment.
+	 *
+	 * @param  int  $photoId
+	 * @param  int  $commentId
+	 * @return Response
+	 */
+	public function show($id)
+	{
+			$game = Game::where('id', '=', $id)->firstOrFail();
+			$roles = $game->roles;
+			foreach($roles as $role)
+			{
+				$roleIds[] = $role->id;
+			}
+			$statuses = Status::whereRaw("role_id IN (".implode(", ", $roleIds).")")->get();
+
+			$players = $game->players;
+			// $player->teams where game_id == this.
+
+			return view('games.show', compact('game', 'roles', 'players', 'statuses'));
+	}
+
+	/**
+	 * Show the specified photo comment.
+	 *
+	 * @param  int  $photoId
+	 * @param  int  $commentId
+	 * @return Response
+	 */
+	public function save(Request $request)
+	{
+			dd($request);
+	}
 
 
 }

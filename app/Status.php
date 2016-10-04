@@ -18,7 +18,7 @@ class Status extends Model {
 	 * colour = colour on the background, nullable.
 	 * icon = font awesome icon
 	 */
-	protected $fillable = ['name', 'description', 'icon', 'colour', 'role_id'];
+	protected $fillable = ['name', 'notes', 'icon', 'colour', 'role_id'];
 
 	/**
 	 * Many To Many Relationship

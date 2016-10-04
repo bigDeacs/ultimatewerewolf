@@ -26,21 +26,21 @@
 						</ul>
 					</div>
 				@endif
-        
+
 				{!! Form::open(['url' => '/games/start']) !!}
           <input type="hidden" name="_token" value="{{ csrf_token() }}">
           <div class="form-group row">
-              <div class="col-sm-6 col-xs-12">
-                @foreach($roles as $role)
-                  {{ $role->name }}
-                  <select name="role_list[{{ $role->id }}]" class="form-control">
-                    @for($x = 0; $x <= $role->max; $x++)
-                        <option value="{{ $x }}">{{ $x }}</option>
-                    @endfor
-                  </select>
-                  <br />
-                @endforeach
-              </div>
+              @foreach($roles as $role)
+                  <div class="col-sm-2 col-xs-12">
+                    <img src="{{ $role->image }}" class="img-responsive" alt="{{ $role->name }}" />
+                    <select name="role_list[{{ $role->id }}]" class="form-control">
+                      @for($x = 0; $x <= $role->max; $x++)
+                          <option value="{{ $x }}">{{ $x }}</option>
+                      @endfor
+                    </select>
+                    <br />
+                  </div>
+              @endforeach
           </div>
           <div class="form-group btn-submit-top">
             <button type="submit" class="btn btn-success btn-block">Next</button>
