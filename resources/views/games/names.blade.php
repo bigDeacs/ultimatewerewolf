@@ -22,12 +22,14 @@
 						  <table class="table dataTable table-striped table-hover">
 						    <thead>
                   <col width="10%">
-                  <col width="45%">
-                  <col width="45%">
+                  <col width="30%">
+                  <col width="30%">
+                  <col width="30%">
 						    	<tr>
 						    		<th>Position</th>
 						    		<th>Role</th>
                     <th>Player</th>
+                    <th>Team</th>
 						    	</tr>
 						    </thead>
 						    <tbody>
@@ -45,11 +47,18 @@
                               @endforeach
                             </select>
                           </td>
+                          <td>
+                            <select name="team_list[{{ $key }}]" class="form-control">
+                              @foreach($teams as $team)
+                                <option value="{{ $team->id }}">{{ $team->name }}</option>
+                              @endforeach
+                            </select>
+                          </td>
     						    	  </tr>
     						    	@endforeach
                     @endunless
                     <tr>
-                      <td colspan="3"><button type="submit" class="btn btn-success btn-block">Next</button></td>
+                      <td colspan="4"><button type="submit" class="btn btn-success btn-block">Next</button></td>
                     </tr>
 
                   {!! Form::close() !!}

@@ -48,7 +48,7 @@ class Player extends Model {
 	 */
 	public function teams()
  	{
- 	 		return $this->belongsToMany('App\Team');
+ 	 		return $this->belongsToMany('App\Team')->withPivot('game_id');
  	}
 
 	public function getTeamListAttribute()
@@ -64,7 +64,7 @@ class Player extends Model {
 	 */
  	public function games()
  	{
- 	 		return $this->belongsToMany('App\Game');
+ 	 		return $this->belongsToMany('App\Game')->withPivot('position', 'status');
  	}
 
 	public function getGameListAttribute()

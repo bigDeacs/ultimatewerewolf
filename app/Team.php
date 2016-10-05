@@ -26,7 +26,7 @@ class Team extends Model {
 	 */
 	public function players()
  	{
- 	 		return $this->belongsToMany('App\Player');
+ 	 		return $this->belongsToMany('App\Player')->withPivot('game_id');
  	}
 
 	public function getPlayerListAttribute()

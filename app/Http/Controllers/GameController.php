@@ -7,6 +7,7 @@ use App\Expansion;
 use App\Role;
 use App\Status;
 use App\Player;
+use App\Team;
 use App\Recipe;
 
 class GameController extends Controller {
@@ -115,6 +116,7 @@ class GameController extends Controller {
 
 	public function start(Request $request)
   {
+			$teams = Team::all();
 			// has list of roles, and names.
 			// attach names to game.
 			// count # of roles
@@ -149,7 +151,7 @@ class GameController extends Controller {
 			}
 			$roles = collect($roleCollection)->sortBy('position')->values();
 
-			return view('games.names', compact('roles', 'players', 'game'));
+			return view('games.names', compact('roles', 'players', 'game', 'teams'));
 
   }
 
@@ -170,10 +172,19 @@ class GameController extends Controller {
 			} else {
 					$currentPlayers = [];
 			}
+
 			foreach($currentPlayers as $key => $player)
 			{
 					$game->players()->attach($player, ['position' => $key]);
 			}
+
+			foreach($request->input('team_list') as $key => $team)
+			{
+					$player = $game->players()->where('game_player.position', '=', $key)->firstOrFail();
+					$player->teams()->attach($team, ['game_id' => $game->id]);
+			}
+
+
 
 			return redirect('/games/'.$game->id);
   }
@@ -194,11 +205,12 @@ class GameController extends Controller {
 				$roleIds[] = $role->id;
 			}
 			$statuses = Status::whereRaw("role_id IN (".implode(", ", $roleIds).")")->get();
+			$teams = Team::all();
 
 			$players = $game->players;
 			// $player->teams where game_id == this.
 
-			return view('games.show', compact('game', 'roles', 'players', 'statuses'));
+			return view('games.show', compact('game', 'roles', 'players', 'statuses', 'teams'));
 	}
 
 	/**
@@ -210,7 +222,38 @@ class GameController extends Controller {
 	 */
 	public function save(Request $request)
 	{
-			dd($request);
+			$game = Game::find($request->input('game'));
+			$time = $game->time;
+			$time->status = $request->input('status');
+			if($request->input('status') == 'day')
+			{
+				$time->round = ($time->round + 1);
+			}
+			$time->save();
+			if($request->input('death_list')){
+				foreach($request->input('death_list') as $key => $death)
+				{
+					$player = $game->players()->where('game_player.position', '=', $key)->firstOrFail();
+					$game->players()->sync([$player->id => ['status' => 'dead']], false);
+				}
+			}
+			if($request->input('team_list')){
+				foreach($request->input('team_list') as $key => $team)
+				{
+					$player = $game->players()->where('game_player.position', '=', $key)->firstOrFail();
+					$game->players()->sync([$player->id => ['status' => 'dead']], false);
+				}
+			}
+			return redirect('/games/'.$game->id);
+	}
+
+	public function end($id)
+	{
+			$game = Game::find($id);
+			$game->status = 'ended';
+			$game->save();
+
+			return redirect('/games/'.$game->id);
 	}
 
 
