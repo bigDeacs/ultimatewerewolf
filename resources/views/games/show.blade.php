@@ -52,8 +52,8 @@ color: #5d5d5d;
           <div class="table-responsive" style="width: 25%;float: left;">
             <table class="table dataTable table-striped table-hover">
               <thead>
-                <col width="10%">
-                <col width="45%">
+                <col width="20%">
+                <col width="80%">
                 <tr height="50px">
                   <th>ID</th>
                   <th>Role</th>
@@ -79,11 +79,11 @@ color: #5d5d5d;
           <div class="table-responsive" style="width: 75%;float: left;">
             <table class="table dataTable table-striped table-hover">
               <thead>
-                <col width="40%">
+                <col width="20%">
                 <col width="10%">
                 @foreach($statuses as $status)
                   @if($status->icon)
-                    <col width="10%">
+                    <col width="{{ (70 / count($statuses)) }}%">
                   @endif
                 @endforeach
                 <tr height="50px">
