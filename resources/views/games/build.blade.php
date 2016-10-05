@@ -1,7 +1,7 @@
 @extends('app')
 
 @section('meta')
-    <title>Create new Game</title>
+    <title>Choose Roles</title>
 @endsection
 
 @section('head')
@@ -12,10 +12,10 @@
 		<div class="col-sm-10 col-sm-offset-1">
 			<div class="panel panel-default panel-shadow">
 			  <div class="panel-heading">
-			    <h1 class="panel-title"><strong>Create a new Game</strong></h1>
+			    <h1 class="panel-title"><strong>Choose which roles are in the game</strong></h1>
 			  </div>
 			  <div class="panel-body">
-			  	<div class="pull-right btn-back-top"><a href="/games" class="btn btn-primary"><i class="fa fa-arrow-circle-o-left"></i> Back</a></div>
+			  	<div class="pull-right btn-back-top"><a href="/" class="btn btn-primary"><i class="fa fa-arrow-circle-o-left"></i> Back</a></div>
 			  	<div style="clear:both;"></div>
 				@if(count($errors) > 0)
 					<div class="alert alert-danger">

@@ -27,7 +27,7 @@ color: #5d5d5d;
 
 @section('content')
 <div class="row">
-  <div class="col-sm-10 col-sm-offset-1">
+  <div class="col-sm-12">
     <div class="panel panel-default panel-shadow">
       <div class="panel-heading">
         <h1 class="panel-title"><strong>{{ ucfirst($game->time->status) }} Phase: Round {{ $game->time->round }}</strong></h1>
@@ -39,6 +39,11 @@ color: #5d5d5d;
         <div style="clear:both;"></div>
         <div class="row">
         <div class="col-sm-12">
+          @if($game->time->round == 1)
+            <p>Night one</p>
+          @else
+            <p>Night 2</p>
+          @endif
           @if($game->time->status == 'night')
             <input type="hidden" name="status" value="day">
           @else
