@@ -153,7 +153,11 @@ color: #5d5d5d;
                         @if($status->icon)
                           <td class="text-center">
                             <label class="btn" style="padding: 0;">
-                              <input type="checkbox" name="status_list[{{ $status->id }}][{{ $key }}]" style="display: none;">
+                              @if($player->statuses()->where('player_status.game_id', '=', $game->id)->where('statuses.name', '=', $status->name)->first())
+                                <input type="checkbox" name="status_list[{{ $status->id }}][{{ $key }}]" style="display: none;" value="{{ $key }}" checked>
+                              @else
+                                <input type="checkbox" name="status_list[{{ $status->id }}][{{ $key }}]" style="display: none;" value="{{ $key }}">
+                              @endif
                               <i class="fa fa-square-o fa-2x"></i>
                               <i class="fa fa-check-square-o fa-2x"></i>
                             </label>
@@ -161,10 +165,9 @@ color: #5d5d5d;
                         @endif
                       @endforeach
                       <td>
-                        <?php $team = $player->teams()->where('player_team.game_id', '=', $game->id)->get(); ?>
                         <select name="team_list[{{ $key }}]" class="form-control">
                           @foreach($teams as $team)
-                            @if($team->first()->name == $team->name)
+                            @if($player->teams()->where('player_team.game_id', '=', $game->id)->first()->name == $team->name)
                               <option value="{{ $team->id }}" selected="selected">{{ $team->name }}</option>
                             @else
                               <option value="{{ $team->id }}">{{ $team->name }}</option>

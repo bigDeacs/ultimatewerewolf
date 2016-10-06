@@ -80,7 +80,7 @@ class Player extends Model {
 	 */
 	public function statuses()
 	{
-			return $this->belongsToMany('App\Status');
+			return $this->belongsToMany('App\Status')->withPivot('game_id');
 	}
 
 	public function getStatusListAttribute()

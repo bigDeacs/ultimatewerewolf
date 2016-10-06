@@ -223,6 +223,21 @@ class GameController extends Controller {
 	public function save(Request $request)
 	{
 			$game = Game::find($request->input('game'));
+			foreach(Status::all() as $status)
+			{
+				$status->players()->where('game_player.game_id', '=', $game->id)->detach();
+			}
+			if($request->input('status_list')){
+				foreach($request->input('status_list') as $key => $positions)
+				{
+					$status = Status::find($key);
+					foreach($positions as $lock => $position)
+					{
+						$player = $game->players()->where('game_player.position', '=', $lock)->firstOrFail();
+						$player->statuses()->attach([$status->id => ['game_id' => $game->id]]);
+					}
+				}
+			}
 			$time = $game->time;
 			$time->status = $request->input('status');
 			if($request->input('status') == 'day')
@@ -238,10 +253,14 @@ class GameController extends Controller {
 				}
 			}
 			if($request->input('team_list')){
+				foreach(Team::all() as $team)
+				{
+					$team->players()->where('player_team.game_id', '=', $game->id)->detach();
+				}
 				foreach($request->input('team_list') as $key => $team)
 				{
 					$player = $game->players()->where('game_player.position', '=', $key)->firstOrFail();
-					$game->players()->sync([$player->id => ['status' => 'dead']], false);
+					$player->teams()->attach($team, ['game_id' => $game->id]);
 				}
 			}
 			return redirect('/games/'.$game->id);
