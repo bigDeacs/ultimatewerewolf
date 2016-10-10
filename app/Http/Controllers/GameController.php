@@ -129,8 +129,8 @@ class GameController extends Controller {
 							$game->roles()->attach($role->id, ['position' => $count]);
 							$count++;
 		        }
-
 				}
+				dd($total);
 				if($total <= 0)
 				{
 					$roleCollection = null;
