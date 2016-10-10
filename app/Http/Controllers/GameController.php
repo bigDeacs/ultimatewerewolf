@@ -106,7 +106,6 @@ class GameController extends Controller {
 			if($request->input('recipe') != null)
 			{
 				$recipe = Recipe::find($request->input('recipe'));
-				dd($recipe->roles);
 				// build game
 				$teams = Team::all();
 				// has list of roles, and names.
@@ -116,9 +115,9 @@ class GameController extends Controller {
 				$balance = 0;
 				foreach($recipe->roles as $role)
 				{
-						for($x = 1; $x <= $role; $x++)
+						for($x = 1; $x <= $role->pivot_total; $x++)
 						{
-							$balance += Role::find($key)->impact;
+							$balance += $role->impact;
 		        }
 				}
 				$players = Player::where('user_id', '=', \Auth::user()->id)->get();
@@ -126,12 +125,12 @@ class GameController extends Controller {
 				$game = Game::create(['total' => $total, 'balance' => $balance, 'user_id' => \Auth::user()->id, 'name' => 'Game: '.date('d-m-Y')]);
 				$time = Time::create(['round' => 1, 'status' => 'night', 'game_id' => $game->id]);
 				$count = 0;
-				foreach($request->input('role_list') as $key => $role)
+				foreach($request->input('role_list') as $role)
 				{
-						for($x = 1; $x <= $role; $x++)
+						for($x = 1; $x <= $role->pivot_total; $x++)
 						{
-							$roleCollection[] = Role::find($key);
-							$game->roles()->attach($key, ['position' => $count]);
+							$roleCollection[] = $role;
+							$game->roles()->attach($role->id, ['position' => $count]);
 							$count++;
 		        }
 
