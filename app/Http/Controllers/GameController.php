@@ -111,7 +111,7 @@ class GameController extends Controller {
 				$balance = 0;
 				foreach($recipe->roles as $role)
 				{
-						for($x = 1; $x <= $role->pivot_total; $x++)
+						for($x = 1; $x <= $role->recipes()->where('recipe_role.role_id', $role->id)->first()->pivot->total; $x++)
 						{
 							$balance += $role->impact;
 		        }
@@ -121,10 +121,9 @@ class GameController extends Controller {
 				$game = Game::create(['total' => $total, 'balance' => $balance, 'user_id' => \Auth::user()->id, 'name' => 'Game: '.date('d-m-Y')]);
 				$time = Time::create(['round' => 1, 'status' => 'night', 'game_id' => $game->id]);
 				$count = 0;
-				dd($recipe->roles);
 				foreach($recipe->roles as $role)
 				{
-						for($x = 1; $x <= $role->pivot_total; $x++)
+						for($x = 0; $x <= $role->recipes()->where('recipe_role.role_id', $role->id)->first()->pivot->total; $x++)
 						{
 							$roleCollection[] = Role::find($role->id);
 							$game->roles()->attach($role->id, ['position' => $count]);
