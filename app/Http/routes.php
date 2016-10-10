@@ -35,4 +35,5 @@ Route::post('games/build', 'GameController@build');
 Route::post('games/start', 'GameController@start');
 Route::post('games/names', 'GameController@names');
 Route::post('games/save', 'GameController@save');
+Route::get('games/{id}/{deaths?}', 'GameController@show');
 Route::get('games/{id}/end', 'GameController@end');

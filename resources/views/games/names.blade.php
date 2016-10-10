@@ -50,7 +50,11 @@
                           <td>
                             <select name="team_list[{{ $key }}]" class="form-control">
                               @foreach($teams as $team)
-                                <option value="{{ $team->id }}">{{ $team->name }}</option>
+                                @if($team->name == 'Villagers')
+                                  <option value="{{ $team->id }}" selected="selected">{{ $team->name }}</option>
+                                @else
+                                  <option value="{{ $team->id }}">{{ $team->name }}</option>
+                                @endif
                               @endforeach
                             </select>
                           </td>

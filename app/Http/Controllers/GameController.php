@@ -6,6 +6,7 @@ use App\Time;
 use App\Expansion;
 use App\Role;
 use App\Status;
+use App\Scenario;
 use App\Player;
 use App\Team;
 use App\Recipe;
@@ -225,7 +226,7 @@ class GameController extends Controller {
 	 * @param  int  $commentId
 	 * @return Response
 	 */
-	public function show($id)
+	public function show($id, $deaths = 0)
 	{
 			$game = Game::where('id', '=', $id)->firstOrFail();
 			$roles = $game->roles;
@@ -237,9 +238,13 @@ class GameController extends Controller {
 			$teams = Team::all();
 
 			$players = $game->players;
-			// $player->teams where game_id == this.
-
-			return view('games.show', compact('game', 'roles', 'players', 'statuses', 'teams'));
+			if($game->time->status == 'day')
+			{
+				$scenario = Scenario::where('deaths', '=', $deaths)->orderBy(DB::raw('RAND()'))->firstOrFail();
+			} else {
+				$scenario = '';
+			}
+			return view('games.show', compact('game', 'roles', 'players', 'statuses', 'teams', 'scenario'));
 	}
 
 	/**
@@ -274,11 +279,13 @@ class GameController extends Controller {
 				$time->round = ($time->round + 1);
 			}
 			$time->save();
+			$deaths = 0;
 			if($request->input('death_list')){
 				foreach($request->input('death_list') as $key => $death)
 				{
 					$player = $game->players()->where('game_player.position', '=', $key)->firstOrFail();
 					$game->players()->sync([$player->id => ['status' => 'dead']], false);
+					$deaths++;
 				}
 			}
 			if($request->input('team_list')){
@@ -292,7 +299,7 @@ class GameController extends Controller {
 					$player->teams()->attach($team, ['game_id' => $game->id]);
 				}
 			}
-			return redirect('/games/'.$game->id);
+			return redirect('/games/'.$game->id.'/'.$deaths);
 	}
 
 	public function end($id)
