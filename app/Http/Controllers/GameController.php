@@ -121,6 +121,7 @@ class GameController extends Controller {
 				$game = Game::create(['total' => $total, 'balance' => $balance, 'user_id' => \Auth::user()->id, 'name' => 'Game: '.date('d-m-Y')]);
 				$time = Time::create(['round' => 1, 'status' => 'night', 'game_id' => $game->id]);
 				$count = 0;
+				dd($recipe->roles);
 				foreach($recipe->roles as $role)
 				{
 						for($x = 1; $x <= $role->pivot_total; $x++)
@@ -130,7 +131,6 @@ class GameController extends Controller {
 							$count++;
 		        }
 				}
-				dd($roleCollection);
 				if($total <= 0)
 				{
 					$roleCollection = null;
