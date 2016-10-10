@@ -77,6 +77,7 @@ class RecipeController extends Controller {
       $recipe->save();
 
 			$players = 0;
+			dd($request->input('role_list'));
 			if(is_array($request->input('role_list'))) {
 					$currentRoles = array_filter($request->input('role_list'), 'is_numeric');
 					$recipe->roles()->detach();
