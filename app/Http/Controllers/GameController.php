@@ -240,11 +240,11 @@ class GameController extends Controller {
 			$players = $game->players;
 			if($game->time->status == 'day')
 			{
-				$scenario = Scenario::where('deaths', '=', $deaths)->orderBy(DB::raw('RAND()'))->firstOrFail();
+				$scenarios = Scenario::where('deaths', '=', $deaths)->get();
 			} else {
-				$scenario = '';
+				$scenarios = '';
 			}
-			return view('games.show', compact('game', 'roles', 'players', 'statuses', 'teams', 'scenario'));
+			return view('games.show', compact('game', 'roles', 'players', 'statuses', 'teams', 'scenarios'));
 	}
 
 	/**

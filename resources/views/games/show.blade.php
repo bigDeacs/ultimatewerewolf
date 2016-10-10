@@ -51,10 +51,8 @@ color: #5d5d5d;
           <div style="clear:both;"></div>
           <div class="row">
           <div class="col-sm-12">
-            @if($game->time->round == 1)
-              <p>Night one</p>
-            @else
-              <p>Night 2</p>
+            @if($scenarios !== '')
+              {{ $scenarios->orderBy(DB::raw('RAND()'))->first()->description }}
             @endif
             <div class="table-responsive" style="width: 25%;float: left;">
               <table class="table dataTable table-striped table-hover">
