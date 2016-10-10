@@ -52,7 +52,7 @@ color: #5d5d5d;
           <div class="row">
           <div class="col-sm-12">
             @if($scenarios !== '')
-              {{ $scenarios->orderBy(DB::raw('RAND()'))->first()->description }}
+              {{ $scenarios->sortBy(DB::raw('RAND()'))->first()->description }}
             @endif
             <div class="table-responsive" style="width: 25%;float: left;">
               <table class="table dataTable table-striped table-hover">
