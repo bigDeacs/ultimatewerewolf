@@ -74,7 +74,27 @@ color: #5d5d5d;
                       @endif
                         <?php $order++; ?>
                         <td scope="row">{{ $order }}</td>
-                        <td>{{ $role->name }}</td>
+                        <td>
+                          <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#{{ $role->name }}">
+                            {{ $role->name }}
+                          </button>
+                        </td>
+                        <div class="modal fade" tabindex="-1" role="dialog" id="{{ $role->name }}">
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                              <div class="modal-body">
+                                <div class="row">
+                                  <div class="col-xs-12 col-sm-4">
+                                    <img src="{{ $role->image }}" class="img-responsive" />
+                                  </div>
+                                  <div class="col-xs-12 col-sm-8">
+                                    <p>{{ $role->description }}</p>
+                                  </div>
+                                </div>
+                              </div>
+                            </div><!-- /.modal-content -->
+                          </div><!-- /.modal-dialog -->
+                        </div><!-- /.modal -->
                       </tr>
                   @endforeach
                 </tbody>
@@ -209,7 +229,7 @@ color: #5d5d5d;
                       <?php $order++; ?>
                       <td scope="row">{{ $order }}</td>
                       <td>
-                        <button type="button" class="btn" data-toggle="modal" data-target="#{{ $role->name }}">
+                        <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#{{ $role->name }}">
                           {{ $role->name }}
                         </button>
                       </td>
@@ -217,7 +237,14 @@ color: #5d5d5d;
                         <div class="modal-dialog" role="document">
                           <div class="modal-content">
                             <div class="modal-body">
-                              <img src="{{ $role->image }}" class="img-responsive" />
+                              <div class="row">
+                                <div class="col-xs-12 col-sm-4">
+                                  <img src="{{ $role->image }}" class="img-responsive" />
+                                </div>
+                                <div class="col-xs-12 col-sm-8">
+                                  <p>{{ $role->description }}</p>
+                                </div>
+                              </div>
                             </div>
                           </div><!-- /.modal-content -->
                         </div><!-- /.modal-dialog -->
