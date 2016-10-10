@@ -208,7 +208,20 @@ color: #5d5d5d;
                     @endif
                       <?php $order++; ?>
                       <td scope="row">{{ $order }}</td>
-                      <td>{{ $role->name }}</td>
+                      <td>
+                        <button type="button" class="btn" data-toggle="modal" data-target="#{{ $role->name }}">
+                          {{ $role->name }}
+                        </button>
+                      </td>
+                      <div class="modal fade" tabindex="-1" role="dialog" id="{{ $role->name }}">
+                        <div class="modal-dialog" role="document">
+                          <div class="modal-content">
+                            <div class="modal-body">
+                              <img src="{{ $role->image }}" class="img-responsive" />
+                            </div>
+                          </div><!-- /.modal-content -->
+                        </div><!-- /.modal-dialog -->
+                      </div><!-- /.modal -->
                     </tr>
                 @endforeach
               </tbody>
