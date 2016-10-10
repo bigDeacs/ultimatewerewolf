@@ -180,7 +180,6 @@ class GameController extends Controller {
 
 			foreach($request->input('team_list') as $key => $team)
 			{
-				dd($game->id);
 					$player = $game->players()->where('game_player.position', '=', $key)->firstOrFail();
 					$player->teams()->attach($team, ['game_id' => $game->id]);
 			}
