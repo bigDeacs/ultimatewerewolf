@@ -172,12 +172,13 @@ class GameController extends Controller {
 			} else {
 					$currentPlayers = [];
 			}
-			dd($currentPlayers);
 
 			foreach($currentPlayers as $key => $player)
 			{
 					$game->players()->attach($player, ['position' => $key]);
 			}
+
+			dd($request->input('team_list'));
 
 			foreach($request->input('team_list') as $key => $team)
 			{
