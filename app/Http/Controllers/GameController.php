@@ -130,7 +130,7 @@ class GameController extends Controller {
 							$count++;
 		        }
 				}
-				dd($total);
+				dd($roleCollection);
 				if($total <= 0)
 				{
 					$roleCollection = null;
