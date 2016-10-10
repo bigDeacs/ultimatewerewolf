@@ -106,6 +106,7 @@ class GameController extends Controller {
 			if($request->input('recipe') != null)
 			{
 				$recipe = Recipe::find($request->input('recipe'));
+				dd($recipe->roles)
 				// build game
 				$teams = Team::all();
 				// has list of roles, and names.
@@ -113,7 +114,7 @@ class GameController extends Controller {
 				// count # of roles
 				$total = $recipe->players;
 				$balance = 0;
-				foreach($recipe->roles as $key => $role)
+				foreach($recipe->roles as $role)
 				{
 						for($x = 1; $x <= $role; $x++)
 						{
