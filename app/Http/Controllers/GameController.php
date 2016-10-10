@@ -240,7 +240,11 @@ class GameController extends Controller {
 			$players = $game->players;
 			if($game->time->status == 'day')
 			{
-				$scenarios = Scenario::where('deaths', '=', $deaths)->get();
+				if($deaths > 2){
+					$scenarios = Scenario::where('deaths', '=', '-99')->get();
+				} else {
+					$scenarios = Scenario::where('deaths', '=', $deaths)->get();
+				}
 			} else {
 				$scenarios = '';
 			}
