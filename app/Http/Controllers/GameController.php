@@ -106,7 +106,7 @@ class GameController extends Controller {
 			if($request->input('recipe') != null)
 			{
 				$recipe = Recipe::find($request->input('recipe'));
-				dd($recipe->roles)
+				dd($recipe->roles);
 				// build game
 				$teams = Team::all();
 				// has list of roles, and names.
