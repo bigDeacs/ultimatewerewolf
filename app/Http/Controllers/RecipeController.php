@@ -126,8 +126,11 @@ class RecipeController extends Controller {
 					$currentRoles = array_filter($request->input('role_list'), 'is_numeric');
 					$recipe->roles()->detach();
 					foreach ($currentRoles as $key => $role) {
-						$recipe->roles()->attach($key, ['total' => $role]);
-						$players += $role;
+						if($role > 0)
+						{
+							$recipe->roles()->attach($key, ['total' => $role]);
+							$players += $role;
+						}
 					}
 			}
 

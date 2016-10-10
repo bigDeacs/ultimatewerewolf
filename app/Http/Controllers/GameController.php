@@ -106,8 +106,42 @@ class GameController extends Controller {
 			if($request->input('recipe') != null)
 			{
 				$recipe = Recipe::find($request->input('recipe'));
-				dd($recipe->roles);
 				// build game
+				$teams = Team::all();
+				// has list of roles, and names.
+				// attach names to game.
+				// count # of roles
+				$total = $recipe->players;
+				$balance = 0;
+				foreach($recipe->roles as $key => $role)
+				{
+						for($x = 1; $x <= $role; $x++)
+						{
+							$balance += Role::find($key)->impact;
+		        }
+				}
+				$players = Player::where('user_id', '=', \Auth::user()->id)->get();
+				// Create a game
+				$game = Game::create(['total' => $total, 'balance' => $balance, 'user_id' => \Auth::user()->id, 'name' => 'Game: '.date('d-m-Y')]);
+				$time = Time::create(['round' => 1, 'status' => 'night', 'game_id' => $game->id]);
+				$count = 0;
+				foreach($request->input('role_list') as $key => $role)
+				{
+						for($x = 1; $x <= $role; $x++)
+						{
+							$roleCollection[] = Role::find($key);
+							$game->roles()->attach($key, ['position' => $count]);
+							$count++;
+		        }
+
+				}
+				if($total <= 0)
+				{
+					$roleCollection = null;
+				}
+				$roles = collect($roleCollection)->sortBy('position')->values();
+
+				return view('games.names', compact('roles', 'players', 'game', 'teams'));
 			} else {
 				$roles = Role::whereRaw("expansion_id IN (".implode(", ", $request->input('expansions')).")")->orderBy('position', 'asc')->get();
 				return view('games.build', compact('roles'));
