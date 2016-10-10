@@ -172,6 +172,7 @@ class GameController extends Controller {
 			} else {
 					$currentPlayers = [];
 			}
+			dd($currentPlayers);
 
 			foreach($currentPlayers as $key => $player)
 			{
