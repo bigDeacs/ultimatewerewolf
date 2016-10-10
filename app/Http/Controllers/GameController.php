@@ -125,7 +125,7 @@ class GameController extends Controller {
 				$game = Game::create(['total' => $total, 'balance' => $balance, 'user_id' => \Auth::user()->id, 'name' => 'Game: '.date('d-m-Y')]);
 				$time = Time::create(['round' => 1, 'status' => 'night', 'game_id' => $game->id]);
 				$count = 0;
-				foreach($request->input('role_list') as $role)
+				foreach($recipe->roles as $role)
 				{
 						for($x = 1; $x <= $role->pivot_total; $x++)
 						{
