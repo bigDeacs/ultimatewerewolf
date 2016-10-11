@@ -6258,7 +6258,7 @@ label,
 .panel-night {
   border-color: #909090;
 }
-.panel-default > .panel-heading {
+.panel-night > .panel-heading {
     color: #ffffff;
     background-color: #828282;
     border-color: #909090;
