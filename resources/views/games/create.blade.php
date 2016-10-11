@@ -29,6 +29,12 @@
 				{!! Form::open(['url' => '/games/build']) !!}
           <input type="hidden" name="_token" value="{{ csrf_token() }}">
           <div class="form-group row">
+            <div class="col-xs-12">
+              <label for="name">Name</label>
+              <input type="text" name="name" id="name" class="form-control" placeholder="Eg. Time/Date, Place, Event." required>
+            </div>
+          </div>
+          <div class="form-group row">
               <div class="col-sm-6 col-xs-12">
                   <label for="name">Chose a Recipe</label>
                   <select name="recipe" class="form-control">
@@ -40,7 +46,7 @@
               </div>
               <div class="col-sm-6 col-xs-12">
                 <label for="name">Chose expansions</label>
-                <select name="expansions[]" multiple class="form-control">
+                <select name="expansions[]" multiple class="form-control js-expansions">
                   <option></option>
                   @foreach($expansions as $expansion)
                     <option value="{{ $expansion->id }}">{{ $expansion->name }}</option>
@@ -57,4 +63,10 @@
 			</div>
 		</div>
 	</div>
+@endsection
+
+@section('scripts')
+  <script type="text/javascript">
+    $(".js-expansions").select2();
+  </script>
 @endsection
