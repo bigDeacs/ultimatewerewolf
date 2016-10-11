@@ -75,7 +75,7 @@ color: #5d5d5d;
                         <?php $order++; ?>
                         <td scope="row">{{ $order }}</td>
                         <td>
-                          <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#{{ $role->name }}">
+                          <button type="button" class="btn btn-sm btn-primary btn-block" data-toggle="modal" data-target="#{{ $role->name }}">
                             {{ $role->name }}
                           </button>
                         </td>
@@ -84,10 +84,10 @@ color: #5d5d5d;
                             <div class="modal-content">
                               <div class="modal-body">
                                 <div class="row">
-                                  <div class="col-xs-12 col-sm-4">
+                                  <div class="col-xs-12 col-sm-6">
                                     <img src="{{ $role->image }}" class="img-responsive" />
                                   </div>
-                                  <div class="col-xs-12 col-sm-8">
+                                  <div class="col-xs-12 col-sm-6">
                                     <p>{{ $role->description }}</p>
                                   </div>
                                 </div>
@@ -186,9 +186,9 @@ color: #5d5d5d;
                         <select name="team_list[{{ $key }}]" class="form-control">
                           @foreach($teams as $team)
                             @if($player->teams()->where('player_team.game_id', '=', $game->id)->first()->name == $team->name)
-                              <option value="{{ $team->id }}" selected="selected">{{ $team->name }}</option>
+                              <option value="{{ $team->id }}" selected="selected"><i class="fa {{ $team->icon }} fa-1x" style="color: #{{ $team->colour }};" aria-hidden="true"></i> {{ $team->name }}</option>
                             @else
-                              <option value="{{ $team->id }}">{{ $team->name }}</option>
+                              <option value="{{ $team->id }}"><i class="fa {{ $team->icon }} fa-1x" style="color: #{{ $team->colour }};" aria-hidden="true"></i> {{ $team->name }}</option>
                             @endif
                           @endforeach
                         </select>
