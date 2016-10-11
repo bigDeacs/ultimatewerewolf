@@ -28,39 +28,46 @@ color: #5d5d5d;
 @section('content')
 <div class="row">
   <div class="col-sm-12">
-    <div class="panel panel-default panel-shadow">
-      <div class="panel-heading">
-        <h1 class="panel-title"><strong>{{ ucfirst($game->time->status) }} Phase: Round {{ $game->time->round }}</strong></h1>
-      </div>
-      <div class="panel-body">
-      @if($game->status == 'started')
-        {!! Form::open(['url' => '/games/save']) !!}
+    {!! Form::open(['url' => '/games/save']) !!}
+      <div class="panel panel-default panel-shadow">
+        <div class="panel-heading">
+          <h1 class="panel-title">
+            <strong>{{ ucfirst($game->time->status) }} Phase: Round {{ $game->time->round }}</strong>
+          </h1>
           <div class="pull-right btn-group">
             <button type="submit" class="btn btn-success">Save <i class="fa fa-floppy-o"></i></button>
             <a href="/games/{{ $game->id }}/end" class="btn btn-danger">Finish <i class="fa fa-hourglass-end"></i></a>
           </div>
-          @if($game->time->status == 'night')
-            <input type="hidden" name="status" value="day">
-            <i class="fa fa-moon-o fa-3x" style="color: #6e00b3;" aria-hidden="true"></i>
-          @else
-            <input type="hidden" name="status" value="night">
-            <i class="fa fa-sun-o fa-3x" style="color: #efc600;" aria-hidden="true"></i>
-          @endif
+        </div>
+        <div class="panel-body">
+        @if($game->status == 'started')
           <input type="hidden" name="game" value="{{ $game->id }}">
-          <div class="pull-left clock" style="margin:2em;width: auto;"></div>
+          <div class="row">
+            <div class="col-xs-12 col-sm-9">
+              @if($scenarios !== '')
+                <p class="storyFont">{{ $scenarios->sortBy(DB::raw('RAND()'))->first()->description }}</p>
+              @endif
+            </div>
+            <div class="col-xs-9 col-sm-2">
+              <div class="clock" style="margin:2em;width: auto;"></div>
+            </div>
+            <div class="col-xs-3 col-sm-1">
+              @if($game->time->status == 'night')
+                <input type="hidden" name="status" value="day">
+                <i class="fa fa-moon-o fa-3x" style="color: #6e00b3;" aria-hidden="true"></i>
+              @else
+                <input type="hidden" name="status" value="night">
+                <i class="fa fa-sun-o fa-3x" style="color: #efc600;" aria-hidden="true"></i>
+              @endif
+            </div>
+          </div>
           <div style="clear:both;"></div>
           <div class="row">
           <div class="col-sm-12">
-            @if($scenarios !== '')
-              {{ $scenarios->sortBy(DB::raw('RAND()'))->first()->description }}
-            @endif
-            <div class="table-responsive" style="width: 25%;float: left;">
+            <div class="table-responsive" style="width: 20%;float: left;">
               <table class="table dataTable table-striped table-hover">
                 <thead>
-                  <col width="20%">
-                  <col width="80%">
                   <tr height="50px">
-                    <th>ID</th>
                     <th>Role</th>
                   </tr>
                 </thead>
@@ -72,8 +79,6 @@ color: #5d5d5d;
                       @else
                         <tr height="50px">
                       @endif
-                        <?php $order++; ?>
-                        <td scope="row">{{ $order }}</td>
                         <td>
                           <button type="button" class="btn btn-sm btn-primary btn-block" data-toggle="modal" data-target="#{{ $role->name }}">
                             {{ $role->name }}
@@ -101,7 +106,7 @@ color: #5d5d5d;
               </table>
             </div>
             <!-- Player side -->
-            <div class="table-responsive" style="width: 75%;float: left;">
+            <div class="table-responsive" style="width: 80%;float: left;">
               <table class="table dataTable table-striped table-hover">
                 <thead>
                   <col width="15%">
@@ -186,9 +191,9 @@ color: #5d5d5d;
                         <select name="team_list[{{ $key }}]" class="form-control">
                           @foreach($teams as $team)
                             @if($player->teams()->where('player_team.game_id', '=', $game->id)->first()->name == $team->name)
-                              <option value="{{ $team->id }}" selected="selected"><i class="fa {{ $team->icon }} fa-1x" style="color: #{{ $team->colour }};" aria-hidden="true"></i> {{ $team->name }}</option>
+                              <option value="{{ $team->id }}" selected="selected">{{ $team->name }}</option>
                             @else
-                              <option value="{{ $team->id }}"><i class="fa {{ $team->icon }} fa-1x" style="color: #{{ $team->colour }};" aria-hidden="true"></i> {{ $team->name }}</option>
+                              <option value="{{ $team->id }}">{{ $team->name }}</option>
                             @endif
                           @endforeach
                         </select>
@@ -201,20 +206,16 @@ color: #5d5d5d;
             <!-- End -->
           </div>
         </div>
-        {!! Form::close() !!}
       @else
         <div class="pull-right btn-back-top"><a href="/" class="btn btn-primary"><i class="fa fa-arrow-circle-o-left"></i> Back</a></div>
         <div style="clear:both;"></div>
         <div class="row">
         <div class="col-sm-12">
           <p>The game is over</p>
-          <div class="table-responsive" style="width: 25%;float: left;">
+          <div class="table-responsive" style="width: 20%;float: left;">
             <table class="table dataTable table-striped table-hover">
               <thead>
-                <col width="20%">
-                <col width="80%">
                 <tr height="50px">
-                  <th>ID</th>
                   <th>Role</th>
                 </tr>
               </thead>
@@ -226,8 +227,6 @@ color: #5d5d5d;
                     @else
                       <tr height="50px">
                     @endif
-                      <?php $order++; ?>
-                      <td scope="row">{{ $order }}</td>
                       <td>
                         <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#{{ $role->name }}">
                           {{ $role->name }}
@@ -255,12 +254,22 @@ color: #5d5d5d;
             </table>
           </div>
           <!-- Player side -->
-          <div class="table-responsive" style="width: 75%;float: left;">
+          <div class="table-responsive" style="width: 80%;float: left;">
             <table class="table dataTable table-striped table-hover">
               <thead>
                 <col width="20%">
                 <tr height="50px">
                   <th>Player</th>
+                  <th class="text-center">
+                    <a tabindex="0" role="button" style="padding: 2px 5px;" class="btn btn-default" id="team"
+                        data-container="body"
+                        data-trigger="focus"
+                        data-toggle="popover"
+                        data-placement="top"
+                        data-content="Team affiliation">
+                      <i class="fa fa-users fa-1x" style="color: #000000;" aria-hidden="true"></i>
+                    </a>
+                  </th>
                 </tr>
               </thead>
               <tbody>
@@ -271,6 +280,17 @@ color: #5d5d5d;
                     <tr class="success" height="50px">
                   @endif
                     <td>{{ $player->name }}</td>
+                    <td>
+                      <select name="team_list[{{ $key }}]" class="form-control">
+                        @foreach($teams as $team)
+                          @if($player->teams()->where('player_team.game_id', '=', $game->id)->first()->name == $team->name)
+                            <option value="{{ $team->id }}" selected="selected">{{ $team->name }}</option>
+                          @else
+                            <option value="{{ $team->id }}">{{ $team->name }}</option>
+                          @endif
+                        @endforeach
+                      </select>
+                    </td>
                   </tr>
                 @endforeach
               </tbody>
@@ -282,6 +302,7 @@ color: #5d5d5d;
       @endif
       </div>
     </div>
+    {!! Form::close() !!}
   </div>
 </div>
 @endsection
