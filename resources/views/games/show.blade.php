@@ -29,7 +29,7 @@ color: #5d5d5d;
 <div class="row">
   <div class="col-sm-12">
     {!! Form::open(['url' => '/games/save']) !!}
-      <div class="panel panel-default panel-shadow">
+      <div class="panel panel-shadow panel-{{ $game->time->status }}">
         <div class="panel-heading row" style="height: 55px;">
           <h1 class="panel-title col-xs-10">
             @if($game->time->status == 'night')
@@ -54,6 +54,8 @@ color: #5d5d5d;
               <p class="storyFont">
                 @if($scenarios !== '')
                   {{ $scenarios->sortBy(DB::raw('RAND()'))->first()->description }}
+                @else
+                  Everyone, close your eyes...
                 @endif
               </p>
             </div>

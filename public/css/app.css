@@ -6254,3 +6254,21 @@ label,
   text-align: left!important;
   vertical-align: middle!important;
 }
+
+.panel-night {
+  border-color: #909090;
+}
+.panel-default > .panel-heading {
+    color: #ffffff;
+    background-color: #828282;
+    border-color: #909090;
+}
+
+.panel-day {
+  border-color: #dddddd;
+}
+.panel-day > .panel-heading {
+    color: #333333;
+    background-color: #f5f5f5;
+    border-color: #dddddd;
+}
