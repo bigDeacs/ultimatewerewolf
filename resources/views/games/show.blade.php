@@ -30,11 +30,18 @@ color: #5d5d5d;
   <div class="col-sm-12">
     {!! Form::open(['url' => '/games/save']) !!}
       <div class="panel panel-default panel-shadow">
-        <div class="panel-heading">
-          <h1 class="panel-title">
+        <div class="panel-heading row" style="height: 55px;">
+          <h1 class="panel-title col-xs-10">
             <strong>{{ ucfirst($game->time->status) }} Phase: Round {{ $game->time->round }}</strong>
+            @if($game->time->status == 'night')
+              <input type="hidden" name="status" value="day">
+              <i class="fa fa-moon-o fa-3x" style="color: #6e00b3;" aria-hidden="true"></i>
+            @else
+              <input type="hidden" name="status" value="night">
+              <i class="fa fa-sun-o fa-3x" style="color: #efc600;" aria-hidden="true"></i>
+            @endif
           </h1>
-          <div class="pull-right btn-group">
+          <div class="col-xs-2 btn-group">
             <button type="submit" class="btn btn-success">Save <i class="fa fa-floppy-o"></i></button>
             <a href="/games/{{ $game->id }}/end" class="btn btn-danger">Finish <i class="fa fa-hourglass-end"></i></a>
           </div>
@@ -52,16 +59,8 @@ color: #5d5d5d;
             </div>
             <div class="col-xs-9 col-sm-4">
               <div class="clock" style="margin:2em;width: auto;"></div>
-              @if($game->time->status == 'night')
-                <input type="hidden" name="status" value="day">
-                <i class="fa fa-moon-o fa-3x" style="color: #6e00b3;" aria-hidden="true"></i>
-              @else
-                <input type="hidden" name="status" value="night">
-                <i class="fa fa-sun-o fa-3x" style="color: #efc600;" aria-hidden="true"></i>
-              @endif
             </div>
           </div>
-          <div style="clear:both;"></div>
           <div class="row">
           <div class="col-sm-12">
             <div class="table-responsive" style="width: 20%;float: left;">
@@ -84,22 +83,6 @@ color: #5d5d5d;
                             {{ $role->name }}
                           </button>
                         </td>
-                        <div class="modal fade" tabindex="-1" role="dialog" id="{{ $role->name }}">
-                          <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                              <div class="modal-body">
-                                <div class="row">
-                                  <div class="col-xs-12 col-sm-6">
-                                    <img src="{{ $role->image }}" class="img-responsive" />
-                                  </div>
-                                  <div class="col-xs-12 col-sm-6">
-                                    <p>{{ $role->description }}</p>
-                                  </div>
-                                </div>
-                              </div>
-                            </div><!-- /.modal-content -->
-                          </div><!-- /.modal-dialog -->
-                        </div><!-- /.modal -->
                       </tr>
                   @endforeach
                 </tbody>
@@ -206,6 +189,24 @@ color: #5d5d5d;
             <!-- End -->
           </div>
         </div>
+        @foreach($roles as $key => $role)
+          <div class="modal fade" tabindex="-1" role="dialog" id="{{ $role->name }}">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-body">
+                  <div class="row">
+                    <div class="col-xs-12 col-sm-6">
+                      <img src="{{ $role->image }}" class="img-responsive" />
+                    </div>
+                    <div class="col-xs-12 col-sm-6">
+                      <p>{{ $role->description }}</p>
+                    </div>
+                  </div>
+                </div>
+              </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+          </div><!-- /.modal -->
+        @endforeach
       @else
         <div class="pull-right btn-back-top"><a href="/" class="btn btn-primary"><i class="fa fa-arrow-circle-o-left"></i> Back</a></div>
         <div style="clear:both;"></div>
