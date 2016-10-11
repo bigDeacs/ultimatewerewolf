@@ -83,7 +83,7 @@ color: #5d5d5d;
                         <tr height="50px">
                       @endif
                         <td>
-                          <button type="button" class="btn btn-sm btn-primary btn-block" data-toggle="modal" data-target="#{{ $role->name }}">
+                          <button type="button" class="btn btn-sm btn-primary btn-block" data-toggle="modal" data-target="#{{ camel_case($role->name) }}">
                             {{ $role->name }}
                           </button>
                         </td>
@@ -194,7 +194,7 @@ color: #5d5d5d;
           </div>
         </div>
         @foreach($roles as $key => $role)
-          <div class="modal fade" tabindex="-1" role="dialog" id="{{ $role->name }}">
+          <div class="modal fade" tabindex="-1" role="dialog" id="{{ camel_case($role->name) }}">
             <div class="modal-dialog" role="document">
               <div class="modal-content">
                 <div class="modal-body">
@@ -233,7 +233,7 @@ color: #5d5d5d;
                       <tr height="50px">
                     @endif
                       <td>
-                        <button type="button" class="btn btn-sm btn-primary btn-block" data-toggle="modal" data-target="#{{ $role->name }}">
+                        <button type="button" class="btn btn-sm btn-primary btn-block" data-toggle="modal" data-target="#{{ camel_case($role->name) }}">
                           {{ $role->name }}
                         </button>
                       </td>
@@ -293,7 +293,7 @@ color: #5d5d5d;
       </div>
     </div>
     @foreach($roles as $key => $role)
-      <div class="modal fade" tabindex="-1" role="dialog" id="{{ $role->name }}">
+      <div class="modal fade" tabindex="-1" role="dialog" id="{{ camel_case($role->name) }}">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-body">
