@@ -216,12 +216,12 @@ color: #5d5d5d;
         <div style="clear:both;"></div>
         <div class="row">
         <div class="col-sm-12">
-          <p>The game is over</p>
+          <p class="storyFont">The game is over</p>
           <div class="table-responsive" style="width: 20%;float: left;">
-            <table class="table dataTable table-striped table-hover">
+            <table class="table table-striped table-hover">
               <thead>
-                <tr height="50px">
-                  <th>Role</th>
+                <tr height="50px" style="background-color: #f5f5f5;">
+                  <th style="padding: 8px;line-height: 1.42857143;vertical-align: top;border-top: 1px solid #dddddd;">Role</th>
                 </tr>
               </thead>
               <tbody>
@@ -233,26 +233,10 @@ color: #5d5d5d;
                       <tr height="50px">
                     @endif
                       <td>
-                        <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#{{ $role->name }}">
+                        <button type="button" class="btn btn-sm btn-primary btn-block" data-toggle="modal" data-target="#{{ $role->name }}">
                           {{ $role->name }}
                         </button>
                       </td>
-                      <div class="modal fade" tabindex="-1" role="dialog" id="{{ $role->name }}">
-                        <div class="modal-dialog" role="document">
-                          <div class="modal-content">
-                            <div class="modal-body">
-                              <div class="row">
-                                <div class="col-xs-12 col-sm-4">
-                                  <img src="{{ $role->image }}" class="img-responsive" />
-                                </div>
-                                <div class="col-xs-12 col-sm-8">
-                                  <p>{{ $role->description }}</p>
-                                </div>
-                              </div>
-                            </div>
-                          </div><!-- /.modal-content -->
-                        </div><!-- /.modal-dialog -->
-                      </div><!-- /.modal -->
                     </tr>
                 @endforeach
               </tbody>
@@ -260,9 +244,10 @@ color: #5d5d5d;
           </div>
           <!-- Player side -->
           <div class="table-responsive" style="width: 80%;float: left;">
-            <table class="table dataTable table-striped table-hover">
+            <table class="table table-striped table-hover">
               <thead>
-                <col width="20%">
+                <col width="50%">
+                <col width="50%">
                 <tr height="50px">
                   <th>Player</th>
                   <th class="text-center">
@@ -307,6 +292,24 @@ color: #5d5d5d;
       @endif
       </div>
     </div>
+    @foreach($roles as $key => $role)
+      <div class="modal fade" tabindex="-1" role="dialog" id="{{ $role->name }}">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-body">
+              <div class="row">
+                <div class="col-xs-12 col-sm-6">
+                  <img src="{{ $role->image }}" class="img-responsive" />
+                </div>
+                <div class="col-xs-12 col-sm-6">
+                  <p>{{ $role->description }}</p>
+                </div>
+              </div>
+            </div>
+          </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+      </div><!-- /.modal -->
+    @endforeach
     {!! Form::close() !!}
   </div>
 </div>
