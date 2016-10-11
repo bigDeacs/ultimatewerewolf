@@ -43,17 +43,15 @@ color: #5d5d5d;
         @if($game->status == 'started')
           <input type="hidden" name="game" value="{{ $game->id }}">
           <div class="row">
-            <div class="col-xs-12 col-sm-9">
+            <div class="col-xs-12 col-sm-8">
               <p class="storyFont">
                 @if($scenarios !== '')
                   {{ $scenarios->sortBy(DB::raw('RAND()'))->first()->description }}
                 @endif
               </p>
             </div>
-            <div class="col-xs-9 col-sm-2">
+            <div class="col-xs-9 col-sm-4">
               <div class="clock" style="margin:2em;width: auto;"></div>
-            </div>
-            <div class="col-xs-3 col-sm-1">
               @if($game->time->status == 'night')
                 <input type="hidden" name="status" value="day">
                 <i class="fa fa-moon-o fa-3x" style="color: #6e00b3;" aria-hidden="true"></i>
@@ -67,7 +65,7 @@ color: #5d5d5d;
           <div class="row">
           <div class="col-sm-12">
             <div class="table-responsive" style="width: 20%;float: left;">
-              <table class="table dataTable table-striped table-hover">
+              <table class="table table-striped table-hover">
                 <thead>
                   <tr height="50px">
                     <th>Role</th>
@@ -109,7 +107,7 @@ color: #5d5d5d;
             </div>
             <!-- Player side -->
             <div class="table-responsive" style="width: 80%;float: left;">
-              <table class="table dataTable table-striped table-hover">
+              <table class="table table-striped table-hover">
                 <thead>
                   <col width="15%">
                   <col width="{{ 65 / (count($statuses) + 1) }}%">
