@@ -33,7 +33,7 @@ class PlayerController extends Controller {
 	 */
 	public function index()
 	{
-    $players = Player::all();
+    $players = Player::where('user_id', '=', \Auth::user()->id)->get();
     return view('players.index', compact('players'));
 	}
 
