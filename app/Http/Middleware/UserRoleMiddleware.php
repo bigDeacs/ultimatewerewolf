@@ -25,7 +25,7 @@ class UserRoleMiddleware {
      */
     public function handle($request, Closure $next)
     {
-				if ($this->auth->role() == 'a')
+				if ($this->auth->role == 'a')
 				{
 					return redirect('home');
 				}
