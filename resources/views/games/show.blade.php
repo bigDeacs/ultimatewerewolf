@@ -31,7 +31,7 @@ color: #5d5d5d;
     {!! Form::open(['url' => '/games/save']) !!}
       <div class="panel panel-shadow panel-{{ $game->time->status }}">
         <div class="panel-heading row" style="height: 55px;">
-          <h1 class="panel-title col-xs-10">
+          <h1 class="panel-title col-xs-9">
             @if($game->time->status == 'night')
               <input type="hidden" name="status" value="day">
               <i class="fa fa-moon-o fa-2x" style="color: #6e00b3;" aria-hidden="true"></i>
@@ -39,11 +39,13 @@ color: #5d5d5d;
               <input type="hidden" name="status" value="night">
               <i class="fa fa-sun-o fa-2x" style="color: #efc600;" aria-hidden="true"></i>
             @endif
-            <strong>Round {{ $game->time->round }}</strong>
+            <span style="font-size:30px;"><strong>Round {{ $game->time->round }}</strong></span>
           </h1>
-          <div class="col-xs-2 btn-group">
-            <button type="submit" class="btn btn-success">Save <i class="fa fa-floppy-o"></i></button>
-            <a href="/games/{{ $game->id }}/end" class="btn btn-danger">Finish <i class="fa fa-hourglass-end"></i></a>
+          <div class="col-xs-3">
+            <div class="pull-right btn-group">
+              <button type="submit" class="btn btn-success">Save <i class="fa fa-floppy-o"></i></button>
+              <a href="/games/{{ $game->id }}/end" class="btn btn-danger">Finish <i class="fa fa-hourglass-end"></i></a>
+            </div>
           </div>
         </div>
         <div class="panel-body">
