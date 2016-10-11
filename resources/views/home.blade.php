@@ -3,34 +3,6 @@
 @section('content')
 <div class="container">
 	<div class="row">
-		<div class="col-md-10 col-md-offset-1">
-			<div class="panel panel-default">
-				<div class="panel-heading">Home</div>
-				<a href="/games/create">Start New Game</a>
-				<div class="panel-body">
-					{{ $user->name }}<br />
-					Games:
-					@foreach($games as $game)
-						@if($game->status == 'started')
-							Finish the game you started
-							<?php break; ?>
-						@endif
-					@endforeach
-			    @foreach($games as $game)
-						{{ $game->name }}
-					  {{ $game->status }}<br />
-					@endforeach
-					<hr />
-					Players:
-					@foreach($players as $player)
-						{{ $player->name }}
-					@endforeach
-					<br />
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="row">
 		<div class="col-sm-10 col-sm-offset-1">
 			<div class="panel panel-default panel-shadow">
 			  <div class="panel-heading">
@@ -46,18 +18,30 @@
 						  <table class="table dataTable table-striped table-hover">
 						    <thead>
 						    	<tr>
-						    		<th>ID</th>
-						    		<th></th>
+										<col width="40%">
+										<col width="10%">
+										<col width="25%">
+										<col width="25%">
+						    		<th>Game</th>
+						    		<th><i class="fa fa-moon-o" style="color: #6e00b3;" aria-hidden="true"></i>/<i class="fa fa-sun-o" style="color: #efc600;" aria-hidden="true"></i></th>
+										<th>Round</th>
+										<th></th>
 						    	</tr>
 						    </thead>
 						    <tbody>
 						    	@foreach($games as $game)
 									@if($game->status == 'started')
-							    	<tr class="danger">
+							    	<tr class="success">
 									@else
-										<tr class="success">
+										<tr class="danger">
 									@endif
-                      <td scope="row">{{ $game->id }}</td>
+                      <td scope="row">{{ $game->name }}</td>
+											@if($game->time->status == 'night')
+												<td><i class="fa fa-moon-o" style="color: #6e00b3;" aria-hidden="true"></i></td>
+											@else
+												<td><i class="fa fa-sun-o" style="color: #efc600;" aria-hidden="true"></i></td>
+											@endif
+											<td>{{ $game->time->round }}</td>
 						    		  <td><a href="/games/{{ $game->id }}" class="btn btn-primary">View <i class="fa fa-pencil-square-o"></i></a></td>
 						    	  </tr>
 						    	@endforeach
