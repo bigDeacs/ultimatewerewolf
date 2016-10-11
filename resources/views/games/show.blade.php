@@ -44,9 +44,11 @@ color: #5d5d5d;
           <input type="hidden" name="game" value="{{ $game->id }}">
           <div class="row">
             <div class="col-xs-12 col-sm-9">
-              @if($scenarios !== '')
-                <p class="storyFont">{{ $scenarios->sortBy(DB::raw('RAND()'))->first()->description }}</p>
-              @endif
+              <p class="storyFont">
+                @if($scenarios !== '')
+                  {{ $scenarios->sortBy(DB::raw('RAND()'))->first()->description }}
+                @endif
+              </p>
             </div>
             <div class="col-xs-9 col-sm-2">
               <div class="clock" style="margin:2em;width: auto;"></div>
