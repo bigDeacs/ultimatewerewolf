@@ -36,20 +36,22 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#">Ultimate Werewolf Moderator Tools</a>
+				<a class="navbar-brand" href="{{ url('/') }}">Ultimate Werewolf Moderator Tools</a>
 			</div>
 
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
-					<li><a href="{{ url('/') }}">Home</a></li>
 					@if(Auth::check())
 						<li><a href="{{ url('/players') }}">Players</a></li>
 						@if(Auth::user()->role == 'b')
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Roles <span class="caret"></span></a>
+							<ul class="dropdown-menu" role="menu">
+								<li><a href="{{ url('/roles') }}">Role Cards</a></li>
+								<li><a href="{{ url('/teams') }}">Teams</a></li>
+								<li><a href="{{ url('/statuses') }}">Statuses</a></li>
+							</ul>
 							<li><a href="{{ url('/expansions') }}">Expansions</a></li>
-							<li><a href="{{ url('/roles') }}">Roles</a></li>
 							<li><a href="{{ url('/recipes') }}">Recipes</a></li>
-							<li><a href="{{ url('/teams') }}">Teams</a></li>
-							<li><a href="{{ url('/statuses') }}">Statuses</a></li>
 							<li><a href="{{ url('/scenarios') }}">Scenarios</a></li>
 						@endif
 					@endif
