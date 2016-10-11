@@ -32,14 +32,14 @@ color: #5d5d5d;
       <div class="panel panel-default panel-shadow">
         <div class="panel-heading row" style="height: 55px;">
           <h1 class="panel-title col-xs-10">
-            <strong>{{ ucfirst($game->time->status) }} Phase: Round {{ $game->time->round }}</strong>
             @if($game->time->status == 'night')
               <input type="hidden" name="status" value="day">
-              <i class="fa fa-moon-o fa-3x" style="color: #6e00b3;" aria-hidden="true"></i>
+              <i class="fa fa-moon-o fa-2x" style="color: #6e00b3;" aria-hidden="true"></i>
             @else
               <input type="hidden" name="status" value="night">
-              <i class="fa fa-sun-o fa-3x" style="color: #efc600;" aria-hidden="true"></i>
+              <i class="fa fa-sun-o fa-2x" style="color: #efc600;" aria-hidden="true"></i>
             @endif
+            <strong>Round {{ $game->time->round }}</strong>
           </h1>
           <div class="col-xs-2 btn-group">
             <button type="submit" class="btn btn-success">Save <i class="fa fa-floppy-o"></i></button>
@@ -50,14 +50,14 @@ color: #5d5d5d;
         @if($game->status == 'started')
           <input type="hidden" name="game" value="{{ $game->id }}">
           <div class="row">
-            <div class="col-xs-12 col-sm-8">
+            <div class="col-xs-12 col-sm-6 col-md-7">
               <p class="storyFont">
                 @if($scenarios !== '')
                   {{ $scenarios->sortBy(DB::raw('RAND()'))->first()->description }}
                 @endif
               </p>
             </div>
-            <div class="col-xs-9 col-sm-4">
+            <div class="col-xs-9 col-sm-6 col-md-5">
               <div class="clock" style="margin:2em;width: auto;"></div>
             </div>
           </div>
@@ -66,8 +66,8 @@ color: #5d5d5d;
             <div class="table-responsive" style="width: 20%;float: left;">
               <table class="table table-striped table-hover">
                 <thead>
-                  <tr height="50px">
-                    <th>Role</th>
+                  <tr height="50px" style="background-color: #f5f5f5;">
+                    <th style="padding: 8px;line-height: 1.42857143;vertical-align: top;border-top: 1px solid #dddddd;">Role</th>
                   </tr>
                 </thead>
                 <tbody>
