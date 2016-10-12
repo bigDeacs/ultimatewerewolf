@@ -42,10 +42,12 @@ color: #5d5d5d;
             <span style="font-size:30px;"><strong>Round {{ $game->time->round }}</strong></span>
           </h1>
           <div class="col-xs-3">
-            <div class="pull-right btn-group">
-              <button type="submit" class="btn btn-success">Save <i class="fa fa-floppy-o"></i></button>
-              <a href="/games/{{ $game->id }}/end" class="btn btn-danger">Finish <i class="fa fa-hourglass-end"></i></a>
-            </div>
+            @if($game->status == 'started')
+              <div class="pull-right btn-group">
+                <button type="submit" class="btn btn-success">Save <i class="fa fa-floppy-o"></i></button>
+                <a href="/games/{{ $game->id }}/end" class="btn btn-danger">Finish <i class="fa fa-hourglass-end"></i></a>
+              </div>
+            @endif
           </div>
         </div>
         <div class="panel-body">
