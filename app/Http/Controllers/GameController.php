@@ -140,7 +140,8 @@ class GameController extends Controller {
 				return view('games.names', compact('roles', 'players', 'game', 'teams'));
 			} else {
 				$roles = Role::whereRaw("expansion_id IN (".implode(", ", $request->input('expansions')).")")->orderBy('position', 'asc')->get();
-				return view('games.build', compact('roles'));
+				$name = $request->input('name');
+				return view('games.build', compact('roles', 'name'));
 			}
   }
 

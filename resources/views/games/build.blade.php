@@ -29,6 +29,7 @@
 
 				{!! Form::open(['url' => '/games/start']) !!}
           <input type="hidden" name="_token" value="{{ csrf_token() }}">
+          <input type="hidden" name="name" value="{{ $name }}">
           <div class="form-group row">
               @foreach($roles as $role)
                   <div class="col-sm-2 col-xs-12">
