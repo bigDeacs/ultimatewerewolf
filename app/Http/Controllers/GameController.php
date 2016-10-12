@@ -162,7 +162,7 @@ class GameController extends Controller {
 			}
 			$players = Player::where('user_id', '=', \Auth::user()->id)->get();
 			// Create a game
-			$game = Game::create(['total' => $total, 'balance' => $balance, 'user_id' => \Auth::user()->id, 'name' => 'Game: '.date('d-m-Y')]);
+			$game = Game::create(['total' => $total, 'balance' => $balance, 'user_id' => \Auth::user()->id, 'name' => $request->input('name')]);
 			$time = Time::create(['round' => 1, 'status' => 'night', 'game_id' => $game->id]);
 			$count = 0;
 			foreach($request->input('role_list') as $key => $role)
