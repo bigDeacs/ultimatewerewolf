@@ -124,7 +124,7 @@ class GameController extends Controller {
 				$count = 0;
 				foreach($recipe->roles as $role)
 				{
-						for($i = 0; $i < $role->recipes()->where('recipe_role.role_id', $role->id)->first()->pivot->total; $i++)
+						for($i = 0; $i < $role->recipes()->where('recipe_role.role_id', $role->id)->where('recipe_role.recipe_id', $recipe->id)->first()->pivot->total; $i++)
 						{
 							$roleCollection[] = Role::find($role->id);
 							$game->roles()->attach($role->id, ['position' => $count]);
