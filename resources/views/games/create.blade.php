@@ -38,7 +38,7 @@
               <div class="col-sm-6 col-xs-12">
                   <label for="name">Chose a Recipe</label>
                   <select name="recipe" class="form-control">
-                    <option></option>
+                    <option>Build Your own</option>
                     @foreach($recipes as $recipe)
                       <option value="{{ $recipe->id }}">{{ $recipe->name }}</option>
                     @endforeach
