@@ -56,7 +56,7 @@ class GameController extends Controller {
   public function create()
   {
 			$expansions = Expansion::all();
-			$recipes = Recipe::all();
+			$recipes = Recipe::all()->orderBy('players', 'asc');
       return view('games.create', compact('expansions', 'recipes'));
   }
 
