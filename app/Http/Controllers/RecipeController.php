@@ -62,7 +62,7 @@ class RecipeController extends Controller {
    */
   public function create()
   {
-			$roles = Role::all();
+			$roles = Role::all()->sortBy('name');
 			return view('recipes.create', compact('roles'));
   }
 
@@ -105,7 +105,7 @@ class RecipeController extends Controller {
   public function edit($id)
   {
       $recipe = Recipe::where('id', '=', $id)->firstOrFail();
-			$roles = Role::all();
+			$roles = Role::all()->sortBy('name');
 			return view('recipes.edit', compact('recipe', 'roles'));
   }
 
