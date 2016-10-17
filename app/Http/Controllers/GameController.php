@@ -211,7 +211,7 @@ class GameController extends Controller {
 
 			foreach($request->input('team_list') as $key => $team)
 			{
-					$player = $game->players()->where('game_player.position', '=', $key)->firstOrFail();
+					$player = $game->players()->where('game_player.position', '=', $key)->first();
 					$player->teams()->attach($team, ['game_id' => $game->id]);
 			}
 
