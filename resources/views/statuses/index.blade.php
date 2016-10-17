@@ -25,6 +25,7 @@
 						    <thead>
 						    	<tr>
 						    		<th>Name</th>
+                    <th>Notes</th>
                     <th>Icon</th>
 						    		<th></th>
 						    	</tr>
@@ -33,7 +34,8 @@
 						    	@foreach($statuses as $status)
 							      <tr>
                       <td scope="row">{{ $status->name }}</td>
-                      <td scope="row">
+                      <td>{{ $status->notes }}</td>
+                      <td>
                         @if($status->icon !== null)
                           <i class="fa {{ $status->icon }} fa-2x" style="color: #{{ $status->colour }};" aria-hidden="true"></i></td>
                         @endif
