@@ -273,15 +273,7 @@ color: #5d5d5d;
                   @endif
                     <td>{{ $player->name }}</td>
                     <td>
-                      <select name="team_list[{{ $key }}]" class="form-control">
-                        @foreach($teams as $team)
-                          @if($player->teams()->where('player_team.game_id', '=', $game->id)->first()->name == $team->name)
-                            <option value="{{ $team->id }}" selected="selected">{{ $team->name }}</option>
-                          @else
-                            <option value="{{ $team->id }}">{{ $team->name }}</option>
-                          @endif
-                        @endforeach
-                      </select>
+                      {{ $player->teams()->where('player_team.game_id', '=', $game->id)->first()->name }}
                     </td>
                   </tr>
                 @endforeach

@@ -106,7 +106,7 @@ class GameController extends Controller {
   {
 			if($request->input('recipe') != null)
 			{
-				$recipe = Recipe::find($request->input('recipe'));
+				$recipe = Recipe::find($request->input('recipe'))->sortBy('position');
 				$teams = Team::all();
 				$total = $recipe->players;
 				$balance = 0;

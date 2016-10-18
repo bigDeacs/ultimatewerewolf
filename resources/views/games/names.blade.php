@@ -15,9 +15,15 @@
 			    <h1 class="panel-title"><strong>Games</strong></h1>
 			  </div>
 			  <div class="panel-body">
+          <div class="row">
+            <div class="col-xs-12">
+              <p class="storyFont">
+                The first night is used to gather information, Enter the name of each player next to there role, one way to do this is to have the players go to sleep and ask them to stick there thumb out when you call their role. The werewolves will wake up and look at each other, but not choose a victim.
+              </p>
+            </div>
+          </div>
 			  	<div class="row">
 					<div class="col-sm-12">
-            <p>Enter the name of each player next to there role, one way to do this is to have the players go to sleep and ask them to stick there thumb out when you call their role.</p>
 						<div class="table-responsive">
 						  <table class="table dataTable table-striped table-hover">
 						    <thead>
