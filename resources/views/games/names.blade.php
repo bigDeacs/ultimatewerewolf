@@ -41,7 +41,7 @@
                           <td scope="row">{{ $key+1 }}</td>
                           <td>{{ $role->name }}</td>
                           <td>
-                            <select name="name_list[{{ $key }}]" class="name_list" class="form-control" style="width:100%;">
+                            <select name="name_list[{{ $key }}]" class="name_list" class="form-control" style="width:100%;" required>
                               @foreach($players as $player)
                                 <option value="{{ $player->id }}">{{ $player->name }}</option>
                               @endforeach
