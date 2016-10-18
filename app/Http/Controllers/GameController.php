@@ -106,7 +106,7 @@ class GameController extends Controller {
   {
 			if($request->input('recipe') != null)
 			{
-				$recipe = Recipe::find($request->input('recipe'))->sortBy('position');
+				$recipe = Recipe::find($request->input('recipe'));
 				$teams = Team::all();
 				$total = $recipe->players;
 				$balance = 0;
@@ -122,7 +122,8 @@ class GameController extends Controller {
 				$game = Game::create(['total' => $total, 'balance' => $balance, 'user_id' => \Auth::user()->id, 'name' => $request->input('name')]);
 				$time = Time::create(['round' => 1, 'status' => 'night', 'game_id' => $game->id]);
 				$count = 0;
-				foreach($recipe->roles as $role)
+				$roles = $recipe->roles->sortBy('position');
+				foreach($roles as $role)
 				{
 						for($i = 0; $i < $role->recipes()->where('recipe_role.role_id', $role->id)->where('recipe_role.recipe_id', $recipe->id)->first()->pivot->total; $i++)
 						{
