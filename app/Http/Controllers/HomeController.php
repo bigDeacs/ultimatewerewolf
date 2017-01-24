@@ -40,4 +40,22 @@ class HomeController extends Controller {
 		return view('home', compact('user', 'games', 'players', 'roles'));
 	}
 
+	/**
+	 * Show the application dashboard to the user.
+	 *
+	 * @return Response
+	 */
+	public function nukacola()
+	{
+		DB::table('player_game')->truncate();
+		DB::table('game_role')->truncate();
+		DB::table('game_team')->truncate();
+		DB::table('player_status')->truncate();
+		DB::table('games')->truncate();
+		DB::table('players')->truncate();
+		return redirect()->back();
+	}
+
+	
+
 }

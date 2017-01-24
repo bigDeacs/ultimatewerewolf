@@ -179,7 +179,7 @@ color: #5d5d5d;
                       <td>
                         <select name="team_list[{{ $key }}]" class="form-control">
                           @foreach($teams as $team)
-                            @if($game->teams()->where('game_team.game_id', '=', $game->id)->where('game_team.position', '=', $key)->first()->name == $team->name)
+                            @if($game->teams()->where('game_team.position', '=', $key)->first()->name == $team->name)
                               <option value="{{ $team->id }}" selected="selected">{{ $team->name }}</option>
                             @else
                               <option value="{{ $team->id }}">{{ $team->name }}</option>
@@ -273,7 +273,7 @@ color: #5d5d5d;
                   @endif
                     <td>{{ $player->name }}</td>
                     <td>
-                      {{ $player->teams()->where('player_team.game_id', '=', $game->id)->first()->name }}
+                      {{ $game->teams()->where('game_team.position', '=', $key)->first()->name }}
                     </td>
                   </tr>
                 @endforeach
