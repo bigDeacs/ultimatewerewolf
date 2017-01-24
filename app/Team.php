@@ -34,4 +34,20 @@ class Team extends Model {
 			return $this->players->lists('id');
 	}
 
+	/**
+	 * Many To Many Relationship
+	 * A Player can have many Statuses
+	 *
+	 * @var array
+	 */
+	public function games()
+	{
+			return $this->belongsToMany('App\Game');
+	}
+
+	public function getGameListAttribute()
+	{
+			return $this->games->lists('id');
+	}
+
 }

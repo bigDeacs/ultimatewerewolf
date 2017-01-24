@@ -212,8 +212,7 @@ class GameController extends Controller {
 
 			foreach($request->input('team_list') as $key => $team)
 			{
-				$player = $game->players()->where('game_player.position', '=', $key)->first();
-				$player->teams()->attach($team, ['game_id' => $game->id]);
+				$game->teams()->attach($team, ['position' => $key]);
 			}
 
 
@@ -237,7 +236,7 @@ class GameController extends Controller {
 				$roleIds[] = $role->id;
 			}
 			$statuses = Status::whereRaw("role_id IN (".implode(", ", $roleIds).")")->get();
-			$teams = Team::all();
+			$teams = $game->teams;
 
 			$players = $game->players;
 			if($game->time->status == 'day')
@@ -297,12 +296,11 @@ class GameController extends Controller {
 			if($request->input('team_list')){
 				foreach(Team::all() as $team)
 				{
-					$team->players()->where('player_team.game_id', '=', $game->id)->detach();
+					$team->games()->where('game_team.game_id', '=', $game->id)->detach();
 				}
 				foreach($request->input('team_list') as $key => $team)
 				{
-					$player = $game->players()->where('game_player.position', '=', $key)->firstOrFail();
-					$player->teams()->attach($team, ['game_id' => $game->id]);
+					$game->teams()->attach($team, ['position' => $key]);
 				}
 			}
 			return redirect('/games/'.$game->id.'/'.$deaths);
