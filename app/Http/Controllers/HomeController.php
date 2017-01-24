@@ -48,7 +48,7 @@ class HomeController extends Controller {
 	 */
 	public function nukacola()
 	{
-		DB::table('player_game')->truncate();
+		DB::table('game_player')->truncate();
 		DB::table('game_role')->truncate();
 		DB::table('game_team')->truncate();
 		DB::table('player_status')->truncate();
