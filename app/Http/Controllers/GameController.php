@@ -192,15 +192,19 @@ class GameController extends Controller {
 			$game = Game::find($request->input('game'));
 			// Attach players to game
 			if(is_array($request->input('name_list'))) {
-				$currentPlayers = array_filter($request->input('name_list'), 'is_numeric');
-				$newPlayers = array_diff($request->input('name_list'), $currentPlayers);
-				foreach($newPlayers as $newPlayer)
+				foreach($request->input('name_list') as $player)
 				{
-						if($player = Player::create(['name' => $newPlayer, 'user_id' => \Auth::user()->id]))
+					if(is_numeric($player))
+					{
+						$currentPlayers[] = $player;						
+					} else {
+						if($newPlayer = Player::create(['name' => $newPlayer, 'user_id' => \Auth::user()->id]))
 						{
-								$currentPlayers[] = $player->id;
+							$currentPlayers[] = $newPlayer->id;
 						}
+					}				
 				}
+					}
 			} else {
 				$currentPlayers = [];
 			}
