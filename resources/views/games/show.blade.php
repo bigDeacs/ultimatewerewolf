@@ -205,7 +205,7 @@ color: #5d5d5d;
                       <img src="{{ $role->image }}" class="img-responsive" />
                     </div>
                     <div class="col-xs-12 col-sm-6">
-                      <p>{{ $role->description }}</p>
+                      <p>{!! $role->description !!}</p>
                     </div>
                   </div>
                 </div>
