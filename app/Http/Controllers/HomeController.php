@@ -3,6 +3,7 @@
 use Auth;
 use Game;
 use Player;
+use DB;
 
 class HomeController extends Controller {
 
