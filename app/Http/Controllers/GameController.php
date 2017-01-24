@@ -236,7 +236,7 @@ class GameController extends Controller {
 				$roleIds[] = $role->id;
 			}
 			$statuses = Status::whereRaw("role_id IN (".implode(", ", $roleIds).")")->get();
-			$teams = $game->teams;
+			$teams = Team::all();
 
 			$players = $game->players;
 			if($game->time->status == 'day')
