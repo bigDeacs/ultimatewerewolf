@@ -48,12 +48,14 @@ class HomeController extends Controller {
 	 */
 	public function nukacola()
 	{
+		DB::statement('SET FOREIGN_KEY_CHECKS=0;');        
 		DB::table('game_player')->truncate();
 		DB::table('game_role')->truncate();
 		DB::table('game_team')->truncate();
 		DB::table('player_status')->truncate();
 		DB::table('games')->truncate();
 		DB::table('players')->truncate();
+		DB::statement('SET FOREIGN_KEY_CHECKS=1;');
 		return redirect()->back();
 	}
 
