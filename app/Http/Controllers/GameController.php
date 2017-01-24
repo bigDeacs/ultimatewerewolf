@@ -188,41 +188,38 @@ class GameController extends Controller {
   }
 
 	public function names(Request $request)
-  {
-			$game = Game::find($request->input('game'));
-			// Attach players to game
-			if(is_array($request->input('name_list'))) {
-				foreach($request->input('name_list') as $player)
+  	{
+		$game = Game::find($request->input('game'));
+		// Attach players to game
+		if(is_array($request->input('name_list'))) {
+			foreach($request->input('name_list') as $player)
+			{
+				if(is_numeric($player))
 				{
-					if(is_numeric($player))
+					$currentPlayers[] = $player;						
+				} else {
+					if($newPlayer = Player::create(['name' => $newPlayer, 'user_id' => \Auth::user()->id]))
 					{
-						$currentPlayers[] = $player;						
-					} else {
-						if($newPlayer = Player::create(['name' => $newPlayer, 'user_id' => \Auth::user()->id]))
-						{
-							$currentPlayers[] = $newPlayer->id;
-						}
-					}				
-				}
+						$currentPlayers[] = $newPlayer->id;
 					}
-			} else {
-				$currentPlayers = [];
+				}				
 			}
+		} else {
+			$currentPlayers = [];
+		}
 
-			foreach($currentPlayers as $key => $player)
-			{
-				$game->players()->attach($player, ['position' => $key]);
-			}
+		foreach($currentPlayers as $key => $player)
+		{
+			$game->players()->attach($player, ['position' => $key]);
+		}
 
-			foreach($request->input('team_list') as $key => $team)
-			{
-				$game->teams()->attach($team, ['position' => $key]);
-			}
+		foreach($request->input('team_list') as $key => $team)
+		{
+			$game->teams()->attach($team, ['position' => $key]);
+		}
 
-
-
-			return redirect('/games/'.$game->id);
-  }
+		return redirect('/games/'.$game->id);
+	}
 
 	/**
 	 * Show the specified photo comment.
