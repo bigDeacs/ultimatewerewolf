@@ -41,8 +41,8 @@ class GameController extends Controller {
 	 */
 	public function index()
 	{
-    $games = Game::all();
-    return view('games.index', compact('games'));
+    	$games = Game::all();
+    	return view('games.index', compact('games'));
 	}
 
 
@@ -53,12 +53,12 @@ class GameController extends Controller {
    * @param  int  $id
    * @return Response
    */
-  public function create()
-  {
-			$expansions = Expansion::all();
-			$recipes = Recipe::all()->sortBy('players');
-      return view('games.create', compact('expansions', 'recipes'));
-  }
+  	public function create()
+  	{
+	  	$expansions = Expansion::all();
+		$recipes = Recipe::all()->sortBy('players');
+      	return view('games.create', compact('expansions', 'recipes'));
+  	}
 
   /**
    * Store a new user.
@@ -81,11 +81,11 @@ class GameController extends Controller {
    * @param  int  $id
    * @return Response
    */
-  public function edit($id)
-  {
-      $game = Game::where('id', '=', $id)->firstOrFail();
-      return view('games.edit', compact('game'));
-  }
+  	public function edit($id)
+  	{
+      	$game = Game::where('id', '=', $id)->firstOrFail();
+      	return view('games.edit', compact('game'));
+  	}
 
   /**
    * Update the specified user.
@@ -192,28 +192,28 @@ class GameController extends Controller {
 			$game = Game::find($request->input('game'));
 			// Attach players to game
 			if(is_array($request->input('name_list'))) {
-					$currentPlayers = array_filter($request->input('name_list'), 'is_numeric');
-					$newPlayers = array_diff($request->input('name_list'), $currentPlayers);
-					foreach($newPlayers as $newPlayer)
-					{
-							if($player = Player::create(['name' => $newPlayer, 'user_id' => \Auth::user()->id]))
-							{
-									$currentPlayers[] = $player->id;
-							}
-					}
+				$currentPlayers = array_filter($request->input('name_list'), 'is_numeric');
+				$newPlayers = array_diff($request->input('name_list'), $currentPlayers);
+				foreach($newPlayers as $newPlayer)
+				{
+						if($player = Player::create(['name' => $newPlayer, 'user_id' => \Auth::user()->id]))
+						{
+								$currentPlayers[] = $player->id;
+						}
+				}
 			} else {
-					$currentPlayers = [];
+				$currentPlayers = [];
 			}
 
 			foreach($currentPlayers as $key => $player)
 			{
-					$game->players()->attach($player, ['position' => $key]);
+				$game->players()->attach($player, ['position' => $key]);
 			}
 
 			foreach($request->input('team_list') as $key => $team)
 			{
-					$player = $game->players()->where('game_player.position', '=', $key)->first();
-					$player->teams()->attach($team, ['game_id' => $game->id]);
+				$player = $game->players()->where('game_player.position', '=', $key)->first();
+				$player->teams()->attach($team, ['game_id' => $game->id]);
 			}
 
 
