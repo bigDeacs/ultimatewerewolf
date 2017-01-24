@@ -18,7 +18,7 @@
           <div class="row">
             <div class="col-xs-12">
               <p class="storyFont">
-                The Town of Salem was a prosperous village, children would laugh and play, families would gather together over delicious meals and for years now they have all lived in peace and harmony, but that has all come to an end, the curse of the Werewolf has afflicted this quiet little town. Everyone, close your eyes.
+                The Town of Salem was a prosperous village, children would laugh and play, families would gather together over delicious meals and for years now they have all lived in peace and harmony, but that has all come to an end, a dreadful curse has afflicted this quiet little town. Everyone, close your eyes.
               </p>
             </div>
           </div>

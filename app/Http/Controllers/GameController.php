@@ -198,7 +198,7 @@ class GameController extends Controller {
 				{
 					$currentPlayers[] = $player;						
 				} else {
-					if($newPlayer = Player::create(['name' => $newPlayer, 'user_id' => \Auth::user()->id]))
+					if($newPlayer = Player::create(['name' => $player, 'user_id' => \Auth::user()->id]))
 					{
 						$currentPlayers[] = $newPlayer->id;
 					}
