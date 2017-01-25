@@ -44,8 +44,8 @@ color: #5d5d5d;
           <div class="col-xs-3">
             @if($game->status == 'started')
               <div class="pull-right btn-group">
-                <button type="submit" class="btn btn-success">Save <i class="fa fa-floppy-o"></i></button>
-                <a href="/games/{{ $game->id }}/end" class="btn btn-danger">Finish <i class="fa fa-hourglass-end"></i></a>
+                <button type="submit" class="btn btn-success">Next <i class="fa fa-floppy-o"></i></button>
+                <a href="/games/{{ $game->id }}/end" class="btn btn-danger" onclick="return confirm('Do you wish to update details?');return false;">Finish <i class="fa fa-hourglass-end"></i></a>
               </div>
             @endif
           </div>
