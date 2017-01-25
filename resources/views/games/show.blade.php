@@ -56,13 +56,13 @@ color: #5d5d5d;
           <div class="row">
             <div class="col-xs-12 col-sm-6 col-md-7">
               <p class="storyFont">
-              @if($game->time->round < 1)
-                @if($scenarios !== '')
-                  {{ $scenarios->sortBy(DB::raw('RAND()'))->first()->description }}
-                @else
-                  Everyone, close your eyes...
+                @if($game->time->round > 1)
+                  @if($scenarios !== '')
+                    {{ $scenarios->sortBy(DB::raw('RAND()'))->first()->description }}
+                  @else
+                    Everyone, close your eyes...
+                  @endif
                 @endif
-              @endif
               </p>
             </div>
             <div class="col-xs-9 col-sm-6 col-md-5">
