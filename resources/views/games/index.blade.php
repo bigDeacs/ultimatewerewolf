@@ -25,14 +25,18 @@
 						    <thead>
 						    	<tr>
 						    		<th>ID</th>
+						    		<th>Name</th>
+						    		<th>Date</th>
 						    		<th></th>
 						    	</tr>
 						    </thead>
 						    <tbody>
 						    	@foreach($games as $game)
 							      <tr>
-                      <td scope="row">{{ $game->id }}</td>
-						    		  <td><a href="/games/{{ $game->id }}/edit" class="btn btn-warning">Edit <i class="fa fa-pencil-square-o"></i></a></td>
+                      				  <td scope="row">{{ $game->id }}</td>
+                      				  <td>{{ $game->name }}</td>
+                      				  <td>{{ $game->created_at }}</td>
+						    		  <td><a href="/games/{{ $game->id }}/edit" class="btn btn-warning">View <i class="fa fa-pencil-square-o"></i></a></td>
 						    	  </tr>
 						    	@endforeach
 						    </tbody>
