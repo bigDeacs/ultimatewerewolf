@@ -17,6 +17,7 @@
               <span>Filter by: </span>
               <form id="filterForm">
               <select class="form-control" onchange="filterRoles()" name="filter" id="filter">
+                <option value=""></option>
                 @foreach($expansions as $expansion)
                   <option value="{{ $expansion->id }}" {{ (Request::input('filter') == $expansion->id) ? 'selected' : "" }}>{{ $expansion->name }}</option>
                 @endforeach
