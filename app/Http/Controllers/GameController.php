@@ -280,7 +280,7 @@ class GameController extends Controller {
 			}
 			$time = $game->time;
 			$time->status = $request->input('status');
-			if($request->input('status') == 'day')
+			if($request->input('status') == 'night')
 			{
 				$time->round = ($time->round + 1);
 			}
