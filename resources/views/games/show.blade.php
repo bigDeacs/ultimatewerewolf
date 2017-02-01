@@ -54,7 +54,7 @@ color: #5d5d5d;
         @if($game->status == 'started')
           <input type="hidden" name="game" value="{{ $game->id }}">
           <div class="row">
-            <div class="col-xs-12 col-sm-6 col-md-7">
+            <div class="col-xs-12 col-sm-6 col-md-8">
               <p class="storyFont">
                 @if($game->time->round > 1)
                   @if($scenarios !== '')
@@ -65,7 +65,7 @@ color: #5d5d5d;
                 @endif
               </p>
             </div>
-            <div class="col-xs-9 col-sm-6 col-md-5">
+            <div class="col-xs-9 col-sm-6 col-md-4">
               <div class="clock" style="margin:2em;width: auto;"></div>
             </div>
           </div>
