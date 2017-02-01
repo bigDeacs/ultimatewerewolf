@@ -278,7 +278,10 @@ color: #5d5d5d;
                   @endif
                     <td>{{ $player->name }}</td>
                     <td>
-                      {{ $game->teams()->where('game_team.position', '=', $key)->first()->name }}
+                      <div class="input-group">
+                        <div class="input-group-addon"><i class="fa {{ $game->teams()->where('game_team.position', '=', $key)->first()->icon }}" style="color: #{{ $game->teams()->where('game_team.position', '=', $key)->first()->colour }};" aria-hidden="true"></i></div>
+                        <p class="form-control-static">{{ $game->teams()->where('game_team.position', '=', $key)->first()->name }}</p>
+                      </div>                      
                     </td>
                   </tr>
                 @endforeach
