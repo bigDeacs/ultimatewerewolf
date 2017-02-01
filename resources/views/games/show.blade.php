@@ -280,7 +280,7 @@ color: #5d5d5d;
                     <td>
                       <div class="input-group">
                         <div class="input-group-addon"><i class="fa {{ $game->teams()->where('game_team.position', '=', $key)->first()->icon }}" style="color: #{{ $game->teams()->where('game_team.position', '=', $key)->first()->colour }};" aria-hidden="true"></i></div>
-                        <p class="form-control-static">{{ $game->teams()->where('game_team.position', '=', $key)->first()->name }}</p>
+                        <input class="form-control" id="disabledInput" type="text" placeholder="{{ $game->teams()->where('game_team.position', '=', $key)->first()->name }}" disabled>
                       </div>                      
                     </td>
                   </tr>
