@@ -23,6 +23,7 @@
 										<col width="25%">
 										<col width="25%">
 						    		<th>Game</th>
+						    		<th>Date</th>
 						    		<th><i class="fa fa-moon-o" style="color: #6e00b3;" aria-hidden="true"></i>/<i class="fa fa-sun-o" style="color: #efc600;" aria-hidden="true"></i></th>
 										<th>Round</th>
 										<th></th>
@@ -35,7 +36,8 @@
 									@else
 										<tr class="danger">
 									@endif
-                      <td scope="row">{{ $game->name }}</td>
+                      					<td scope="row">{{ $game->name }}</td>
+                      				  	<td>{{ $game->created_at }}</td>
 											@if($game->time->status == 'night')
 												<td><i class="fa fa-moon-o" style="color: #6e00b3;" aria-hidden="true"></i></td>
 											@else
