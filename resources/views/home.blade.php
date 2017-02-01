@@ -37,7 +37,7 @@
 										<tr class="danger">
 									@endif
                       					<td scope="row">{{ $game->name }}</td>
-                      				  	<td>{{ $game->created_at }}</td>
+                      				  	<td>{{ $game->created_at->diffForHumans() }}</td>
 											@if($game->time->status == 'night')
 												<td><i class="fa fa-moon-o" style="color: #6e00b3;" aria-hidden="true"></i></td>
 											@else
