@@ -179,8 +179,9 @@ color: #5d5d5d;
                         @endif
                       @endforeach
                       <td>
-                        <i class="fa {{ $game->teams()->where('game_team.position', '=', $key)->first()->icon }} fa-2x" style="color: #{{ $game->teams()->where('game_team.position', '=', $key)->first()->colour }};" aria-hidden="true"></i>
-                        <select name="team_list[{{ $key }}]" class="form-control">
+                        <div class="input-group">
+                          <div class="input-group-addon"><i class="fa {{ $game->teams()->where('game_team.position', '=', $key)->first()->icon }} fa-2x" style="color: #{{ $game->teams()->where('game_team.position', '=', $key)->first()->colour }};" aria-hidden="true"></i></div>
+                          <select name="team_list[{{ $key }}]" class="form-control">
                           @foreach($teams as $team)
                             @if($game->teams()->where('game_team.position', '=', $key)->first()->name == $team->name)
                               <option value="{{ $team->id }}" selected="selected">{{ $team->name }}</option>
@@ -189,6 +190,7 @@ color: #5d5d5d;
                             @endif
                           @endforeach
                         </select>
+                        </div>
                       </td>
                     </tr>
                   @endforeach
