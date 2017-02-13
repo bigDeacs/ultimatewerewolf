@@ -8,7 +8,7 @@
 	@yield('head')
 
 	<link rel="stylesheet" href="/css/pick-a-color-1.2.3.min.css">
-	<link href="{{ asset('/css/app.css') }}?v=4" rel="stylesheet">
+	<link href="{{ asset('/css/app.css') }}?v=5" rel="stylesheet">
 	<link href="{{ asset('/css/jquery-ui.min.css') }}" rel="stylesheet">
 
 	<link href="https://cdn.datatables.net/1.10.10/css/jquery.dataTables.min.css" rel="stylesheet">
@@ -94,14 +94,6 @@
 			  stateSave: true,
 			  "pagingType": "full_numbers",
 						"pageLength": 500
-			});
-			$("div.bhoechie-tab-menu>div.list-group>a").click(function(e) {
-				e.preventDefault();
-				$(this).siblings('a.active').removeClass("active");
-				$(this).addClass("active");
-				var index = $(this).index();
-				$("div.bhoechie-tab>div.bhoechie-tab-content").removeClass("active");
-				$("div.bhoechie-tab>div.bhoechie-tab-content").eq(index).addClass("active");
 			});
 		});
 		$(".pick-a-color").pickAColor({
