@@ -4859,8 +4859,8 @@ a.list-group-item:focus {
 .list-group-item.active:focus {
   z-index: 2;
   color: #ffffff;
-  background-color: #337ab7;
-  border-color: #337ab7;
+  background-color: #555555;
+  border-color: #555555;
 }
 .list-group-item.active .list-group-item-heading,
 .list-group-item.active:hover .list-group-item-heading,
@@ -6332,15 +6332,4 @@ div.bhoechie-tab-menu div.list-group>a.active:after{
   border-bottom: 13px solid transparent;
   border-top: 13px solid transparent;
   border-left: 10px solid #5A55A3;
-}
-
-div.bhoechie-tab-content{
-  background-color: #ffffff;
-  /* border: 1px solid #eeeeee; */
-  padding-left: 20px;
-  padding-top: 10px;
-}
-
-div.bhoechie-tab div.bhoechie-tab-content:not(.active){
-  display: none;
 }
