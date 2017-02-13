@@ -34,7 +34,7 @@ color: #5d5d5d;
           <h1 class="panel-title col-xs-9">
             @if($game->time->status == 'night')
               <input type="hidden" name="status" value="day">
-              <i class="fa fa-moon-o fa-2x" style="color: #6e00b3;" aria-hidden="true"></i>
+              <i class="fa fa-moon-o fa-2x" style="color: #a17dd8;" aria-hidden="true"></i>
             @else
               <input type="hidden" name="status" value="night">
               <i class="fa fa-sun-o fa-2x" style="color: #efc600;" aria-hidden="true"></i>
