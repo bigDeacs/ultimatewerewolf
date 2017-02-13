@@ -96,7 +96,7 @@
 			$('.dataTable').DataTable( {
 			  stateSave: true,
 			  "pagingType": "full_numbers",
-						"pageLength": 500
+			  "pageLength": 10
 			});
 		});
 		$(".pick-a-color").pickAColor({
