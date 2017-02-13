@@ -27,7 +27,7 @@ color: #5d5d5d;
 
 @section('content')
 <div class="row">
-  <div class="col-sm-12">
+  <div class="col-xs-12">
     {!! Form::open(['url' => '/games/save']) !!}
       <div class="panel panel-shadow panel-{{ $game->time->status }}">
         <div class="panel-heading row" style="height: 55px;">
