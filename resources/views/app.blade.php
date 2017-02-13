@@ -27,10 +27,10 @@
 	<![endif]-->
 </head>
 <body>
-	<div class-"hidden-lg hidden-md hidden-sm">XS</div>
-	<div class-"hidden-lg hidden-md hidden-xs">SM</div>
-	<div class-"hidden-lg hidden-sm hidden-xs">MD</div>
-	<div class-"hidden-md hidden-sm hidden-xs">LG</div>
+	<div class"hidden-lg hidden-md hidden-sm">XS</div>
+	<div class"hidden-lg hidden-md hidden-xs">SM</div>
+	<div class"hidden-lg hidden-sm hidden-xs">MD</div>
+	<div class"hidden-md hidden-sm hidden-xs">LG</div>
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 bhoechie-tab-menu">
