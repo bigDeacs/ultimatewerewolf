@@ -6326,6 +6326,6 @@ div.bhoechie-tab-menu div.list-group>a.active:after{
   border-left: 10px solid #5A55A3;
 }
 
-.selection, .dropdown-wrapper {
+.selection, .dropdown-wrapper, .select2-results__options {
 	color: #555!important;
 }
