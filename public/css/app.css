@@ -4808,7 +4808,7 @@ a.thumbnail.active {
   margin-bottom: 20px;
   padding-left: 0;
 }
-@media (min-width: 768px) {
+@media (max-width: 768px) {
   .list-group-item {
 	  position: relative;
 	  display: inline-flex;
