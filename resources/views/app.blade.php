@@ -31,7 +31,7 @@
 		<div class="row">
 			<div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 bhoechie-tab-menu">
 			  <div class="list-group">
-				<a href="/" class="list-group-item text-center {{ Request::url() == 'http://werewolftoolkit.com' || Request::url() == 'http://werewolftoolkit.com/home' ? 'active' : '' }}">
+				<a href="/" class="list-group-item text-center" style="background-color:#5A55A3;border-color:#555555;">
 				  <img src="/logo.png" class="img-responsive" />
 				</a>
 				@if(Auth::check())
