@@ -27,53 +27,55 @@
 	<![endif]-->
 </head>
 <body>
+	<div class-"hidden-lg hidden-md hidden-sm">XS</div>
+	<div class-"hidden-lg hidden-md hidden-xs">SM</div>
+	<div class-"hidden-lg hidden-sm hidden-xs">MD</div>
+	<div class-"hidden-md hidden-sm hidden-xs">LG</div>
 	<div class="container">
 		<div class="row">
-			<div class="col-lg-5 col-md-5 col-sm-8 col-xs-9 bhoechie-tab-container">
-				<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 bhoechie-tab-menu">
-				  <div class="list-group">
-					@if(Auth::check())
-						<a href="{{ url('/players') }}" class="list-group-item active text-center">
-						  <h4 class="fa fa-users"></h4><br/>Players
+			<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 bhoechie-tab-menu">
+			  <div class="list-group">
+				@if(Auth::check())
+					<a href="{{ url('/players') }}" class="list-group-item active text-center">
+					  <h4 class="fa fa-users"></h4><br/>Players
+					</a>
+					@if(Auth::user()->role == 'b')
+						<a href="{{ url('/roles') }}" class="list-group-item text-center">
+						  <h4 class="fa fa-user-secret"></h4><br/>Roles
 						</a>
-						@if(Auth::user()->role == 'b')
-							<a href="{{ url('/roles') }}" class="list-group-item active text-center">
-							  <h4 class="fa fa-users"></h4><br/>Roles
-							</a>
-							<a href="{{ url('/teams') }}" class="list-group-item active text-center">
-							  <h4 class="fa fa-users"></h4><br/>Teams
-							</a>
-							<a href="{{ url('/statuses') }}" class="list-group-item active text-center">
-							  <h4 class="fa fa-users"></h4><br/>Statuses
-							</a>
-							<a href="{{ url('/expansions') }}" class="list-group-item active text-center">
-							  <h4 class="fa fa-users"></h4><br/>Expansions
-							</a>
-							<a href="{{ url('/recipes') }}" class="list-group-item active text-center">
-							  <h4 class="fa fa-users"></h4><br/>Recipes
-							</a>
-							<a href="{{ url('/scenarios') }}" class="list-group-item active text-center">
-							  <h4 class="fa fa-users"></h4><br/>Scenarios
-							</a>
-						@endif
-					@endif
-					@if(Auth::guest())
-						<a href="{{ url('/auth/login') }}" class="list-group-item text-center">
-							<h4 class="fa fa-sign-in"></h4><br/>Sign In
+						<a href="{{ url('/teams') }}" class="list-group-item text-center">
+						  <h4 class="fa fa-handshake-o"></h4><br/>Teams
 						</a>
-						<a href="{{ url('/auth/register') }}" class="list-group-item text-center">
-							<h4 class="fa fa-user-plus"></h4><br/>Sign Up
+						<a href="{{ url('/statuses') }}" class="list-group-item text-center">
+						  <h4 class="fa fa-users"></h4><br/>Statuses
 						</a>
-					@else
-						<a href="{{ url('/auth/logout') }}" class="list-group-item text-center">
-							<h4 class="fa fa-sign-out"></h4><br/>Sign Out
+						<a href="{{ url('/expansions') }}" class="list-group-item text-center">
+						  <h4 class="fa fa-plug"></h4><br/>Expansions
+						</a>
+						<a href="{{ url('/recipes') }}" class="list-group-item text-center">
+						  <h4 class="fa fa-cutlery"></h4><br/>Recipes
+						</a>
+						<a href="{{ url('/scenarios') }}" class="list-group-item text-center">
+						  <h4 class="fa fa-book"></h4><br/>Scenarios
 						</a>
 					@endif
-				  </div>
-				</div>
-				<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 bhoechie-tab">
-					@yield('content')
-				</div>
+				@endif
+				@if(Auth::guest())
+					<a href="{{ url('/auth/login') }}" class="list-group-item text-center">
+						<h4 class="fa fa-sign-in"></h4><br/>Sign In
+					</a>
+					<a href="{{ url('/auth/register') }}" class="list-group-item text-center">
+						<h4 class="fa fa-user-plus"></h4><br/>Sign Up
+					</a>
+				@else
+					<a href="{{ url('/auth/logout') }}" class="list-group-item text-center">
+						<h4 class="fa fa-sign-out"></h4><br/>Sign Out
+					</a>
+				@endif
+			  </div>
+			</div>
+			<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 bhoechie-tab">
+				@yield('content')
 			</div>
 	  </div>
 	</div>
