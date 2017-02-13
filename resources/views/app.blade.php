@@ -8,7 +8,7 @@
 	@yield('head')
 
 	<link rel="stylesheet" href="/css/pick-a-color-1.2.3.min.css">
-	<link href="{{ asset('/css/app.css') }}?v=6" rel="stylesheet">
+	<link href="{{ asset('/css/app.css') }}?v=7" rel="stylesheet">
 	<link href="{{ asset('/css/jquery-ui.min.css') }}" rel="stylesheet">
 
 	<link href="https://cdn.datatables.net/1.10.10/css/jquery.dataTables.min.css" rel="stylesheet">
@@ -31,7 +31,7 @@
 		<div class="row">
 			<div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 bhoechie-tab-menu">
 			  <div class="list-group">
-				<a href="/" class="list-group-item text-center {{ Request::url() == 'http://werewolftoolkit.com' ? 'active' : '' }}">
+				<a href="/" class="list-group-item text-center {{ Request::url() == 'http://werewolftoolkit.com' || Request::url() == 'http://werewolftoolkit.com/home' ? 'active' : '' }}">
 				  <i class="fa fa-paw fa-3x"></i>
 				</a>
 				@if(Auth::check())

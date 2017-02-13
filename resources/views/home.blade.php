@@ -1,7 +1,13 @@
 @extends('app')
 
+@section('meta')
+    <title>Players</title>
+@endsection
+
+@section('head')
+@endsection
+
 @section('content')
-<div class="container">
 	<div class="row">
 		<div class="col-xs-12">
 			<div class="panel panel-default panel-shadow">
@@ -57,5 +63,4 @@
 			</div>
 		</div>
 	</div>
-</div>
 @endsection
