@@ -32,9 +32,12 @@
 			<div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 bhoechie-tab-menu">
 			  <div class="list-group">
 				<a href="/" class="list-group-item text-center {{ Request::url() == 'http://werewolftoolkit.com' || Request::url() == 'http://werewolftoolkit.com/home' ? 'active' : '' }}">
-				  <i class="fa fa-paw fa-3x"></i>
+				  <img src="/logo.png" class="img-responsive" />
 				</a>
 				@if(Auth::check())
+					<a href="{{ url('/games') }}" class="list-group-item text-center {{ Request::url() == 'http://werewolftoolkit.com/games' ? 'active' : '' }}">
+					  <i class="fa fa-trophy fa-3x"></i><br/>Games
+					</a>
 					<a href="{{ url('/players') }}" class="list-group-item text-center {{ Request::url() == 'http://werewolftoolkit.com/players' ? 'active' : '' }}">
 					  <i class="fa fa-users fa-3x"></i><br/>Players
 					</a>
