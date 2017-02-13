@@ -27,44 +27,43 @@
 	<![endif]-->
 </head>
 <body>
-	{{ Request::url() }}
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 bhoechie-tab-menu">
 			  <div class="list-group">
-				<a href="/" class="list-group-item active text-center">
+				<a href="/" class="list-group-item text-center {{ Request::url() == 'http://werewolftoolkit.com' ? 'active' : '' }}">
 				  <i class="fa fa-paw fa-3x"></i>
 				</a>
 				@if(Auth::check())
-					<a href="{{ url('/players') }}" class="list-group-item text-center">
+					<a href="{{ url('/players') }}" class="list-group-item text-center {{ Request::url() == 'http://werewolftoolkit.com/players' ? 'active' : '' }}">
 					  <i class="fa fa-users fa-3x"></i><br/>Players
 					</a>
 					@if(Auth::user()->role == 'b')
-						<a href="{{ url('/roles') }}" class="list-group-item text-center">
+						<a href="{{ url('/roles') }}" class="list-group-item text-center {{ Request::url() == 'http://werewolftoolkit.com/roles' ? 'active' : '' }}">
 						  <i class="fa fa-user-secret fa-3x"></i><br/>Roles
 						</a>
-						<a href="{{ url('/teams') }}" class="list-group-item text-center">
+						<a href="{{ url('/teams') }}" class="list-group-item text-center {{ Request::url() == 'http://werewolftoolkit.com/teams' ? 'active' : '' }}">
 						  <i class="fa fa-handshake-o fa-3x"></i><br/>Teams
 						</a>
-						<a href="{{ url('/statuses') }}" class="list-group-item text-center">
+						<a href="{{ url('/statuses') }}" class="list-group-item text-center {{ Request::url() == 'http://werewolftoolkit.com/statuses' ? 'active' : '' }}">
 						  <i class="fa fa-users fa-3x"></i><br/>Statuses
 						</a>
-						<a href="{{ url('/expansions') }}" class="list-group-item text-center">
+						<a href="{{ url('/expansions') }}" class="list-group-item text-center {{ Request::url() == 'http://werewolftoolkit.com/expansions' ? 'active' : '' }}">
 						  <i class="fa fa-plug fa-3x"></i><br/>Expansions
 						</a>
-						<a href="{{ url('/recipes') }}" class="list-group-item text-center">
+						<a href="{{ url('/recipes') }}" class="list-group-item text-center {{ Request::url() == 'http://werewolftoolkit.com/recipes' ? 'active' : '' }}">
 						  <i class="fa fa-cutlery fa-3x"></i><br/>Recipes
 						</a>
-						<a href="{{ url('/scenarios') }}" class="list-group-item text-center">
+						<a href="{{ url('/scenarios') }}" class="list-group-item text-center {{ Request::url() == 'http://werewolftoolkit.com/scenarios' ? 'active' : '' }}">
 						  <i class="fa fa-book fa-3x"></i><br/>Scenarios
 						</a>
 					@endif
 				@endif
 				@if(Auth::guest())
-					<a href="{{ url('/auth/login') }}" class="list-group-item text-center">
+					<a href="{{ url('/auth/login') }}" class="list-group-item text-center {{ Request::url() == 'http://werewolftoolkit.com/auth/login' ? 'active' : '' }}">
 						<i class="fa fa-sign-in fa-3x"></i><br/>Sign In
 					</a>
-					<a href="{{ url('/auth/register') }}" class="list-group-item text-center">
+					<a href="{{ url('/auth/register') }}" class="list-group-item text-center {{ Request::url() == 'http://werewolftoolkit.com/auth/register' ? 'active' : '' }}">
 						<i class="fa fa-user-plus fa-3x"></i><br/>Sign Up
 					</a>
 				@else
