@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
 	<div class="row">
-		<div class="col-sm-10 col-sm-offset-1">
+		<div class="col-xs-12">
 			<div class="panel panel-default panel-shadow">
 			  <div class="panel-heading">
 			    <h1 class="panel-title"><strong>Games</strong></h1>
@@ -18,10 +18,11 @@
 						  <table class="table dataTable table-striped table-hover">
 						    <thead>
 						    	<tr>
-										<col width="40%">
+										<col width="50%">
+										<col width="20%">
 										<col width="10%">
-										<col width="25%">
-										<col width="25%">
+										<col width="10%">
+										<col width="10%">
 						    		<th>Game</th>
 						    		<th>Date</th>
 						    		<th><i class="fa fa-moon-o" style="color: #6e00b3;" aria-hidden="true"></i>/<i class="fa fa-sun-o" style="color: #efc600;" aria-hidden="true"></i></th>
