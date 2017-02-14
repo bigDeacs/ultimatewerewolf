@@ -120,7 +120,7 @@ class GameController extends Controller {
 				$players = Player::where('user_id', '=', \Auth::user()->id)->get();
 				// Create a game
 				$game = Game::create(['total' => $total, 'balance' => $balance, 'user_id' => \Auth::user()->id, 'name' => $request->input('name')]);
-				$time = Time::create(['round' => 1, 'status' => 'night', 'game_id' => $game->id]);
+				$time = Time::create(['round' => 1, 'status' => 'day', 'game_id' => $game->id]);
 				$count = 0;
 				$roles = $recipe->roles->sortBy('position');
 				foreach($roles as $role)
