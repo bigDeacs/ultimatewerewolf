@@ -146,13 +146,8 @@ class GameController extends Controller {
 				return view('games.names', compact('roles', 'players', 'game', 'teams', 'statuses'));
 			} else {
 				$roles = Role::whereRaw("expansion_id IN (".implode(", ", $request->input('expansions')).")")->orderBy('position', 'asc')->get();
-				foreach($roles as $role)
-				{
-					$roleIds[] = $role->id;
-				}
-				$statuses = Status::whereRaw("role_id IN (".implode(", ", $roleIds).")")->get();
 				$name = $request->input('name');
-				return view('games.build', compact('roles', 'name', 'statuses'));
+				return view('games.build', compact('roles', 'name'));
 			}
   }
 
@@ -192,8 +187,13 @@ class GameController extends Controller {
 				$roleCollection = null;
 			}
 			$roles = collect($roleCollection)->sortBy('position')->values();
+			foreach($roles as $role)
+			{
+				$roleIds[] = $role->id;
+			}
+			$statuses = Status::whereRaw("role_id IN (".implode(", ", $roleIds).")")->get();
 
-			return view('games.names', compact('roles', 'players', 'game', 'teams'));
+			return view('games.names', compact('roles', 'players', 'game', 'teams', 'statuses'));
 
   }
 
@@ -226,6 +226,21 @@ class GameController extends Controller {
 		foreach($request->input('team_list') as $key => $team)
 		{
 			$game->teams()->attach($team, ['position' => $key]);
+		}
+		
+		foreach($request->input('team_list') as $key => $team)
+		{
+			$game->teams()->attach($team, ['position' => $key]);
+		}
+
+		foreach($request->input('status_list') as $key => $positions)
+		{
+			$status = Status::find($key);
+			foreach($positions as $lock => $position)
+			{
+				$player = $game->players()->where('game_player.position', '=', $lock)->firstOrFail();
+				$player->statuses()->attach([$status->id => ['game_id' => $game->id]]);
+			}
 		}
 
 		return redirect('/games/'.$game->id);
