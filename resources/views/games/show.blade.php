@@ -74,7 +74,7 @@ color: #5d5d5d;
             <div class="table-responsive" style="width: 20%;float: left;">
               <table class="table table-striped table-hover">
                 <thead>
-                  <tr height="50px" style="background-color: #f5f5f5;">
+                  <tr height="55px" style="background-color: #f5f5f5;">
                     <th style="padding: 8px;line-height: 1.42857143;vertical-align: top;border-top: 1px solid #dddddd;">Role</th>
                   </tr>
                 </thead>
@@ -149,9 +149,9 @@ color: #5d5d5d;
                 <tbody>
                   @foreach($players as $key => $player)
                     @if($player->pivot->status == 'dead')
-                      <tr class="danger" height="50px">
+                      <tr class="danger" height="55px">
                     @else
-                      <tr class="success" height="50px">
+                      <tr class="success" height="55px">
                     @endif
                       <td>{{ $player->name }}</td>
                       <td class="text-center">
@@ -227,7 +227,7 @@ color: #5d5d5d;
           <div class="table-responsive" style="width: 20%;float: left;">
             <table class="table table-hover">
               <thead>
-                <tr height="50px" style="background-color: #f5f5f5;">
+                <tr height="55px" style="background-color: #f5f5f5;">
                   <th style="padding: 8px;line-height: 1.42857143;vertical-align: top;border-top: 1px solid #dddddd;">Role</th>
                 </tr>
               </thead>
@@ -235,9 +235,9 @@ color: #5d5d5d;
                 <?php $order = 0; ?>
                 @foreach($roles as $key => $role)
                     @if($role->night == -99 || $role->night == $game->time->round)
-                      <tr style="background-color: #a17dd8;color:#fff;" height="50px">
+                      <tr style="background-color: #a17dd8;color:#fff;" height="55px">
                     @else
-                      <tr style="background-color: #fff;color:#fff;" height="50px">
+                      <tr style="background-color: #fff;color:#fff;" height="55px">
                     @endif
                       <td>
                         <button type="button" class="btn btn-sm btn-warning btn-block" data-toggle="modal" data-target="#{{ camel_case($role->name) }}">
@@ -255,7 +255,7 @@ color: #5d5d5d;
               <thead>
                 <col width="50%">
                 <col width="50%">
-                <tr height="50px">
+                <tr height="55px">
                   <th>Player</th>
                   <th class="text-center">
                     <a tabindex="0" role="button" style="padding: 2px 5px;" class="btn btn-default" id="team"
@@ -272,9 +272,9 @@ color: #5d5d5d;
               <tbody>
                 @foreach($players as $key => $player)
                   @if($player->pivot->status == 'dead')
-                    <tr class="danger" height="50px">
+                    <tr class="danger" height="55px">
                   @else
-                    <tr class="success" height="50px">
+                    <tr class="success" height="55px">
                   @endif
                     <td>{{ $player->name }}</td>
                     <td>

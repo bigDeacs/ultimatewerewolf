@@ -8,7 +8,7 @@
 	@yield('head')
 
 	<link rel="stylesheet" href="/css/pick-a-color-1.2.3.min.css">
-	<link href="{{ asset('/css/app.css') }}?v=14" rel="stylesheet">
+	<link href="{{ asset('/css/app.css') }}?v=15" rel="stylesheet">
 	<link href="{{ asset('/css/jquery-ui.min.css') }}" rel="stylesheet">
 
 	<link href="https://cdn.datatables.net/1.10.10/css/jquery.dataTables.min.css" rel="stylesheet">
@@ -35,7 +35,7 @@
 				  <img src="/logo.png" class="img-responsive" />
 				</a>
 				@if(Auth::check())
-					<a href="{{ url('/') }}" class="list-group-item text-center {{ Request::url() == 'http://werewolftoolkit.com/' ||Request::url() == 'http://werewolftoolkit.com/home' ? 'active' : '' }}">
+					<a href="{{ url('/') }}" class="list-group-item text-center {{ Request::url() == 'http://werewolftoolkit.com' ||Request::url() == 'http://werewolftoolkit.com/home' ? 'active' : '' }}">
 					  <i class="fa fa-trophy fa-3x"></i><br/>Games
 					</a>
 					<a href="{{ url('/players') }}" class="list-group-item text-center {{ Request::url() == 'http://werewolftoolkit.com/players' ? 'active' : '' }}">
