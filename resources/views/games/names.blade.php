@@ -124,7 +124,7 @@ color: #5d5d5d;
     						    	@endforeach
                     @endunless
                     <tr>
-                      <td colspan="4"><button type="submit" class="btn btn-success btn-block">Next</button></td>
+                      <td colspan="5"><button type="submit" class="btn btn-success btn-block">Next</button></td>
                     </tr>
 
                   {!! Form::close() !!}
