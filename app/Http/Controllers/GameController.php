@@ -228,21 +228,18 @@ class GameController extends Controller {
 			$game->teams()->attach($team, ['position' => $key]);
 		}
 		
-		foreach($request->input('team_list') as $key => $team)
-		{
-			$game->teams()->attach($team, ['position' => $key]);
-		}
-
-		foreach($request->input('status_list') as $key => $positions)
-		{
-			$status = Status::find($key);
-			foreach($positions as $lock => $position)
+		if($request->input('status_list')){
+			foreach($request->input('status_list') as $key => $positions)
 			{
-				$player = $game->players()->where('game_player.position', '=', $lock)->firstOrFail();
-				$player->statuses()->attach([$status->id => ['game_id' => $game->id]]);
+				$status = Status::find($key);
+				foreach($positions as $lock => $position)
+				{
+					$player = $game->players()->where('game_player.position', '=', $lock)->firstOrFail();
+					$player->statuses()->attach([$status->id => ['game_id' => $game->id]]);
+				}
 			}
 		}
-
+		
 		return redirect('/games/'.$game->id);
 	}
 
