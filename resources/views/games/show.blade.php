@@ -87,7 +87,7 @@ color: #5d5d5d;
                         <tr style="background-color: #fff;color:#fff;" height="55px">
                       @endif
                         <td>
-                          <button type="button" class="btn btn-sm btn-primary btn-block" data-toggle="modal" data-target="#{{ camel_case($role->name) }}">
+                          <button type="button" class="btn btn-sm btn-warning btn-block" data-toggle="modal" data-target="#{{ camel_case($role->name) }}">
                             {{ $role->name }}
                           </button>
                         </td>
@@ -113,7 +113,7 @@ color: #5d5d5d;
                     <th class="text-center">
                       <a tabindex="0" role="button" style="padding: 2px 5px;" class="btn btn-default" id="status"
                           data-container="body"
-                          
+                          data-trigger="focus"
                           data-toggle="popover"
                           data-placement="top"
                           data-content="This person has died">
@@ -240,7 +240,7 @@ color: #5d5d5d;
                       <tr style="background-color: #fff;color:#fff;" height="50px">
                     @endif
                       <td>
-                        <button type="button" class="btn btn-sm btn-primary btn-block" data-toggle="modal" data-target="#{{ camel_case($role->name) }}">
+                        <button type="button" class="btn btn-sm btn-warning btn-block" data-toggle="modal" data-target="#{{ camel_case($role->name) }}">
                           {{ $role->name }}
                         </button>
                       </td>
