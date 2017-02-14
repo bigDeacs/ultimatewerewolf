@@ -5,6 +5,23 @@
 @endsection
 
 @section('head')
+  <style>
+label input[type="checkbox"] ~ i.fa.fa-square-o{
+    color: #c8c8c8;    display: inline;
+}
+label input[type="checkbox"] ~ i.fa.fa-check-square-o{
+    display: none;
+}
+label input[type="checkbox"]:checked ~ i.fa.fa-square-o{
+    display: none;
+}
+label input[type="checkbox"]:checked ~ i.fa.fa-check-square-o{
+    color: #5d5d5d;    display: inline;
+}
+label:hover input[type="checkbox"] ~ i.fa {
+color: #5d5d5d;
+}
+  </style>
 @endsection
 
 @section('content')
@@ -27,15 +44,43 @@
 						<div class="table-responsive">
 						  <table class="table dataTable table-striped table-hover">
 						    <thead>
-                  <col width="10%">
-                  <col width="30%">
-                  <col width="30%">
-                  <col width="30%">
-						    	<tr>
+                  <col width="5%">
+				  <col width="10%">
+                  <col width="20%">
+                  @foreach($statuses as $status)
+                    @if($status->icon)
+                      <col width="{{ 55 / (count($statuses)) }}%">
+                    @endif
+                  @endforeach
+                  <col width="20%">
+						    	<tr style="background-color: #f5f5f5;">
 						    		<th>Position</th>
 						    		<th>Role</th>
                     <th>Player</th>
-                    <th>Team</th>
+					@foreach($statuses as $status)
+                      @if($status->icon)
+                        <th class="text-center">
+                          <a tabindex="0" role="button" style="padding: 2px 5px;" class="btn btn-default" id="{{ lcfirst($status->name) }}"
+                              data-container="body"
+                              data-toggle="popover"
+                              data-placement="top"
+                              data-trigger="focus"
+                              data-content="{{ $status->notes }}">
+                            <i class="fa {{ $status->icon }} fa-1x" style="color: #{{ $status->colour }};" aria-hidden="true"></i>
+                          </a>
+                        </th>
+                      @endif
+                    @endforeach
+                    <th class="text-center">
+                      <a tabindex="0" role="button" style="padding: 2px 5px;" class="btn btn-default" id="team"
+                          data-container="body"
+                          data-trigger="focus"
+                          data-toggle="popover"
+                          data-placement="top"
+                          data-content="Team affiliation">
+                        <i class="fa fa-users fa-1x" style="color: #000000;" aria-hidden="true"></i>
+                      </a>
+                    </th>
 						    	</tr>
 						    </thead>
 						    <tbody>
@@ -101,4 +146,15 @@
             	tags: true
             });
       </script>
+	  <script>
+		$('#status').popover()
+	  </script>
+	  <script>
+		$('#team').popover()
+	  </script>
+	  @foreach($statuses as $status)
+		<script>
+		  $('#{{ lcfirst($status->name) }}').popover()
+		</script>
+	  @endforeach
 @endsection

@@ -72,7 +72,7 @@ color: #5d5d5d;
           <div class="row">
           <div class="col-sm-12">
             <div class="table-responsive" style="width: 20%;float: left;">
-              <table class="table table-striped table-hover">
+              <table class="table table-hover">
                 <thead>
                   <tr height="55px" style="background-color: #f5f5f5;">
                     <th style="padding: 8px;line-height: 1.42857143;vertical-align: top;border-top: 1px solid #dddddd;">Role</th>
@@ -108,7 +108,7 @@ color: #5d5d5d;
                     @endif
                   @endforeach
                   <col width="20%">
-                  <tr height="55px">
+                  <tr height="55px" style="background-color: #f5f5f5;">
                     <th>Player</th>
                     <th class="text-center">
                       <a tabindex="0" role="button" style="padding: 2px 5px;" class="btn btn-default" id="status"
