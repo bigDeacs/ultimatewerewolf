@@ -44,8 +44,8 @@ color: #5d5d5d;
           <div class="col-xs-3">
             @if($game->status == 'started')
               <div class="pull-right btn-group">
-                <button type="submit" class="btn btn-success">Next <i class="fa fa-floppy-o"></i></button>
-                <a href="/games/{{ $game->id }}/end" class="btn btn-danger" onclick="return confirm('Do you wish to update details?');return false;">Finish <i class="fa fa-hourglass-end"></i></a>
+                <button type="submit" class="btn btn-success">Next {{ $game->time->status == 'night' ? 'Day' : 'Night' }} <i class="fa fa-floppy-o"></i></button>
+                <a href="/games/{{ $game->id }}/end" class="btn btn-danger" onclick="return confirm('Is the game over?');return false;">Finish <i class="fa fa-hourglass-end"></i></a>
               </div>
             @endif
           </div>
@@ -54,7 +54,7 @@ color: #5d5d5d;
         @if($game->status == 'started')
           <input type="hidden" name="game" value="{{ $game->id }}">
           <div class="row">
-            <div class="col-xs-12 col-sm-6 col-md-8">
+            <div class="col-xs-12 col-sm-6 col-md-6">
               <p class="storyFont">
                 @if($game->time->round > 1)
                   @if($scenarios !== '')
@@ -65,7 +65,7 @@ color: #5d5d5d;
                 @endif
               </p>
             </div>
-            <div class="col-xs-9 col-sm-6 col-md-4">
+            <div class="col-xs-9 col-sm-6 col-md-6">
               <div class="clock" style="margin:2em;width: auto;"></div>
             </div>
           </div>
@@ -82,9 +82,9 @@ color: #5d5d5d;
                   <?php $order = 0; ?>
                   @foreach($roles as $key => $role)
                       @if($role->night == -99 || $role->night == $game->time->round)
-                        <tr style="background-color: #000;color:#fff;" height="50px">
+                        <tr style="background-color: #a17dd8;color:#fff;" height="55px">
                       @else
-                        <tr height="50px">
+                        <tr style="background-color: #fff;color:#fff;" height="55px">
                       @endif
                         <td>
                           <button type="button" class="btn btn-sm btn-primary btn-block" data-toggle="modal" data-target="#{{ camel_case($role->name) }}">
@@ -98,22 +98,22 @@ color: #5d5d5d;
             </div>
             <!-- Player side -->
             <div class="table-responsive" style="width: 80%;float: left;">
-              <table class="table table-striped table-hover">
+              <table class="table table-hover">
                 <thead>
-                  <col width="15%">
-                  <col width="{{ 65 / (count($statuses) + 1) }}%">
+                  <col width="20%">
+                  <col width="{{ 60 / (count($statuses) + 1) }}%">
                   @foreach($statuses as $status)
                     @if($status->icon)
-                      <col width="{{ 65 / (count($statuses) + 1) }}%">
+                      <col width="{{ 60 / (count($statuses) + 1) }}%">
                     @endif
                   @endforeach
                   <col width="20%">
-                  <tr height="50px">
+                  <tr height="55px">
                     <th>Player</th>
                     <th class="text-center">
                       <a tabindex="0" role="button" style="padding: 2px 5px;" class="btn btn-default" id="status"
                           data-container="body"
-                          data-trigger="focus"
+                          
                           data-toggle="popover"
                           data-placement="top"
                           data-content="This person has died">
@@ -225,7 +225,7 @@ color: #5d5d5d;
         <div class="col-sm-12">
           <p class="storyFont">The game is over</p>
           <div class="table-responsive" style="width: 20%;float: left;">
-            <table class="table table-striped table-hover">
+            <table class="table table-hover">
               <thead>
                 <tr height="50px" style="background-color: #f5f5f5;">
                   <th style="padding: 8px;line-height: 1.42857143;vertical-align: top;border-top: 1px solid #dddddd;">Role</th>
@@ -235,9 +235,9 @@ color: #5d5d5d;
                 <?php $order = 0; ?>
                 @foreach($roles as $key => $role)
                     @if($role->night == -99 || $role->night == $game->time->round)
-                      <tr style="background-color: #000;color:#fff;" height="50px">
+                      <tr style="background-color: #a17dd8;color:#fff;" height="50px">
                     @else
-                      <tr height="50px">
+                      <tr style="background-color: #fff;color:#fff;" height="50px">
                     @endif
                       <td>
                         <button type="button" class="btn btn-sm btn-primary btn-block" data-toggle="modal" data-target="#{{ camel_case($role->name) }}">

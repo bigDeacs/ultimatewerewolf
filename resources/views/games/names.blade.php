@@ -18,7 +18,7 @@
           <div class="row">
             <div class="col-xs-12">
               <p class="storyFont">
-                The Town of Salem was a prosperous village, children would laugh and play, families would gather together over delicious meals and for years now they have all lived in peace and harmony, but that has all come to an end, a dreadful curse has afflicted this quiet little town. Everyone, close your eyes.
+                The Town of Salem was a prosperous village, children would laugh and play, families would gather together over delicious meals and for years now they have all lived in perfect harmony, until now. Everyone, close your eyes.
               </p>
             </div>
           </div>
@@ -53,6 +53,17 @@
                               @endforeach
                             </select>
                           </td>
+						  @foreach($statuses as $status)
+							@if($status->icon)
+							  <td class="text-center">
+								<label class="btn" style="padding: 0;">
+									<input type="checkbox" name="status_list[{{ $status->id }}][{{ $key }}]" style="display: none;" value="{{ $key }}">
+								  <i class="fa fa-square-o fa-2x"></i>
+								  <i class="fa fa-check-square-o fa-2x"></i>
+								</label>
+							  </td>
+							@endif
+						  @endforeach
                           <td>
                             <select name="team_list[{{ $key }}]" class="form-control">
                               @foreach($teams as $team)

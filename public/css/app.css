@@ -4808,7 +4808,7 @@ a.thumbnail.active {
   margin-bottom: 20px;
   padding-left: 0;
 }
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   .list-group-item {
 	  position: relative;
 	  display: inline-flex;
@@ -4818,7 +4818,7 @@ a.thumbnail.active {
 	  border: 1px solid #dddddd;
 	}
 }
-@media (min-width: 992px) {
+@media (min-width: 768px) {
   .list-group-item {
 	  position: relative;
 	  display: block;

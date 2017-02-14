@@ -182,6 +182,11 @@ class GameController extends Controller {
 				$roleCollection = null;
 			}
 			$roles = collect($roleCollection)->sortBy('position')->values();
+			foreach($roles as $role)
+			{
+				$roleIds[] = $role->id;
+			}
+			$statuses = Status::whereRaw("role_id IN (".implode(", ", $roleIds).")")->get();
 
 			return view('games.names', compact('roles', 'players', 'game', 'teams'));
 

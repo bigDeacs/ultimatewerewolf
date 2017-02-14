@@ -8,7 +8,7 @@
 	@yield('head')
 
 	<link rel="stylesheet" href="/css/pick-a-color-1.2.3.min.css">
-	<link href="{{ asset('/css/app.css') }}?v=12" rel="stylesheet">
+	<link href="{{ asset('/css/app.css') }}?v=13" rel="stylesheet">
 	<link href="{{ asset('/css/jquery-ui.min.css') }}" rel="stylesheet">
 
 	<link href="https://cdn.datatables.net/1.10.10/css/jquery.dataTables.min.css" rel="stylesheet">
@@ -29,13 +29,13 @@
 <body>
 	<div class="container">
 		<div class="row">
-			<div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 bhoechie-tab-menu">
+			<div class="col-lg-1 col-md-1 col-sm-2 col-xs-12 bhoechie-tab-menu">
 			  <div class="list-group">
-				<a href="/" class="list-group-item text-center" style="background-color:#5A55A3;border-color:#555555;">
+				<a href="/" class="list-group-item text-center hidden-xs" style="background-color:#5A55A3;border-color:#555555;">
 				  <img src="/logo.png" class="img-responsive" />
 				</a>
 				@if(Auth::check())
-					<a href="{{ url('/games') }}" class="list-group-item text-center {{ Request::url() == 'http://werewolftoolkit.com/games' ? 'active' : '' }}">
+					<a href="{{ url('/') }}" class="list-group-item text-center {{ Request::url() == 'http://werewolftoolkit.com/' ||Request::url() == 'http://werewolftoolkit.com/home' ? 'active' : '' }}">
 					  <i class="fa fa-trophy fa-3x"></i><br/>Games
 					</a>
 					<a href="{{ url('/players') }}" class="list-group-item text-center {{ Request::url() == 'http://werewolftoolkit.com/players' ? 'active' : '' }}">
@@ -76,7 +76,7 @@
 				@endif
 			  </div>
 			</div>
-			<div class="col-lg-10 col-md-10 col-sm-10 col-xs-12 bhoechie-tab">
+			<div class="col-lg-11 col-md-11 col-sm-10 col-xs-12 bhoechie-tab">
 				@yield('content')
 			</div>
 	  </div>
