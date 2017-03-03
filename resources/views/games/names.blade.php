@@ -35,7 +35,11 @@ color: #5d5d5d;
           <div class="row">
             <div class="col-xs-12">
               <p class="storyFont">
-                The Town of Salem was a prosperous village, children would laugh and play, families would gather together over delicious meals and for years now they have all lived in perfect harmony, until now. Everyone, close your eyes.
+				@if($recipe)
+					{!! $recipe->description !!}
+				@else
+					The Town of Salem was a prosperous village, children would laugh and play, families would gather together over delicious meals and for years now they have all lived in perfect harmony, until now. Everyone, close your eyes.
+				@endif                
               </p>
             </div>
           </div>

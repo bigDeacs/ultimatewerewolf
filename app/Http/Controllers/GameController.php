@@ -143,7 +143,7 @@ class GameController extends Controller {
 				}
 				$statuses = Status::whereRaw("role_id IN (".implode(", ", $roleIds).")")->get();
 
-				return view('games.names', compact('roles', 'players', 'game', 'teams', 'statuses'));
+				return view('games.names', compact('roles', 'players', 'game', 'teams', 'statuses', 'recipe'));
 			} else {
 				$roles = Role::whereRaw("expansion_id IN (".implode(", ", $request->input('expansions')).")")->orderBy('position', 'asc')->get();
 				$name = $request->input('name');
