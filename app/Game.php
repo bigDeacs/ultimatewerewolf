@@ -53,7 +53,7 @@ class Game extends Model {
 
 	public function getPlayerListAttribute()
 	{
-			return $this->players->lists('id')->orderBy('name');
+			return $this->players->lists('id');
 	}
 
 	/**
