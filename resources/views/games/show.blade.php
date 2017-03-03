@@ -116,7 +116,7 @@ color: #5d5d5d;
                           data-trigger="focus"
                           data-toggle="popover"
                           data-placement="top"
-                          data-content="This person has died">
+                          data-content="This person is the Werewolves target">
                         <i class="fa fa-user-times fa-1x" style="color: #c61515;" aria-hidden="true"></i>
                       </a>
                     </th>
