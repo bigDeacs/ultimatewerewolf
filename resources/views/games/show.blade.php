@@ -31,7 +31,7 @@ color: #5d5d5d;
     {!! Form::open(['url' => '/games/save']) !!}
       <div class="panel panel-shadow panel-{{ $game->time->status }}">
         <div class="panel-heading row" style="height: 55px;">
-          <h1 class="panel-title col-xs-9">
+          <h1 class="panel-title col-xs-8">
             @if($game->time->status == 'night')
               <input type="hidden" name="status" value="day">
               <i class="fa fa-moon-o fa-2x" style="color: #a17dd8;" aria-hidden="true"></i>
@@ -41,12 +41,12 @@ color: #5d5d5d;
             @endif
             <span style="font-size:30px;"><strong>Round {{ $game->time->round }}</strong></span>
           </h1>
-          <div class="col-xs-3">
+          <div class="col-xs-4">
             @if($game->status == 'started')
               <div class="pull-right btn-group">
+				<button type="submit" class="btn btn-success">Next {{ $game->time->status == 'night' ? 'Day' : 'Night' }} <i class="fa fa-floppy-o"></i></button>
 				<a id="show" class="btn btn-info">Show</a>
 				<a id="hide" class="btn btn-info">Hide</a>
-                <button type="submit" class="btn btn-success">Next {{ $game->time->status == 'night' ? 'Day' : 'Night' }} <i class="fa fa-floppy-o"></i></button>
                 <a href="/games/{{ $game->id }}/end" class="btn btn-danger" onclick="return confirm('Is the game over?');return false;">Finish <i class="fa fa-hourglass-end"></i></a>
               </div>
             @endif
@@ -175,6 +175,13 @@ color: #5d5d5d;
                             <i class="fa fa-check-square-o fa-2x"></i>
                           </label>
                         @endunless
+                      </td>
+					  <td class="text-center">
+						@if($player->statuses()->where('player_status.game_id', '=', $game->id)->where('statuses.name', '=', 'Minion')->first())
+						   <input type="checkbox" name="status_list[20][{{ $key }}]" style="display: none;" value="{{ $key }}" checked>
+					    @else
+						   <input type="checkbox" name="status_list[20][{{ $key }}]" style="display: none;" value="{{ $key }}">
+                        @endif
                       </td>
                       @foreach($statuses as $status)
                         @if($status->icon)
