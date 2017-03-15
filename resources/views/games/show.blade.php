@@ -124,7 +124,7 @@ color: #5d5d5d;
                       </a>
                     </th>
 					<th class="text-center">
-                      <a tabindex="0" role="button" style="padding: 2px 5px;" class="btn btn-default" id="status"
+                      <a tabindex="0" role="button" style="padding: 2px 5px;" class="btn btn-default" id="minion"
                           data-container="body"
                           data-trigger="focus"
                           data-toggle="popover"
@@ -177,11 +177,15 @@ color: #5d5d5d;
                         @endunless
                       </td>
 					  <td class="text-center">
-						@if($player->statuses()->where('player_status.game_id', '=', $game->id)->where('statuses.name', '=', 'Minion')->first())
-						   <input type="checkbox" name="status_list[20][{{ $key }}]" style="display: none;" value="{{ $key }}" checked>
-					    @else
-						   <input type="checkbox" name="status_list[20][{{ $key }}]" style="display: none;" value="{{ $key }}">
-                        @endif
+						<label class="btn" style="padding: 0;">
+							@if($player->statuses()->where('player_status.game_id', '=', $game->id)->where('statuses.name', '=', 'Minion')->first())
+							   <input type="checkbox" name="status_list[20][{{ $key }}]" style="display: none;" value="{{ $key }}" checked>
+							@else
+							   <input type="checkbox" name="status_list[20][{{ $key }}]" style="display: none;" value="{{ $key }}">
+							@endif
+							<i class="fa fa-square-o fa-2x"></i>
+							<i class="fa fa-check-square-o fa-2x"></i>
+						 </label>
                       </td>
                       @foreach($statuses as $status)
                         @if($status->icon)
@@ -361,6 +365,9 @@ color: #5d5d5d;
 	</script>
   <script>
     $('#status').popover()
+  </script>
+  <script>
+    $('#minion').popover()
   </script>
   <script>
     $('#team').popover()
