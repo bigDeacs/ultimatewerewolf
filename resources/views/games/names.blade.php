@@ -94,7 +94,11 @@ color: #5d5d5d;
                       @foreach($roles as $key => $role)
     							      <tr>
                           <td scope="row">{{ $key+1 }}</td>
-                          <td>{{ $role->name }}</td>
+                          <td>
+							  <button type="button" class="btn btn-sm btn-warning btn-block" data-toggle="modal" data-target="#{{ camel_case($role->name) }}">
+								{{ $role->name }}
+							  </button>
+						  </td>
                           <td>
                             <select name="name_list[{{ $key }}]" class="name_list" class="form-control" style="width:100%;" required>
                               @foreach($players as $player)
@@ -130,7 +134,24 @@ color: #5d5d5d;
                     <tr>
                       <td colspan="{{ 4 + count($statuses)}}"><button type="submit" class="btn btn-success btn-block">Next</button></td>
                     </tr>
-
+					@foreach($roles as $key => $role)
+						  <div class="modal fade" tabindex="-1" role="dialog" id="{{ camel_case($role->name) }}">
+							<div class="modal-dialog" role="document">
+							  <div class="modal-content">
+								<div class="modal-body">
+								  <div class="row">
+									<div class="col-xs-12 col-sm-6">
+									  <img src="{{ $role->image }}" class="img-responsive" />
+									</div>
+									<div class="col-xs-12 col-sm-6">
+									  <p>{!! $role->description !!}</p>
+									</div>
+								  </div>
+								</div>
+							  </div><!-- /.modal-content -->
+							</div><!-- /.modal-dialog -->
+						  </div><!-- /.modal -->
+						@endforeach
                   {!! Form::close() !!}
 						    </tbody>
 						  </table>

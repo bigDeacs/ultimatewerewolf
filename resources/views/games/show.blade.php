@@ -26,6 +26,19 @@ color: #5d5d5d;
 @endsection
 
 @section('content')
+  <script>
+		$("#show").hide();
+		$("#hide").click(function(){
+			$(".names").hide();
+			$("#hide").hide();
+			$("#show").show();
+		});
+		$("#show").click(function(){
+			$(".names").show();
+			$("#show").hide();
+			$("#hide").show();
+		});
+  </script>
 <div class="row">
   <div class="col-xs-12">
     {!! Form::open(['url' => '/games/save']) !!}
@@ -321,20 +334,6 @@ color: #5d5d5d;
 
 @section('scripts')
   <script src="/js/flipclock.js"></script>
-  <script>
-		$(document).ready(function(){
-			$("#hide").click(function(){
-				$(".names").hide();
-				$("#hide").hide();
-				$("#show").show();
-			});
-			$("#show").click(function(){
-				$(".names").show();
-				$("#show").hide();
-				$("#hide").show();
-			});
-		});
-  </script>
   <script type="text/javascript">
     $(".clock").FlipClock({
         clockFace: 'MinuteCounter'
