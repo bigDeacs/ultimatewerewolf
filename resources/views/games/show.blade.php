@@ -25,20 +25,7 @@ color: #5d5d5d;
   <link href="{{ asset('/css/flipclock.css') }}" rel="stylesheet" />
 @endsection
 
-@section('content')
-  <script>
-		$("#show").hide();
-		$("#hide").click(function(){
-			$(".names").hide();
-			$("#hide").hide();
-			$("#show").show();
-		});
-		$("#show").click(function(){
-			$(".names").show();
-			$("#show").hide();
-			$("#hide").show();
-		});
-  </script>
+@section('content')  
 <div class="row">
   <div class="col-xs-12">
     {!! Form::open(['url' => '/games/save']) !!}
@@ -57,8 +44,8 @@ color: #5d5d5d;
           <div class="col-xs-3">
             @if($game->status == 'started')
               <div class="pull-right btn-group">
-				<button id="show" class="btn btn-info">Show</button>
-				<button id="hide" class="btn btn-info">Hide</button>
+				<a id="show" class="btn btn-info">Show</a>
+				<a id="hide" class="btn btn-info">Hide</a>
                 <button type="submit" class="btn btn-success">Next {{ $game->time->status == 'night' ? 'Day' : 'Night' }} <i class="fa fa-floppy-o"></i></button>
                 <a href="/games/{{ $game->id }}/end" class="btn btn-danger" onclick="return confirm('Is the game over?');return false;">Finish <i class="fa fa-hourglass-end"></i></a>
               </div>
@@ -116,10 +103,11 @@ color: #5d5d5d;
               <table class="table table-hover">
                 <thead>
                   <col width="20%">
-                  <col width="{{ 60 / (count($statuses) + 1) }}%">
+                  <col width="{{ 60 / (count($statuses) + 2) }}%">
+				  <col width="{{ 60 / (count($statuses) + 2) }}%">
                   @foreach($statuses as $status)
                     @if($status->icon)
-                      <col width="{{ 60 / (count($statuses) + 1) }}%">
+                      <col width="{{ 60 / (count($statuses) + 2) }}%">
                     @endif
                   @endforeach
                   <col width="20%">
@@ -133,6 +121,16 @@ color: #5d5d5d;
                           data-placement="top"
                           data-content="This person is the Werewolves target">
                         <i class="fa fa-user-times fa-1x" style="color: #c61515;" aria-hidden="true"></i>
+                      </a>
+                    </th>
+					<th class="text-center">
+                      <a tabindex="0" role="button" style="padding: 2px 5px;" class="btn btn-default" id="status"
+                          data-container="body"
+                          data-trigger="focus"
+                          data-toggle="popover"
+                          data-placement="top"
+                          data-content="This person is the Werewolves Minion">
+                        <i class="fa fa-user-secret fa-1x" style="color: #c61515;" aria-hidden="true"></i>
                       </a>
                     </th>
                     @foreach($statuses as $status)
@@ -334,6 +332,21 @@ color: #5d5d5d;
 
 @section('scripts')
   <script src="/js/flipclock.js"></script>
+  <script>
+	$(document).ready(function(){
+		$("#show").hide();
+		$("#hide").click(function(){
+			$(".names").hide();
+			$("#hide").hide();
+			$("#show").show();
+		});
+		$("#show").click(function(){
+			$(".names").show();
+			$("#show").hide();
+			$("#hide").show();
+		});
+	});
+  </script>
   <script type="text/javascript">
     $(".clock").FlipClock({
         clockFace: 'MinuteCounter'
