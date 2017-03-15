@@ -31,7 +31,7 @@ color: #5d5d5d;
     {!! Form::open(['url' => '/games/save']) !!}
       <div class="panel panel-shadow panel-{{ $game->time->status }}">
         <div class="panel-heading row" style="height: 55px;">
-          <h1 class="panel-title col-xs-8">
+          <h1 class="panel-title col-xs-7">
             @if($game->time->status == 'night')
               <input type="hidden" name="status" value="day">
               <i class="fa fa-moon-o fa-2x" style="color: #a17dd8;" aria-hidden="true"></i>
@@ -41,12 +41,12 @@ color: #5d5d5d;
             @endif
             <span style="font-size:30px;"><strong>Round {{ $game->time->round }}</strong></span>
           </h1>
-          <div class="col-xs-4">
+          <div class="col-xs-5">
             @if($game->status == 'started')
               <div class="pull-right btn-group">
 				<button type="submit" class="btn btn-success">Next {{ $game->time->status == 'night' ? 'Day' : 'Night' }} <i class="fa fa-floppy-o"></i></button>
-				<a id="show" class="btn btn-info">Show</a>
-				<a id="hide" class="btn btn-info">Hide</a>
+				<a id="show" class="btn btn-info">Show Names</a>
+				<a id="hide" class="btn btn-info">Hide Names</a>
                 <a href="/games/{{ $game->id }}/end" class="btn btn-danger" onclick="return confirm('Is the game over?');return false;">Finish <i class="fa fa-hourglass-end"></i></a>
               </div>
             @endif
@@ -103,11 +103,10 @@ color: #5d5d5d;
               <table class="table table-hover">
                 <thead>
                   <col width="20%">
-                  <col width="{{ 60 / (count($statuses) + 2) }}%">
-				  <col width="{{ 60 / (count($statuses) + 2) }}%">
+                  <col width="{{ 60 / (count($statuses) + 1) }}%">
                   @foreach($statuses as $status)
                     @if($status->icon)
-                      <col width="{{ 60 / (count($statuses) + 2) }}%">
+                      <col width="{{ 60 / (count($statuses) + 1) }}%">
                     @endif
                   @endforeach
                   <col width="20%">
@@ -121,16 +120,6 @@ color: #5d5d5d;
                           data-placement="top"
                           data-content="This person is the Werewolves target">
                         <i class="fa fa-user-times fa-1x" style="color: #c61515;" aria-hidden="true"></i>
-                      </a>
-                    </th>
-					<th class="text-center">
-                      <a tabindex="0" role="button" style="padding: 2px 5px;" class="btn btn-default" id="minion"
-                          data-container="body"
-                          data-trigger="focus"
-                          data-toggle="popover"
-                          data-placement="top"
-                          data-content="This person is the Werewolves Minion">
-                        <i class="fa fa-user-secret fa-1x" style="color: #c61515;" aria-hidden="true"></i>
                       </a>
                     </th>
                     @foreach($statuses as $status)
@@ -175,17 +164,6 @@ color: #5d5d5d;
                             <i class="fa fa-check-square-o fa-2x"></i>
                           </label>
                         @endunless
-                      </td>
-					  <td class="text-center">
-						<label class="btn" style="padding: 0;">
-							@if($player->statuses()->where('player_status.game_id', '=', $game->id)->where('statuses.name', '=', 'Minion')->first())
-							   <input type="checkbox" name="status_list[20][{{ $key }}]" style="display: none;" value="{{ $key }}" checked>
-							@else
-							   <input type="checkbox" name="status_list[20][{{ $key }}]" style="display: none;" value="{{ $key }}">
-							@endif
-							<i class="fa fa-square-o fa-2x"></i>
-							<i class="fa fa-check-square-o fa-2x"></i>
-						 </label>
                       </td>
                       @foreach($statuses as $status)
                         @if($status->icon)
@@ -365,9 +343,6 @@ color: #5d5d5d;
 	</script>
   <script>
     $('#status').popover()
-  </script>
-  <script>
-    $('#minion').popover()
   </script>
   <script>
     $('#team').popover()
