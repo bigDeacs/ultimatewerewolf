@@ -54,7 +54,7 @@ class HomeController extends Controller {
 		DB::table('game_team')->truncate();
 		DB::table('player_status')->truncate();
 		DB::table('games')->truncate();
-		DB::table('players')->truncate();
+		//DB::table('players')->truncate();
 		DB::table('times')->truncate();
 		DB::statement('SET FOREIGN_KEY_CHECKS=1;');
 		return redirect()->back();

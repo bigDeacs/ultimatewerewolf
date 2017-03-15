@@ -44,6 +44,8 @@ color: #5d5d5d;
           <div class="col-xs-3">
             @if($game->status == 'started')
               <div class="pull-right btn-group">
+				<button id="show" class="btn btn-info">Show</button>
+				<button id="hide" class="btn btn-info">Hide</button>
                 <button type="submit" class="btn btn-success">Next {{ $game->time->status == 'night' ? 'Day' : 'Night' }} <i class="fa fa-floppy-o"></i></button>
                 <a href="/games/{{ $game->id }}/end" class="btn btn-danger" onclick="return confirm('Is the game over?');return false;">Finish <i class="fa fa-hourglass-end"></i></a>
               </div>
@@ -109,7 +111,7 @@ color: #5d5d5d;
                   @endforeach
                   <col width="20%">
                   <tr height="55px" style="background-color: #f5f5f5;">
-                    <th>Player</th>
+                    <th class="names">Player</th>
                     <th class="text-center">
                       <a tabindex="0" role="button" style="padding: 2px 5px;" class="btn btn-default" id="status"
                           data-container="body"
@@ -153,7 +155,7 @@ color: #5d5d5d;
                     @else
                       <tr class="success" height="55px">
                     @endif
-                      <td>{{ $player->name }}</td>
+                      <td class="names">{{ $player->name }}</td>
                       <td class="text-center">
                         @unless($player->pivot->status == 'dead')
                           <label class="btn" style="padding: 0;">
@@ -319,6 +321,20 @@ color: #5d5d5d;
 
 @section('scripts')
   <script src="/js/flipclock.js"></script>
+  <script>
+		$(document).ready(function(){
+			$("#hide").click(function(){
+				$(".names").hide();
+				$("#hide").hide();
+				$("#show").show();
+			});
+			$("#show").click(function(){
+				$(".names").show();
+				$("#show").hide();
+				$("#hide").show();
+			});
+		});
+  </script>
   <script type="text/javascript">
     $(".clock").FlipClock({
         clockFace: 'MinuteCounter'
