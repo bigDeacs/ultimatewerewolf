@@ -160,13 +160,22 @@ color: #5d5d5d;
                         @unless($player->pivot->status == 'dead')
 							<div class="input-group">
 								<div class="input-group-addon">
-									<i class="fa fa-user-times" style="color: #c61515" aria-hidden="true"></i>
+									<a tabindex="0" role="button" class="btn btn-default status"
+										  data-container="body"
+										  data-trigger="focus"
+										  data-toggle="popover"
+										  data-placement="top"
+										  data-content="This person is the Werewolves target">
+										<i class="fa fa-user-times" style="color: #c61515" aria-hidden="true"></i>
+									  </a>
 								</div>
-								<label class="btn" style="padding: 0;">
-									<input type="checkbox" name="death_list[{{ $key }}]" style="display: none;">
-									<i class="fa fa-square-o fa-2x"></i>
-									<i class="fa fa-check-square-o fa-2x"></i>
-								</label>
+								<div class="input-group-addon" style="padding-left: 0;">
+									<label class="btn" style="padding: 0;font-size:10px;">
+										<input type="checkbox" name="death_list[{{ $key }}]" style="display: none;">
+										<i class="fa fa-square-o fa-2x"></i>
+										<i class="fa fa-check-square-o fa-2x"></i>
+									</label>
+								</div>
 							</div>
                         @endunless
                       </td>
@@ -347,7 +356,7 @@ color: #5d5d5d;
     });
 	</script>
   <script>
-    $('#status').popover()
+    $('.status').popover()
   </script>
   <script>
     $('#team').popover()
