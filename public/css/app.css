@@ -6331,16 +6331,3 @@ div.bhoechie-tab-menu div.list-group>a.active:after{
 	color: #555!important;
 }
 
-
-.table-fixed thead {
-  width: 97%;
-}
-.table-fixed tbody {
-  height: 400px;
-  overflow-y: auto;
-  width: 100%;
-}
-.table-fixed tbody td, .table-fixed thead > tr> th {
-  float: left;
-  border-bottom-width: 0;
-}
