@@ -66,9 +66,7 @@
                       <td>{{ $role->expansion->name }}</td>
                       <td>
                         @if($role->status)
-							@foreach ($role->status as $status)
-								<i class="fa {{ $status->icon }} fa-2x" style="color: #{{ $status->colour }};" aria-hidden="true"></i>
-							@endforeach
+                          <i class="fa {{ $role->status->icon }} fa-2x" style="color: #{{ $role->status->colour }};" aria-hidden="true"></i>
                         @endif
 						    		  <td><a href="/roles/{{ $role->id }}/edit" class="btn btn-warning">Edit <i class="fa fa-pencil-square-o"></i></a></td>
                       <td class="sortable-handle"><span class="glyphicon glyphicon-sort"></span></td>
