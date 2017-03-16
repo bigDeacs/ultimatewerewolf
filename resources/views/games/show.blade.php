@@ -6,21 +6,21 @@
 
 @section('head')
   <style>
-label input[type="checkbox"] ~ i.fa.fa-square-o{
-    color: #c8c8c8;    display: inline;
-}
-label input[type="checkbox"] ~ i.fa.fa-check-square-o{
-    display: none;
-}
-label input[type="checkbox"]:checked ~ i.fa.fa-square-o{
-    display: none;
-}
-label input[type="checkbox"]:checked ~ i.fa.fa-check-square-o{
-    color: #5d5d5d;    display: inline;
-}
-label:hover input[type="checkbox"] ~ i.fa {
-color: #5d5d5d;
-}
+	label input[type="checkbox"] ~ i.fa.fa-user-times{
+		color: #c8c8c8;    display: inline;
+	}
+	label input[type="checkbox"] ~ i.fa.fa-user-times{
+		display: none;
+	}
+	label input[type="checkbox"]:checked ~ i.fa.fa-user-times{
+		display: none;
+	}
+	label input[type="checkbox"]:checked ~ i.fa.fa-user-times{
+		color: #c61515;    display: inline;
+	}
+	label:hover input[type="checkbox"] ~ i.fa {
+	color: #5d5d5d;
+	}
   </style>
   @foreach($statuses as $status)
 	<style>
@@ -34,7 +34,7 @@ color: #5d5d5d;
 			display: none;
 		}
 		label input[type="checkbox"]:checked ~ i.fa.{{ $status->icon }}{
-			color: #5d5d5d;    display: inline;
+			color: #{{ $status->colour }};    display: inline;
 		}
 		label:hover input[type="checkbox"] ~ i.fa {
 		color: #5d5d5d;
@@ -168,8 +168,8 @@ color: #5d5d5d;
 								<div class="input-group-addon" style="padding: 5px 0;">
 									<label class="btn" style="padding: 0;font-size:10px;">
 										<input type="checkbox" name="death_list[{{ $key }}]" style="display: none;">
-										<i class="fa fa-square-o fa-2x"></i>
-										<i class="fa fa-user-times fa-2x"></i>
+										<i class="fa fa-question fa-2x"></i>
+										<i class="fa fa-user-times"></i>
 									</label>
 								</div>
 							</div>
@@ -185,7 +185,7 @@ color: #5d5d5d;
 										  data-placement="top"
 										  data-trigger="focus"
 										  data-content="{{ $status->notes }}">
-										<i class="fa {{ $status->icon }} fa-1x" aria-hidden="true"></i>
+										<i class="fa fa-question fa-1x" aria-hidden="true"></i>
 									</a> 
 									<div class="input-group-addon" style="padding: 5px 0;">
 										<label class="btn" style="padding: 0;font-size:10px;">
@@ -195,7 +195,7 @@ color: #5d5d5d;
 												<input type="checkbox" name="status_list[{{ $status->id }}][{{ $key }}]" style="display: none;" value="{{ $key }}">
 											@endif
 											<i class="fa fa-square-o fa-2x"></i>
-											<i class="fa {{ $status->icon }} fa-2x"></i>
+											<i class="fa {{ $status->icon }}"></i>
 										</label>
 									</div>
 								</div>
