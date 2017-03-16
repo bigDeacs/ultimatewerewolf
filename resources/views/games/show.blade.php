@@ -109,7 +109,7 @@ color: #5d5d5d;
 					@endif
 				@endforeach
 				<col width="20%">
-                <thead class="navbar-fixed-top">
+                <thead>
                   <tr height="55px" style="background-color: #f5f5f5;">
                     <th class="names">Player</th>
                     <th class="text-center">
@@ -158,11 +158,16 @@ color: #5d5d5d;
                       <td class="names">{{ $player->name }}</td>
                       <td class="text-center">
                         @unless($player->pivot->status == 'dead')
-                          <label class="btn" style="padding: 0;">
-                            <input type="checkbox" name="death_list[{{ $key }}]" style="display: none;">
-                            <i class="fa fa-square-o fa-2x"></i>
-                            <i class="fa fa-check-square-o fa-2x"></i>
-                          </label>
+							<div class="input-group">
+								<div class="input-group-addon">
+									<i class="fa fa-user-times" style="color: #c61515" aria-hidden="true"></i>
+								</div>
+								<label class="btn" style="padding: 0;">
+									<input type="checkbox" name="death_list[{{ $key }}]" style="display: none;">
+									<i class="fa fa-square-o fa-2x"></i>
+									<i class="fa fa-check-square-o fa-2x"></i>
+								</label>
+							</div>
                         @endunless
                       </td>
                       @foreach($statuses as $status)
