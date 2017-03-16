@@ -100,7 +100,7 @@ color: #5d5d5d;
             </div>
             <!-- Player side -->
             <div class="table-responsive" style="width: 80%;float: left;">
-              <table class="table table-hover">
+              <table class="table table-hover table-fixed">
                 <thead>
                   <col width="20%">
                   <col width="{{ 60 / (count($statuses) + 1) }}%">

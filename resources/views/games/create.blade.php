@@ -31,7 +31,7 @@
           <div class="form-group row">
             <div class="col-xs-12">
               <label for="name">Name</label>
-              <input type="text" name="name" id="name" class="form-control" placeholder="Eg. Time/Date, Place, Event." required>
+              <input type="text" name="name" id="name" class="form-control" placeholder="Who is the Moderator?" required>
             </div>
           </div>
           <div class="form-group row">
