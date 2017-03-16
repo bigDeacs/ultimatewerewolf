@@ -113,38 +113,17 @@ color: #5d5d5d;
                   <tr height="55px" style="background-color: #f5f5f5;">
                     <th class="names">Player</th>
                     <th class="text-center">
-                      <a tabindex="0" role="button" style="padding: 2px 5px;" class="btn btn-default" id="status"
-                          data-container="body"
-                          data-trigger="focus"
-                          data-toggle="popover"
-                          data-placement="top"
-                          data-content="This person is the Werewolves target">
                         <i class="fa fa-user-times fa-1x" style="color: #c61515;" aria-hidden="true"></i>
-                      </a>
                     </th>
                     @foreach($statuses as $status)
                       @if($status->icon)
                         <th class="text-center">
-                          <a tabindex="0" role="button" style="padding: 2px 5px;" class="btn btn-default" id="{{ lcfirst($status->name) }}"
-                              data-container="body"
-                              data-toggle="popover"
-                              data-placement="top"
-                              data-trigger="focus"
-                              data-content="{{ $status->notes }}">
-                            <i class="fa {{ $status->icon }} fa-1x" style="color: #{{ $status->colour }};" aria-hidden="true"></i>
-                          </a>
+                          <i class="fa {{ $status->icon }} fa-1x" style="color: #{{ $status->colour }};" aria-hidden="true"></i>
                         </th>
                       @endif
                     @endforeach
                     <th class="text-center">
-                      <a tabindex="0" role="button" style="padding: 2px 5px;" class="btn btn-default" id="team"
-                          data-container="body"
-                          data-trigger="focus"
-                          data-toggle="popover"
-                          data-placement="top"
-                          data-content="Team affiliation">
-                        <i class="fa fa-users fa-1x" style="color: #000000;" aria-hidden="true"></i>
-                      </a>
+                       <i class="fa fa-users fa-1x" style="color: #000000;" aria-hidden="true"></i>
                     </th>
                   </tr>
                 </thead>
@@ -159,17 +138,15 @@ color: #5d5d5d;
                       <td class="text-center">
                         @unless($player->pivot->status == 'dead')
 							<div class="input-group">
-								<div class="input-group-addon">
-									<a tabindex="0" role="button" class="btn btn-default status"
-										  data-container="body"
-										  data-trigger="focus"
-										  data-toggle="popover"
-										  data-placement="top"
-										  data-content="This person is the Werewolves target">
-										<i class="fa fa-user-times" style="color: #c61515" aria-hidden="true"></i>
-									  </a>
-								</div>
-								<div class="input-group-addon" style="padding-left: 0;">
+								<a tabindex="0" role="button" class="input-group-addon btn btn-default status"
+									  data-container="body"
+									  data-trigger="focus"
+									  data-toggle="popover"
+									  data-placement="top"
+									  data-content="This person is the Werewolves target">
+									<i class="fa fa-user-times" style="color: #c61515" aria-hidden="true"></i>
+								 </a>								
+								<div class="input-group-addon" style="padding: 5px 0;">
 									<label class="btn" style="padding: 0;font-size:10px;">
 										<input type="checkbox" name="death_list[{{ $key }}]" style="display: none;">
 										<i class="fa fa-square-o fa-2x"></i>
@@ -181,22 +158,41 @@ color: #5d5d5d;
                       </td>
                       @foreach($statuses as $status)
                         @if($status->icon)
-                          <td class="text-center">
-                            <label class="btn" style="padding: 0;">
-                              @if($player->statuses()->where('player_status.game_id', '=', $game->id)->where('statuses.name', '=', $status->name)->first())
-                                <input type="checkbox" name="status_list[{{ $status->id }}][{{ $key }}]" style="display: none;" value="{{ $key }}" checked>
-                              @else
-                                <input type="checkbox" name="status_list[{{ $status->id }}][{{ $key }}]" style="display: none;" value="{{ $key }}">
-                              @endif
-                              <i class="fa fa-square-o fa-2x"></i>
-                              <i class="fa fa-check-square-o fa-2x"></i>
-                            </label>
-                          </td>
+							<td class="text-center">
+								<div class="input-group">
+									<a tabindex="0" role="button" class="input-group-addon btn btn-default {{ lcfirst($status->name) }}"
+										  data-container="body"
+										  data-toggle="popover"
+										  data-placement="top"
+										  data-trigger="focus"
+										  data-content="{{ $status->notes }}">
+										<i class="fa {{ $status->icon }} fa-1x" style="color: #{{ $status->colour }};" aria-hidden="true"></i>
+									</a> 
+									<div class="input-group-addon" style="padding: 5px 0;">
+										<label class="btn" style="padding: 0;font-size:10px;">
+											@if($player->statuses()->where('player_status.game_id', '=', $game->id)->where('statuses.name', '=', $status->name)->first())
+												<input type="checkbox" name="status_list[{{ $status->id }}][{{ $key }}]" style="display: none;" value="{{ $key }}" checked>
+											@else
+												<input type="checkbox" name="status_list[{{ $status->id }}][{{ $key }}]" style="display: none;" value="{{ $key }}">
+											@endif
+											<i class="fa fa-square-o fa-2x"></i>
+											<i class="fa fa-check-square-o fa-2x"></i>
+										</label>
+									</div>
+								</div>
+							</td>
                         @endif
                       @endforeach
                       <td>
                         <div class="input-group">
-                          <div class="input-group-addon"><i class="fa {{ $game->teams()->where('game_team.position', '=', $key)->first()->icon }}" style="color: #{{ $game->teams()->where('game_team.position', '=', $key)->first()->colour }};" aria-hidden="true"></i></div>
+							<a tabindex="0" role="button" class="input-group-addon btn btn-default {{ lcfirst($game->teams()->where('game_team.position', '=', $key)->first()->name) }}"
+									  data-container="body"
+									  data-trigger="focus"
+									  data-toggle="popover"
+									  data-placement="top"
+									  data-content="This player is on the {{ $game->teams()->where('game_team.position', '=', $key)->first()->name }} Team">
+								<i class="fa {{ $game->teams()->where('game_team.position', '=', $key)->first()->icon }}" style="color: #{{ $game->teams()->where('game_team.position', '=', $key)->first()->colour }};" aria-hidden="true"></i>
+							</a> 
                           <select name="team_list[{{ $key }}]" class="form-control">
                           @foreach($teams as $team)
                             @if($game->teams()->where('game_team.position', '=', $key)->first()->name == $team->name)
@@ -358,12 +354,14 @@ color: #5d5d5d;
   <script>
     $('.status').popover()
   </script>
-  <script>
-    $('#team').popover()
-  </script>
+  @foreach($teams as $team)
+    <script>
+      $('.{{ lcfirst($team->name) }}').popover()
+    </script>
+  @endforeach
   @foreach($statuses as $status)
     <script>
-      $('#{{ lcfirst($status->name) }}').popover()
+      $('.{{ lcfirst($status->name) }}').popover()
     </script>
   @endforeach
 @endsection
