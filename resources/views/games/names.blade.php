@@ -64,7 +64,7 @@ color: #5d5d5d;
 					@foreach($statuses as $status)
                       @if($status->icon)
                         <th class="text-center">
-                          <a tabindex="0" role="button" style="padding: 2px 5px;" class="btn btn-default" id="{{ lcfirst($status->name) }}"
+                          <a tabindex="0" role="button" style="padding: 2px 5px;" class="btn btn-default" id="{{  preg_replace('/\s+/', '-', lcfirst($status->name)) }}"
                               data-container="body"
                               data-toggle="popover"
                               data-placement="top"
@@ -179,7 +179,7 @@ color: #5d5d5d;
 	  </script>
 	  @foreach($statuses as $status)
 		<script>
-		  $('#{{ lcfirst($status->name) }}').popover()
+		  $('#{{  preg_replace('/\s+/', '-', lcfirst($status->name)) }}').popover()
 		</script>
 	  @endforeach
 @endsection
