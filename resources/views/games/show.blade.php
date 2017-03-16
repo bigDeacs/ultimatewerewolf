@@ -31,7 +31,7 @@ color: #5d5d5d;
     {!! Form::open(['url' => '/games/save']) !!}
       <div class="panel panel-shadow panel-{{ $game->time->status }}">
         <div class="panel-heading row" style="height: 55px;">
-          <h1 class="panel-title col-xs-7">
+          <h1 class="panel-title col-xs-12 col-sm-5 col-md-6">
             @if($game->time->status == 'night')
               <input type="hidden" name="status" value="day">
               <i class="fa fa-moon-o fa-2x" style="color: #a17dd8;" aria-hidden="true"></i>
@@ -41,7 +41,7 @@ color: #5d5d5d;
             @endif
             <span style="font-size:30px;"><strong>Round {{ $game->time->round }}</strong></span>
           </h1>
-          <div class="col-xs-5">
+          <div class="col-xs-12 col-sm-7 col-md-6">
             @if($game->status == 'started')
               <div class="pull-right btn-group">
 				<button type="submit" class="btn btn-success">Next {{ $game->time->status == 'night' ? 'Day' : 'Night' }} <i class="fa fa-floppy-o"></i></button>
@@ -56,7 +56,7 @@ color: #5d5d5d;
         @if($game->status == 'started')
           <input type="hidden" name="game" value="{{ $game->id }}">
           <div class="row">
-            <div class="col-xs-12 col-sm-6 col-md-6">
+            <div class="col-xs-12 col-md-6 col-lg-7">
               <p class="storyFont">
                 @if($game->time->round > 1)
                   @if($scenarios !== '')
@@ -67,7 +67,7 @@ color: #5d5d5d;
                 @endif
               </p>
             </div>
-            <div class="col-xs-9 col-sm-6 col-md-6">
+            <div class="col-xs-12 col-md-6 col-lg-5">
               <div class="clock" style="margin:2em;width: auto;"></div>
             </div>
           </div>
