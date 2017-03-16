@@ -22,6 +22,25 @@ label:hover input[type="checkbox"] ~ i.fa {
 color: #5d5d5d;
 }
   </style>
+  @foreach($statuses as $status)
+	<style>
+		label input[type="checkbox"] ~ i.fa.{{ $status->icon }}{
+			color: #c8c8c8;    display: inline;
+		}
+		label input[type="checkbox"] ~ i.fa.{{ $status->icon }}{
+			display: none;
+		}
+		label input[type="checkbox"]:checked ~ i.fa.{{ $status->icon }}{
+			display: none;
+		}
+		label input[type="checkbox"]:checked ~ i.fa.{{ $status->icon }}{
+			color: #5d5d5d;    display: inline;
+		}
+		label:hover input[type="checkbox"] ~ i.fa {
+		color: #5d5d5d;
+		}
+	</style>
+  @endforeach
   <link href="{{ asset('/css/flipclock.css') }}" rel="stylesheet" />
 @endsection
 
@@ -144,13 +163,13 @@ color: #5d5d5d;
 									  data-toggle="popover"
 									  data-placement="top"
 									  data-content="This person is the Werewolves target">
-									<i class="fa fa-user-times" style="color: #c61515" aria-hidden="true"></i>
+									<i class="fa fa-user-times" aria-hidden="true"></i>
 								 </a>								
 								<div class="input-group-addon" style="padding: 5px 0;">
 									<label class="btn" style="padding: 0;font-size:10px;">
 										<input type="checkbox" name="death_list[{{ $key }}]" style="display: none;">
 										<i class="fa fa-square-o fa-2x"></i>
-										<i class="fa fa-check-square-o fa-2x"></i>
+										<i class="fa fa-user-times fa-2x"></i>
 									</label>
 								</div>
 							</div>
@@ -166,7 +185,7 @@ color: #5d5d5d;
 										  data-placement="top"
 										  data-trigger="focus"
 										  data-content="{{ $status->notes }}">
-										<i class="fa {{ $status->icon }} fa-1x" style="color: #{{ $status->colour }};" aria-hidden="true"></i>
+										<i class="fa {{ $status->icon }} fa-1x" aria-hidden="true"></i>
 									</a> 
 									<div class="input-group-addon" style="padding: 5px 0;">
 										<label class="btn" style="padding: 0;font-size:10px;">
@@ -176,7 +195,7 @@ color: #5d5d5d;
 												<input type="checkbox" name="status_list[{{ $status->id }}][{{ $key }}]" style="display: none;" value="{{ $key }}">
 											@endif
 											<i class="fa fa-square-o fa-2x"></i>
-											<i class="fa fa-check-square-o fa-2x"></i>
+											<i class="fa {{ $status->icon }} fa-2x"></i>
 										</label>
 									</div>
 								</div>
