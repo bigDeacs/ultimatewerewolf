@@ -169,7 +169,7 @@
                         @if($status->icon)
 							<td class="text-center">
 								<div class="input-group">
-									<a tabindex="0" role="button" class="input-group-addon btn btn-default {{ lcfirst($status->name) }}"
+									<a tabindex="0" role="button" class="input-group-addon btn btn-default {{ preg_replace('/\s+/', '-', lcfirst($status->name)) }}"
 										  data-container="body"
 										  data-toggle="popover"
 										  data-placement="top"
@@ -370,7 +370,7 @@
   @endforeach
   @foreach($statuses as $status)
     <script>
-      $('.{{ lcfirst($status->name) }}').popover()
+      $('.{{ preg_replace('/\s+/', '-', lcfirst($status->name)) }}').popover()
     </script>
   @endforeach
 @endsection
