@@ -110,7 +110,7 @@
             <!-- Player side -->
             <div class="table-responsive" style="width: 80%;float: left;">
               <table class="table table-hover">
-				<col width="20%">
+				<col width="20%" class="names">
 				<col width="{{ 60 / (count($statuses) + 1) }}%">
 				@foreach($statuses as $status)
 					@if($status->icon)
