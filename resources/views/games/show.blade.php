@@ -6,13 +6,13 @@
 
 @section('head')
   <style>
-	label input[type="checkbox"] ~ i.fa.fa-user-times{
+	label input[type="checkbox"] ~ i.fa.fa-square-o{
 		color: #c8c8c8;    display: inline;
 	}
 	label input[type="checkbox"] ~ i.fa.fa-user-times{
 		display: none;
 	}
-	label input[type="checkbox"]:checked ~ i.fa.fa-user-times{
+	label input[type="checkbox"]:checked ~ i.fa.fa-square-o{
 		display: none;
 	}
 	label input[type="checkbox"]:checked ~ i.fa.fa-user-times{
@@ -21,26 +21,16 @@
 	label:hover input[type="checkbox"] ~ i.fa {
 	color: #5d5d5d;
 	}
-  </style>
   @foreach($statuses as $status)
-	<style>
+		/* {{ $status->name }} CSS */
 		label input[type="checkbox"] ~ i.fa.{{ $status->icon }}{
-			color: #c8c8c8;    display: inline;
-		}
-		label input[type="checkbox"] ~ i.fa.{{ $status->icon }}{
-			display: none;
-		}
-		label input[type="checkbox"]:checked ~ i.fa.{{ $status->icon }}{
 			display: none;
 		}
 		label input[type="checkbox"]:checked ~ i.fa.{{ $status->icon }}{
 			color: #{{ $status->colour }};    display: inline;
 		}
-		label:hover input[type="checkbox"] ~ i.fa {
-		color: #5d5d5d;
-		}
-	</style>
   @endforeach
+  </style>
   <link href="{{ asset('/css/flipclock.css') }}" rel="stylesheet" />
 @endsection
 
@@ -163,13 +153,13 @@
 									  data-toggle="popover"
 									  data-placement="top"
 									  data-content="This person is the Werewolves target">
-									<i class="fa fa-user-times" aria-hidden="true"></i>
+									<i class="fa fa-question" aria-hidden="true"></i>
 								 </a>								
 								<div class="input-group-addon" style="padding: 5px 0;">
 									<label class="btn" style="padding: 0;font-size:10px;">
 										<input type="checkbox" name="death_list[{{ $key }}]" style="display: none;">
-										<i class="fa fa-question fa-2x"></i>
-										<i class="fa fa-user-times"></i>
+										<i class="fa fa-square-o fa-2x"></i>
+										<i class="fa fa-user-times fa-2x"></i>
 									</label>
 								</div>
 							</div>
@@ -195,7 +185,7 @@
 												<input type="checkbox" name="status_list[{{ $status->id }}][{{ $key }}]" style="display: none;" value="{{ $key }}">
 											@endif
 											<i class="fa fa-square-o fa-2x"></i>
-											<i class="fa {{ $status->icon }}"></i>
+											<i class="fa {{ $status->icon }} fa-2x"></i>
 										</label>
 									</div>
 								</div>
