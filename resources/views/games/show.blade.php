@@ -152,7 +152,7 @@
 									  data-trigger="focus"
 									  data-toggle="popover"
 									  data-placement="top"
-									  data-content="This person is the Werewolves target">
+									  data-content="Check this box to kill a player">
 									<i class="fa fa-question" aria-hidden="true"></i>
 								 </a>								
 								<div class="input-group-addon" style="padding: 5px 0;">
