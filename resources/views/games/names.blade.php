@@ -6,21 +6,30 @@
 
 @section('head')
   <style>
-label input[type="checkbox"] ~ i.fa.fa-square-o{
-    color: #c8c8c8;    display: inline;
-}
-label input[type="checkbox"] ~ i.fa.fa-check-square-o{
-    display: none;
-}
-label input[type="checkbox"]:checked ~ i.fa.fa-square-o{
-    display: none;
-}
-label input[type="checkbox"]:checked ~ i.fa.fa-check-square-o{
-    color: #5d5d5d;    display: inline;
-}
-label:hover input[type="checkbox"] ~ i.fa {
-color: #5d5d5d;
-}
+	label input[type="checkbox"] ~ i.fa.fa-square-o{
+		color: #c8c8c8;    display: inline;
+	}
+	label input[type="checkbox"] ~ i.fa.fa-user-times{
+		display: none;
+	}
+	label input[type="checkbox"]:checked ~ i.fa.fa-square-o{
+		display: none;
+	}
+	label input[type="checkbox"]:checked ~ i.fa.fa-user-times{
+		color: #c61515;    display: inline;
+	}
+	label:hover input[type="checkbox"] ~ i.fa {
+	color: #5d5d5d;
+	}
+  @foreach($statuses as $status)
+		/* {{ $status->name }} CSS */
+		label input[type="checkbox"] ~ i.fa.{{ $status->icon }}{
+			display: none;
+		}
+		label input[type="checkbox"]:checked ~ i.fa.{{ $status->icon }}{
+			color: #{{ $status->colour }};    display: inline;
+		}
+  @endforeach
   </style>
 @endsection
 
@@ -62,26 +71,12 @@ color: #5d5d5d;
 					@foreach($statuses as $status)
                       @if($status->icon)
                         <th class="text-center">
-                          <a tabindex="0" role="button" style="padding: 2px 5px;" class="btn btn-default" id="{{  preg_replace('/\s+/', '-', lcfirst($status->name)) }}"
-                              data-container="body"
-                              data-toggle="popover"
-                              data-placement="top"
-                              data-trigger="focus"
-                              data-content="{{ $status->notes }}">
-                            <i class="fa {{ $status->icon }} fa-1x" style="color: #{{ $status->colour }};" aria-hidden="true"></i>
-                          </a>
+                          <i class="fa {{ $status->icon }} fa-1x" style="color: #{{ $status->colour }};" aria-hidden="true"></i>
                         </th>
                       @endif
                     @endforeach
                     <th class="text-center">
-                      <a tabindex="0" role="button" style="padding: 2px 5px;" class="btn btn-default" id="team"
-                          data-container="body"
-                          data-trigger="focus"
-                          data-toggle="popover"
-                          data-placement="top"
-                          data-content="Team affiliation">
-                        <i class="fa fa-users fa-1x" style="color: #000000;" aria-hidden="true"></i>
-                      </a>
+                       <i class="fa fa-users fa-1x" style="color: #000000;" aria-hidden="true"></i>
                     </th>
 						    	</tr>
 						    </thead>
@@ -104,28 +99,50 @@ color: #5d5d5d;
                               @endforeach
                             </select>
                           </td>
-						  @foreach($statuses as $status)
+                          @foreach($statuses as $status)
 							@if($status->icon)
-							  <td class="text-center">
-								<label class="btn" style="padding: 0;">
-									<input type="checkbox" name="status_list[{{ $status->id }}][{{ $key }}]" style="display: none;" value="{{ $key }}">
-								  <i class="fa fa-square-o fa-2x"></i>
-								  <i class="fa fa-check-square-o fa-2x"></i>
-								</label>
-							  </td>
+								<td class="text-center">
+									<div class="input-group">
+										<a tabindex="0" role="button" class="input-group-addon btn btn-default {{ preg_replace('/\s+/', '-', lcfirst($status->name)) }}"
+											  data-container="body"
+											  data-toggle="popover"
+											  data-placement="top"
+											  data-trigger="focus"
+											  data-content="{{ $status->notes }}">
+											<i class="fa fa-question fa-1x" aria-hidden="true"></i>
+										</a> 
+										<div class="input-group-addon" style="padding: 5px 0;">
+											<label class="btn" style="padding: 0;font-size:10px;">												
+												<input type="checkbox" name="status_list[{{ $status->id }}][{{ $key }}]" style="display: none;" value="{{ $key }}">
+												<i class="fa fa-square-o fa-2x"></i>
+												<i class="fa {{ $status->icon }} fa-2x"></i>
+											</label>
+										</div>
+									</div>
+								</td>
 							@endif
-						  @endforeach
-                          <td>
-                            <select name="team_list[{{ $key }}]" class="form-control">
-                              @foreach($teams as $team)
-                                @if($team->name == 'Villagers')
-                                  <option value="{{ $team->id }}" selected="selected">{{ $team->name }}</option>
-                                @else
-                                  <option value="{{ $team->id }}">{{ $team->name }}</option>
-                                @endif
-                              @endforeach
-                            </select>
-                          </td>
+						  @endforeach						  
+						  <td>
+                        <div class="input-group">
+							<a tabindex="0" role="button" class="input-group-addon btn btn-default {{ lcfirst($game->teams()->where('game_team.position', '=', $key)->first()->name) }}"
+									  data-container="body"
+									  data-trigger="focus"
+									  data-toggle="popover"
+									  data-placement="top"
+									  data-content="This player is on the {{ $game->teams()->where('game_team.position', '=', $key)->first()->name }} Team">
+								<i class="fa {{ $game->teams()->where('game_team.position', '=', $key)->first()->icon }}" style="color: #{{ $game->teams()->where('game_team.position', '=', $key)->first()->colour }};" aria-hidden="true"></i>
+							</a> 
+                          <select name="team_list[{{ $key }}]" class="form-control">
+                          @foreach($teams as $team)
+                            @if($team->name == 'Villagers')
+                              <option value="{{ $team->id }}" selected="selected">{{ $team->name }}</option>
+                            @else
+                              <option value="{{ $team->id }}">{{ $team->name }}</option>
+                            @endif
+                          @endforeach
+                        </select>
+                        </div>
+                      </td>
     						    	  </tr>
     						    	@endforeach
                     @endunless

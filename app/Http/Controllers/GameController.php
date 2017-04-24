@@ -145,10 +145,9 @@ class GameController extends Controller {
 
 				return view('games.names', compact('roles', 'players', 'game', 'teams', 'statuses', 'recipe'));
 			} else {
-				$recipe = ['description' => 'The Town of Salem was a prosperous village, children would laugh and play, families would gather together over delicious meals and for years now they have all lived in perfect harmony, until now. Everyone, close your eyes.'];
 				$roles = Role::whereRaw("expansion_id IN (".implode(", ", $request->input('expansions')).")")->orderBy('position', 'asc')->get();
 				$name = $request->input('name');
-				return view('games.build', compact('roles', 'name', 'recipe'));
+				return view('games.build', compact('roles', 'name'));
 			}
   }
 
@@ -193,8 +192,8 @@ class GameController extends Controller {
 				$roleIds[] = $role->id;
 			}
 			$statuses = Status::whereRaw("role_id IN (".implode(", ", $roleIds).")")->get();
-
-			return view('games.names', compact('roles', 'players', 'game', 'teams', 'statuses'));
+			$recipe = ['description' => 'The Town of Salem was a prosperous village, children would laugh and play, families would gather together over delicious meals and for years now they have all lived in perfect harmony, until now. Everyone, close your eyes.'];
+			return view('games.names', compact('roles', 'players', 'game', 'teams', 'statuses', 'recipe'));
 
   }
 
