@@ -119,31 +119,10 @@
 								</td>
 							@endif
 						  @endforeach						  
-						  <td>
-							<div class="input-group">
-								<a tabindex="0" role="button" class="input-group-addon btn btn-default team"
-										  data-container="body"
-										  data-trigger="focus"
-										  data-toggle="popover"
-										  data-placement="top"
-										  data-content="Team affiliation">
-									<i class="fa fa-users fa-1x" style="color: #000000;" aria-hidden="true"></i>
-								</a> 
-								  <select name="team_list[{{ $key }}]" class="form-control">
-								  @foreach($teams as $team)
-									@if($game->teams()->where('game_team.position', '=', $key)->first()->name == $team->name)
-									  <option value="{{ $team->id }}" selected="selected">{{ $team->name }}</option>
-									@else
-									  <option value="{{ $team->id }}">{{ $team->name }}</option>
-									@endif
-								  @endforeach
-								</select>
-								</div>
-							</td>
-							
+				
 						  <td>
                         <div class="input-group">						
-							<a tabindex="0" role="button" style="padding: 2px 5px;" class="btn btn-default team" 
+							<a tabindex="0" role="button" style="padding: 2px 5px;" class="input-group-addon btn btn-default team" 
 								  data-container="body"
 								  data-trigger="focus"
 								  data-toggle="popover"
