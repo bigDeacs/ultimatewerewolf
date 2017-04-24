@@ -16,6 +16,12 @@
 								@endforeach
 							</ul>
 						</div>
+					@else
+						<div class="alert alert-danger">
+							<h1><strong>Welcome to the Werewolf Toolkit!</strong></h1>
+							<h2>This tool will help Ultimate Werewolf Moderators track and control games of Werewolf</h2>
+							<p>Just Sign in or create a new account to start playing!</p>							
+						</div>
 					@endif
 
 					<form class="form-horizontal" role="form" method="POST" action="{{ url('/auth/login') }}">

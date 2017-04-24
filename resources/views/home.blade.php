@@ -14,9 +14,14 @@
 			  <div class="panel-heading">
 			    <h1 class="panel-title"><strong>Games</strong></h1>
 			  </div>
-			  <div class="panel-body">
+			  <div class="panel-body">			
 			  	<div class="pull-right"><a href="/games/create" class="btn btn-primary">Create Game <i class="fa fa-plus-square"></i></a></div>
 			  	<div style="clear:both;"></div>
+				<div class="row">
+					<div class="col-sm-12">
+						Welcome to the Werewolf Toolkit! This tool will help Ultimate Werewolf Moderators track and control games of Werewolf, just click "Create Game" above to start playing!
+					</div>
+				</div>
 			  	<div class="row">
 					<div class="col-sm-12">
 						<p><strong>Games:</strong></p>

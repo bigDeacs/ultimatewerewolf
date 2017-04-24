@@ -6,6 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Ultimate Werewolf</title>
 	@yield('head')
+	<meta name="description" content="A online tool for Ultimate Werewolf Moderators to use. It allows you track everything that happens throughout the game.">
 
 	<link rel="stylesheet" href="/css/pick-a-color-1.2.3.min.css">
 	<link href="{{ asset('/css/app.css') }}?v=18" rel="stylesheet">
@@ -32,7 +33,7 @@
 			<div class="col-lg-1 col-md-1 col-sm-2 col-xs-12 bhoechie-tab-menu">
 			  <div class="list-group">
 				<a href="/" class="list-group-item text-center hidden-xs" style="background-color:#5A55A3;border-color:#555555;">
-				  <img src="/logo.png" class="img-responsive" />
+				  <img src="/logo.png" class="img-responsive" alt="Werewolf Toolkit Logo" />
 				</a>
 				@if(Auth::check())
 					<a href="{{ url('/') }}" class="list-group-item text-center {{ Request::url() == 'http://werewolftoolkit.com' ||Request::url() == 'http://werewolftoolkit.com/home' ? 'active' : '' }}" style="font-size: 12px;">
