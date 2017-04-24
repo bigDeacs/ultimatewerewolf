@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Ultimate Werewolf</title>
+	<title>Werewolf Toolkit - The Ultimate Werewolf tool for Moderators</title>
 	@yield('head')
 	<meta name="description" content="A online tool for Ultimate Werewolf Moderators to use. It allows you track everything that happens throughout the game.">
 
