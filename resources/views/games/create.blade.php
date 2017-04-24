@@ -35,6 +35,8 @@
             </div>
           </div>
           <div class="form-group row">
+				Do you want to use a premade list of roles? Or choose your own? 
+				<small>Only choose on of the fields below</small>
               <div class="col-sm-6 col-xs-12">
                   <label for="name">Chose a Recipe</label>
                   <select name="recipe" class="form-control">
