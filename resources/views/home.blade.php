@@ -14,13 +14,12 @@
 			  <div class="panel-heading">
 			    <h1 class="panel-title"><strong>Games</strong></h1>
 			  </div>
-			  <div class="panel-body">			
-			  	<div class="pull-right"><a href="/games/create" class="btn btn-primary">Create Game <i class="fa fa-plus-square"></i></a></div>
-			  	<div style="clear:both;"></div>
+			  <div class="panel-body">		
 				<div class="row">
-					<div class="col-sm-12">
-						Welcome to the Werewolf Toolkit! This tool will help Ultimate Werewolf Moderators track and control games of Werewolf, just click "Create Game" above to start playing!
+					<div class="col-sm-9 col-md-10">
+						Welcome to the Ultimate Werewolf Toolkit! This tool will help Ultimate Werewolf Moderators track and control games of Werewolf. You can store player names, use premade role recipes and stack everything throughout the game. Just click the "Create Game" button above to start playing!
 					</div>
+					<div class="col-sm-3 col-md-2"><a href="/games/create" class="btn btn-primary">Create Game <i class="fa fa-plus-square"></i></a></div>					
 				</div>
 			  	<div class="row">
 					<div class="col-sm-12">
