@@ -55,7 +55,6 @@
 						<div class="table-responsive">
 						  <table class="table dataTable table-striped table-hover">
 						    <thead>
-                  <col width="5%">
 				  <col width="10%">
                   <col width="20%">
                   @foreach($statuses as $status)
@@ -65,7 +64,6 @@
                   @endforeach
                   <col width="20%">
 						    	<tr style="background-color: #f5f5f5;">
-						    		<th>Position</th>
 						    		<th>Role</th>
                     <th>Player</th>
 					@foreach($statuses as $status)
@@ -76,14 +74,7 @@
                       @endif
                     @endforeach
                     <th class="text-center">
-                      <a tabindex="0" role="button" style="padding: 2px 5px;" class="btn btn-default" id="team"
-                          data-container="body"
-                          data-trigger="focus"
-                          data-toggle="popover"
-                          data-placement="top"
-                          data-content="Team affiliation">
                         <i class="fa fa-users fa-1x" style="color: #000000;" aria-hidden="true"></i>
-                      </a>
                     </th>
 						    	</tr>
 						    </thead>
@@ -93,7 +84,6 @@
                     @unless($roles == null)
                       @foreach($roles as $key => $role)
     							      <tr>
-                          <td scope="row">{{ $key+1 }}</td>
                           <td>
 							  <button type="button" class="btn btn-sm btn-warning btn-block" data-toggle="modal" data-target="#{{ camel_case($role->name) }}">
 								{{ $role->name }}
@@ -130,7 +120,15 @@
 							@endif
 						  @endforeach						  
 						  <td>
-                        <div class="input-group">
+                        <div class="input-group">						
+							<a tabindex="0" role="button" style="padding: 2px 5px;" class="btn btn-default" id="team"
+								  data-container="body"
+								  data-trigger="focus"
+								  data-toggle="popover"
+								  data-placement="top"
+								  data-content="Team affiliation">
+								<i class="fa fa-users fa-1x" style="color: #000000;" aria-hidden="true"></i>
+							  </a>
                           <select name="team_list[{{ $key }}]" class="form-control">
                           @foreach($teams as $team)
                             @if($team->name == 'Villagers')

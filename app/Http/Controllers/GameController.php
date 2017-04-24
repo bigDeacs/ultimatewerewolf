@@ -192,7 +192,7 @@ class GameController extends Controller {
 				$roleIds[] = $role->id;
 			}
 			$statuses = Status::whereRaw("role_id IN (".implode(", ", $roleIds).")")->get();
-			$recipe = ['description' => 'The Town of Salem was a prosperous village, children would laugh and play, families would gather together over delicious meals and for years now they have all lived in perfect harmony, until now. Everyone, close your eyes.'];
+			$recipe = (object) ['description' => 'The Town of Salem was a prosperous village, children would laugh and play, families would gather together over delicious meals and for years now they have all lived in perfect harmony, until now. Everyone, close your eyes.'];
 			return view('games.names', compact('roles', 'players', 'game', 'teams', 'statuses', 'recipe'));
 
   }
