@@ -191,7 +191,7 @@
 	  </script>
 	  @foreach($statuses as $status)
 		<script>
-		  $('#{{  preg_replace('/\s+/', '-', lcfirst($status->name)) }}').popover()
+		  $('.{{ preg_replace('/\s+/', '-', lcfirst($status->name)) }}').popover()
 		</script>
 	  @endforeach
 @endsection
