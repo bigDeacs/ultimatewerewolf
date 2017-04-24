@@ -160,6 +160,11 @@
 									  <p>{!! $role->description !!}</p>
 									</div>
 								  </div>
+								  <div class="row">									
+									<div class="col-xs-12">
+									  <small>© All names and descriptions property of Bezier Games.</small>
+									</div>
+								  </div>
 								</div>
 							  </div><!-- /.modal-content -->
 							</div><!-- /.modal-dialog -->
