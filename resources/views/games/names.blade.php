@@ -76,7 +76,14 @@
                       @endif
                     @endforeach
                     <th class="text-center">
-                       <i class="fa fa-users fa-1x" style="color: #000000;" aria-hidden="true"></i>
+                      <a tabindex="0" role="button" style="padding: 2px 5px;" class="btn btn-default" id="team"
+                          data-container="body"
+                          data-trigger="focus"
+                          data-toggle="popover"
+                          data-placement="top"
+                          data-content="Team affiliation">
+                        <i class="fa fa-users fa-1x" style="color: #000000;" aria-hidden="true"></i>
+                      </a>
                     </th>
 						    	</tr>
 						    </thead>
@@ -99,7 +106,7 @@
                               @endforeach
                             </select>
                           </td>
-                          @foreach($statuses as $status)
+						  @foreach($statuses as $status)
 							@if($status->icon)
 								<td class="text-center">
 									<div class="input-group">
@@ -124,14 +131,6 @@
 						  @endforeach						  
 						  <td>
                         <div class="input-group">
-							<a tabindex="0" role="button" class="input-group-addon btn btn-default {{ lcfirst($game->teams()->where('game_team.position', '=', $key)->first()->name) }}"
-									  data-container="body"
-									  data-trigger="focus"
-									  data-toggle="popover"
-									  data-placement="top"
-									  data-content="This player is on the {{ $game->teams()->where('game_team.position', '=', $key)->first()->name }} Team">
-								<i class="fa {{ $game->teams()->where('game_team.position', '=', $key)->first()->icon }}" style="color: #{{ $game->teams()->where('game_team.position', '=', $key)->first()->colour }};" aria-hidden="true"></i>
-							</a> 
                           <select name="team_list[{{ $key }}]" class="form-control">
                           @foreach($teams as $team)
                             @if($team->name == 'Villagers')
