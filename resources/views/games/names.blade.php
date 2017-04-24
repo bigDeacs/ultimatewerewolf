@@ -37,8 +37,6 @@ color: #5d5d5d;
               <p class="storyFont">
 				@if($recipe)
 					{!! $recipe->description !!}
-				@else
-					The Town of Salem was a prosperous village, children would laugh and play, families would gather together over delicious meals and for years now they have all lived in perfect harmony, until now. Everyone, close your eyes.
 				@endif                
               </p>
             </div>
