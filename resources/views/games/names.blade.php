@@ -46,6 +46,7 @@
               <p class="storyFont">
 				@if($recipe)
 					{!! $recipe->description !!}
+					<p><small>© All names and descriptions property of Bezier Games.</small></p>
 				@endif                
               </p>
             </div>

@@ -69,8 +69,7 @@
               <p class="storyFont">
                 @if($game->time->round > 1)
                   @if($scenarios !== '')
-                    {{ $scenarios->sortBy(DB::raw('RAND()'))->first()->description }}					
-					 <p><small>© All names and descriptions property of Bezier Games.</small></p>
+                    {{ $scenarios->sortBy(DB::raw('RAND()'))->first()->description }}										 
                   @else
                     Everyone, close your eyes...
                   @endif
