@@ -61,6 +61,9 @@
 						<a href="{{ url('/scenarios') }}" class="list-group-item text-center {{ Request::url() == 'http://werewolftoolkit.com/scenarios' ? 'active' : '' }}" style="font-size: 12px;">
 						  <i class="fa fa-book fa-2x"></i><br/>Scenarios
 						</a>
+						<a href="{{ url('/users') }}" class="list-group-item text-center {{ Request::url() == 'http://werewolftoolkit.com/users' ? 'active' : '' }}" style="font-size: 12px;">
+						  <i class="fa fa-lock fa-2x"></i><br/>Users
+						</a>
 					@endif
 				@endif
 				@if(Auth::guest())
