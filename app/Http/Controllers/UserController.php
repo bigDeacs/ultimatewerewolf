@@ -33,7 +33,7 @@ class UserController extends Controller {
 	 */
 	public function index()
 	{
-    $users = User::where('user_id', '=', \Auth::user()->id)->get();
+    $users = User::all();
     return view('users.index', compact('users'));
 	}
 
