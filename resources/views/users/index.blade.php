@@ -32,7 +32,7 @@
 						    	@foreach($users as $user)
 									<tr>
 										<td scope="row">{{ $user->name }}</td>
-										<td><a href="/users/{{ $user->id }}/edit" class="btn btn-warning">Edit <i class="fa fa-pencil-square-o"></i></a></td>
+										<td><a href="/users/{{ $user->id }}/show" class="btn btn-warning">Edit <i class="fa fa-pencil-square-o"></i></a></td>
 									</tr>
 						    	@endforeach
 						    </tbody>
