@@ -17,7 +17,6 @@
 			  <div class="panel-body">
 			  	<div class="pull-right"><a href="/admin/{{ (Auth::check()) ? 'posts' : '' }}" class="btn btn-primary"><i class="fa fa-arrow-circle-o-left"></i> Back</a></div>
 			  	<div style="clear:both;"></div>
-				<!-------------------------->
 				<div class="row">
 					<div class="col-sm-12">
 						<p><strong>Games:</strong></p>
@@ -60,35 +59,8 @@
 						</div>
 					</div>
 				</div>
-				<div class="row">
-					<div class="col-sm-12">
-						<p><strong>Players:</strong></p>
-						<div class="table-responsive">
-						  <table class="table dataTable table-striped table-hover">
-						    <thead>
-						    	<tr>
-						    		<th>Name</th>
-						    		<th></th>
-						    	</tr>
-						    </thead>
-						    <tbody>
-						    	@foreach($user->players as $player)
-							      <tr>
-										<td scope="row">{{ $player->name }}</td>
-						    		  <td><a href="/players/{{ $player->id }}/edit" class="btn btn-warning">Edit <i class="fa fa-pencil-square-o"></i></a></td>
-						    	  </tr>
-						    	@endforeach
-						    </tbody>
-						  </table>
-						</div>
-					</div>
-				</div>
-				<!-------------------------->
 			  </div>
 			</div>
 		</div>
 	</div>
-@endsection
-
-@section('scripts')
 @endsection
