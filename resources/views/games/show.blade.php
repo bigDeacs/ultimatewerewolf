@@ -258,20 +258,7 @@
                 </tr>
               </thead>
               <tbody>
-                <?php $order = 0; ?>
-                @foreach($roles as $key => $role)
-                    @if($role->night == -99 || $role->night == $game->time->round)
-                      <tr style="background-color: #a17dd8;color:#fff;" height="55px">
-                    @else
-                      <tr style="background-color: #fff;color:#fff;" height="55px">
-                    @endif
-                      <td>
-                        <button type="button" class="btn btn-sm btn-warning btn-block" data-toggle="modal" data-target="#{{ camel_case($role->name) }}">
-                          {{ $role->name }}
-                        </button>
-                      </td>
-                    </tr>
-                @endforeach
+                
               </tbody>
             </table>
           </div>
@@ -305,8 +292,8 @@
                     <td>{{ $player->name }}</td>
                     <td>
                       <div class="input-group">
-                        <!--<div class="input-group-addon"><i class="fa {{ $game->teams()->where('game_team.position', '=', $key)->first()->icon }}" style="color: #{{ $game->teams()->where('game_team.position', '=', $key)->first()->colour }};" aria-hidden="true"></i></div>
-                        <input class="form-control" id="disabledInput" type="text" placeholder="{{ $game->teams()->where('game_team.position', '=', $key)->first()->name }}" disabled>-->
+                        <div class="input-group-addon"><i class="fa {{ $game->teams()->where('game_team.position', '=', $key)->first()->icon }}" style="color: #{{ $game->teams()->where('game_team.position', '=', $key)->first()->colour }};" aria-hidden="true"></i></div>
+                        <input class="form-control" id="disabledInput" type="text" placeholder="{{ $game->teams()->where('game_team.position', '=', $key)->first()->name }}" disabled>
                       </div>                      
                     </td>
                   </tr>
