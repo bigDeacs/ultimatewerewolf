@@ -318,7 +318,7 @@ class GameController extends Controller {
 			if($request->input('team_list')){
 				foreach(Team::all() as $team)
 				{
-					$game->teams->detach();
+					$game->teams()->detach();
 					//$team->games()->where('game_team.game_id', '=', $game->id)->detach();
 				}
 				foreach($request->input('team_list') as $key => $team)
