@@ -261,7 +261,6 @@ class GameController extends Controller {
 			$statuses = Status::whereRaw("role_id IN (".implode(", ", $roleIds).")")->get();
 			$teams = Team::all();		
 			$players = $game->players;			
-			dd($game->teams);
 			if($game->time->status == 'day')
 			{
 				if($deaths > 2){
@@ -284,6 +283,7 @@ class GameController extends Controller {
 	 */
 	public function save(Request $request)
 	{
+		dd($request);
 			$game = Game::find($request->input('game'));
 			foreach(Status::all() as $status)
 			{
