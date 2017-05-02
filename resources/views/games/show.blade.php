@@ -297,19 +297,19 @@
               </thead>
               <tbody>
                 @foreach($players as $key => $player)
-				  @if($player->games()->where('game_id', $game->id)->first()->pivot->status == 'dead')
-                    <tr class="danger" height="55px">
-                  @else
-                    <tr class="success" height="55px">
-                  @endif
-                    <td>{{ $player->name }}</td>
-                    <td>
-                      <div class="input-group">
-                        <div class="input-group-addon"><i class="fa {{ $game->teams()->where('game_team.position', '=', $key)->first()->icon }}" style="color: #{{ $game->teams()->where('game_team.position', '=', $key)->first()->colour }};" aria-hidden="true"></i></div>
-                        <input class="form-control" id="disabledInput" type="text" placeholder="{{ $game->teams()->where('game_team.position', '=', $key)->first()->name }}" disabled>
-                      </div>                      
-                    </td>
-                  </tr>
+					@if($player->games()->where('game_id', $game->id)->wherePivot('status', 'dead')->first())
+						<tr class="danger" height="55px">
+					@else
+						<tr class="success" height="55px">
+					@endif
+						<td>{{ $player->name }}</td>
+						<td>
+						  <div class="input-group">
+							<div class="input-group-addon"><i class="fa {{ $game->teams()->where('game_team.position', '=', $key)->first()->icon }}" style="color: #{{ $game->teams()->where('game_team.position', '=', $key)->first()->colour }};" aria-hidden="true"></i></div>
+							<input class="form-control" id="disabledInput" type="text" placeholder="{{ $game->teams()->where('game_team.position', '=', $key)->first()->name }}" disabled>
+						  </div>                      
+						</td>
+					</tr>
                 @endforeach
               </tbody>
             </table>
