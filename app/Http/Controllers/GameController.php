@@ -262,6 +262,7 @@ class GameController extends Controller {
 			$teams = Team::all();
 
 			$players = $game->players;
+			dd($players);
 			if($game->time->status == 'day')
 			{
 				if($deaths > 2){
