@@ -283,7 +283,6 @@ class GameController extends Controller {
 	 */
 	public function save(Request $request)
 	{
-		dd($request);
 			$game = Game::find($request->input('game'));
 			foreach(Status::all() as $status)
 			{
@@ -319,7 +318,8 @@ class GameController extends Controller {
 			if($request->input('team_list')){
 				foreach(Team::all() as $team)
 				{
-					$team->games()->where('game_team.game_id', '=', $game->id)->detach();
+					$game->teams->detach();
+					//$team->games()->where('game_team.game_id', '=', $game->id)->detach();
 				}
 				foreach($request->input('team_list') as $key => $team)
 				{
