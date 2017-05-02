@@ -297,11 +297,8 @@
               </thead>
               <tbody>
                 @foreach($players as $key => $player)
-				  @if($player->where('game_player.game_id', '=', $game->id)->wherePivot('game_player.status', '=', 'dead')->firstOrFail())	  
-                    <tr class="danger" height="55px">
-                  @else
-                    <tr class="success" height="55px">
-                  @endif
+				{!! $player->games()->where('game_id', $game->id)->first()->pivot->status !!}
+				 
                     <td>{{ $player->name }}</td>
                     <td>
                       <div class="input-group">
