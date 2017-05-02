@@ -297,7 +297,7 @@
               </thead>
               <tbody>
                 @foreach($players as $key => $player)
-                  @if($player->wherePivot('game_id', '=', $$game->id)->status == 'dead')
+                  @if($player->wherePivot('game_id', '=', $game->id)->status == 'dead')
                     <tr class="danger" height="55px">
                   @else
                     <tr class="success" height="55px">
