@@ -303,11 +303,12 @@
                     <tr class="success" height="55px">
                   @endif
                     <td>{{ $player->name }}</td>
-                    <!--<td>
+                    <td>
                       <div class="input-group">
+                        <div class="input-group-addon"><i class="fa {{ $game->teams()->where('game_team.position', '=', $key)->first()->icon }}" style="color: #{{ $game->teams()->where('game_team.position', '=', $key)->first()->colour }};" aria-hidden="true"></i></div>
                         <input class="form-control" id="disabledInput" type="text" placeholder="{{ $game->teams()->where('game_team.position', '=', $key)->first()->name }}" disabled>
                       </div>                      
-                    </td>-->
+                    </td>
                   </tr>
                 @endforeach
               </tbody>
