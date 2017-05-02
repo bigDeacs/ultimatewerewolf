@@ -312,7 +312,7 @@ class GameController extends Controller {
 				foreach($request->input('death_list') as $key => $death)
 				{
 					$player = $game->players()->where('game_player.position', '=', $key)->firstOrFail();
-					$game->players()->sync([$player->id => ['status' => 'dead']], false);
+					$game->players()->where('game_id', $game->id)->sync([$player->id => ['status' => 'dead']], false);
 					$deaths++;
 				}
 			}
