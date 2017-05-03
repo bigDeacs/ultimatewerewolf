@@ -15,7 +15,6 @@
 			    <h1 class="panel-title"><strong>Users</strong></h1>
 			  </div>
 			  <div class="panel-body">
-			  	<div class="pull-right"><a href="/users/create" class="btn btn-primary">Create User <i class="fa fa-plus-square"></i></a></div>
 			  	<div style="clear:both;"></div>
 			  	<div class="row">
 					<div class="col-sm-12">
@@ -31,7 +30,7 @@
 						    <tbody>
 						    	@foreach($users as $user)
 									<tr>
-										<td scope="row">{{ $user->name }}</td>
+										<td scope="row">{{ $user->name }} <span class="badge" style="background-color: #e62929;">{{ $user->games->count() }}</span></td>
 										<td><a href="/users/{{ $user->id }}" class="btn btn-warning">Edit <i class="fa fa-pencil-square-o"></i></a></td>
 									</tr>
 						    	@endforeach
