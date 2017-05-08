@@ -16,12 +16,12 @@
 			  </div>
 			  <div class="panel-body">		
 				<div class="row">
-					<div class="col-sm-9 col-md-10">
+					<div class="col-sm-7 col-md-8">
 						Welcome to the Ultimate Werewolf Toolkit! This tool will help Ultimate Werewolf Moderators track and control games of Werewolf. You can store player names, use premade role recipes and stack everything throughout the game. Just click the "Create Game" button above to start playing!
 					</div>
-					<div class="col-sm-3 col-md-2">
+					<div class="col-sm-5 col-md-4">
 						<div class="pull-right btn-group">
-							<a class="btn btn-info" data-toggle="modal" data-target="#myModal">How To Use Toolkit</a>							
+							<a class="btn btn-info" data-toggle="modal" data-target="#myModal">How To</a>							
 							<a href="/games/create" class="btn btn-primary">Create Game <i class="fa fa-plus-square"></i></a>
 						 </div>
 					</div>					
@@ -75,7 +75,7 @@
 
 	<!-- Modal -->
 	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-	  <div class="modal-dialog" role="document">
+	  <div class="modal-dialog modal-lg" role="document">
 		<div class="modal-content">
 		  <div class="modal-header">
 			<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
