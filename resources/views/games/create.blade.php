@@ -39,7 +39,7 @@
 					Do you want to use a premade list of roles? Or choose your own expansions and roles? 
 				</div>
 				<div class="col-xs-12">
-					<small>Only choose on of the fields below</small>
+					<small>Only choose one of the fields below</small>
 				</div>
 			</div>
 			<div class="form-group row">

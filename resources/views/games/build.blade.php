@@ -32,7 +32,7 @@
           <input type="hidden" name="name" value="{{ $name }}">
           <div class="form-group row">
               @foreach($roles as $role)
-                  <div class="col-sm-2 col-xs-12">
+                  <div class="col-sm-3 col-xs-12">
                     <img src="{{ $role->image }}" class="img-responsive" alt="{{ $role->name }}" />
                     <select name="role_list[{{ $role->id }}]" class="form-control">
                       @for($x = 0; $x <= $role->max; $x++)
