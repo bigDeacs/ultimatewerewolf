@@ -141,6 +141,13 @@ class RecipeController extends Controller {
       return redirect('/recipes');
   }
 
+  public function remove($id)
+   {
+		$recipe = Recipe::find($id);
+		$recipe->delete();
+		return redirect('/recipes');
+   }
+
 
 
 }

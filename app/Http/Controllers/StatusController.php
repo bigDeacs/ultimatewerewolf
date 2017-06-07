@@ -107,6 +107,14 @@ class StatusController extends Controller {
       $status->save();
       return redirect('/statuses');
   }
+  
+  public function remove($id)
+   {
+		$status = Status::find($id);
+		$status->delete();
+		return redirect('/statuses');
+   }
+
 
 
 }

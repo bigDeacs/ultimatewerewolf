@@ -104,6 +104,14 @@ class TeamController extends Controller {
       $team->save();
       return redirect('/teams');
   }
+  
+  public function remove($id)
+   {
+		$team = Team::find($id);
+		$team->delete();
+		return redirect('/teams');
+   }
+
 
 
 }

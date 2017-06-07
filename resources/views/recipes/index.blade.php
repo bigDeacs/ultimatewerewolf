@@ -42,7 +42,12 @@
                         @endforeach
                       </td>
                       <td>{{ $recipe->players }}</td>
-						    		  <td><a href="/recipes/{{ $recipe->id }}/edit" class="btn btn-warning">Edit <i class="fa fa-pencil-square-o"></i></a></td>
+									  <td>
+											<div class="btn-group" role="group" aria-label="...">
+												<a href="/recipes/{{ $recipe->id }}/edit" class="btn btn-warning">Edit <i class="fa fa-pencil-square-o"></i></a>
+												<a href="/recipes/{!! $recipe->id !!}/remove" class="btn btn-danger">Remove <i class="fa fa-minus-square"></i></a>
+											</div>
+										</td>
 						    	  </tr>
 						    	@endforeach
 						    </tbody>

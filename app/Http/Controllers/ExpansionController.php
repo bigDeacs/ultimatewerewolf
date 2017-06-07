@@ -124,6 +124,14 @@ class ExpansionController extends Controller {
 			}
       return redirect('/expansions');
   }
+  
+  public function remove($id)
+   {
+		$expansion = Expansion::find($id);
+		$expansion->delete();
+		return redirect('/expansions');
+   }
+
 
 
 }

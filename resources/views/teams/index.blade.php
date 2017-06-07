@@ -43,7 +43,12 @@
                         @if($team->icon !== null)
                           <i class="fa {{ $team->icon }} fa-2x" style="color: #{{ $team->colour }};" aria-hidden="true"></i></td>
                         @endif
-						    		  <td><a href="/teams/{{ $team->id }}/edit" class="btn btn-warning">Edit <i class="fa fa-pencil-square-o"></i></a></td>
+									  <td>
+											<div class="btn-group" role="group" aria-label="...">
+												<a href="/teams/{{ $team->id }}/edit" class="btn btn-warning">Edit <i class="fa fa-pencil-square-o"></i></a>
+												<a href="/teams/{!! $team->id !!}/remove" class="btn btn-danger">Remove <i class="fa fa-minus-square"></i></a>
+											</div>
+										</td>
 						    	  </tr>
 						    	@endforeach
 						    </tbody>

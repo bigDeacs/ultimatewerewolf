@@ -40,7 +40,12 @@
                       <td scope="row">{{ $expansion->name }}</td>
                       <td>{{ count($expansion->roles) }}</td>
                       <td><img src="{{ $expansion->image }}" class="img-responsive" /></td>
-						    		  <td><a href="/expansions/{{ $expansion->id }}/edit" class="btn btn-warning">Edit <i class="fa fa-pencil-square-o"></i></a></td>
+									  <td>
+											<div class="btn-group" role="group" aria-label="...">
+												<a href="/expansions/{{ $expansion->id }}/edit" class="btn btn-warning">Edit <i class="fa fa-pencil-square-o"></i></a>
+												<a href="/expansions/{!! $expansion->id !!}/remove" class="btn btn-danger">Remove <i class="fa fa-minus-square"></i></a>
+											</div>
+										</td>
 						    	  </tr>
 						    	@endforeach
 						    </tbody>

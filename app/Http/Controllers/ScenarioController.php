@@ -104,6 +104,14 @@ class ScenarioController extends Controller {
       $scenario->save();
       return redirect('/scenarios');
   }
+  
+  public function remove($id)
+   {
+		$scenario = Scenario::find($id);
+		$scenario->delete();
+		return redirect('/scenarios');
+   }
+
 
 
 }

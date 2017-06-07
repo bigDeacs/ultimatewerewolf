@@ -21,16 +21,23 @@ Route::controllers([
 ]);
 
 Route::resource('games', 'GameController');
+Route::get('games/{games}/remove', ['as' => 'games.remove', 'uses' => 'GameController@remove']);
 Route::resource('expansions', 'ExpansionController');
+Route::get('expansions/{expansions}/remove', ['as' => 'expansions.remove', 'uses' => 'ExpansionController@remove']);
 Route::resource('roles', 'RoleController');
 Route::get('roles/{roles}/remove', ['as' => 'roles.remove', 'uses' => 'RoleController@remove']);
 Route::resource('recipes', 'RecipeController');
+Route::get('recipes/{recipes}/remove', ['as' => 'recipes.remove', 'uses' => 'RecipeController@remove']);
 Route::resource('players', 'PlayerController');
 Route::get('players/{players}/remove', ['as' => 'players.remove', 'uses' => 'PlayerController@remove']);
 Route::resource('scenarios', 'ScenarioController');
+Route::get('scenarios/{scenarios}/remove', ['as' => 'scenarios.remove', 'uses' => 'ScenarioController@remove']);
 Route::resource('teams', 'TeamController');
+Route::get('teams/{teams}/remove', ['as' => 'teams.remove', 'uses' => 'TeamController@remove']);
 Route::resource('statuses', 'StatusController');
+Route::get('statuses/{statuses}/remove', ['as' => 'statuses.remove', 'uses' => 'StatusController@remove']);
 Route::resource('users', 'UserController');
+Route::get('users/{users}/remove', ['as' => 'users.remove', 'uses' => 'UserController@remove']);
 
 Route::post('sort', '\Rutorika\Sortable\SortableController@sort');
 

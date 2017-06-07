@@ -36,7 +36,12 @@
                       				  <td scope="row">{{ $game->id }}</td>
                       				  <td>{{ $game->name }}</td>
                       				  <td>{{ $game->created_at }}</td>
-						    		  <td><a href="/games/{{ $game->id }}/edit" class="btn btn-warning">View <i class="fa fa-pencil-square-o"></i></a></td>
+									  <td>
+											<div class="btn-group" role="group" aria-label="...">
+												<a href="/games/{{ $game->id }}/edit" class="btn btn-warning">View <i class="fa fa-pencil-square-o"></i></a>
+												<a href="/games/{!! $game->id !!}/remove" class="btn btn-danger">Remove <i class="fa fa-minus-square"></i></a>
+											</div>
+										</td>
 						    	  </tr>
 						    	@endforeach
 						    </tbody>

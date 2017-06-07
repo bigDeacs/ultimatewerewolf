@@ -34,7 +34,12 @@
 							      <tr>
                       <td scope="row">{{ $scenario->description }}</td>
                       <td>{{ $scenario->deaths }}</td>
-						    		  <td><a href="/scenarios/{{ $scenario->id }}/edit" class="btn btn-warning">Edit <i class="fa fa-pencil-square-o"></i></a></td>
+									  <td>
+											<div class="btn-group" role="group" aria-label="...">
+												<a href="/scenarios/{{ $scenario->id }}/edit" class="btn btn-warning">Edit <i class="fa fa-pencil-square-o"></i></a>
+												<a href="/scenarios/{!! $scenario->id !!}/remove" class="btn btn-danger">Remove <i class="fa fa-minus-square"></i></a>
+											</div>
+										</td>
 						    	  </tr>
 						    	@endforeach
 						    </tbody>
