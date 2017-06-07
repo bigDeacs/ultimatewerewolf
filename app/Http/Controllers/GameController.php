@@ -342,7 +342,7 @@ class GameController extends Controller {
    {
 		$game = Game::find($id);
 		$game->delete();
-		return redirect('/games');
+		return redirect('/');
    }
 
 
