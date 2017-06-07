@@ -24,6 +24,9 @@
 						  <table class="table dataTable table-striped table-hover">
 						    <thead>
 						    	<tr>
+									<col width="70%">
+									<col width="10%">
+									<col width="30%">
 						    		<th>Description</th>
                     <th># of Deaths</th>
 						    		<th></th>

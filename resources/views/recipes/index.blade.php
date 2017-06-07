@@ -22,12 +22,16 @@
 						<p><strong>Recipes:</strong></p>
 						<div class="table-responsive">
 						  <table class="table dataTable table-striped table-hover">
-						    <thead>
+						    <thead>									
 						    	<tr>
+									<col width="30%">
+									<col width="40%">
+									<col width="10%">
+									<col width="30%">
 						    		<th>Name</th>
-                    <th>Roles</th>
+									<th>Roles</th>
 						    		<th>Players</th>
-                    <th></th>
+									<th></th>
 						    	</tr>
 						    </thead>
 						    <tbody>

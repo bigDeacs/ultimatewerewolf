@@ -71,8 +71,8 @@
 						</td>
 						<td>
 								<div class="btn-group" role="group" aria-label="...">
-									<a href="/roles/{{ $roles->id }}/edit" class="btn btn-warning">Edit <i class="fa fa-pencil-square-o"></i></a>
-									<a href="/roles/{!! $roles->id !!}/remove" class="btn btn-danger">Remove <i class="fa fa-minus-square"></i></a>
+									<a href="/roles/{{ $role->id }}/edit" class="btn btn-warning">Edit <i class="fa fa-pencil-square-o"></i></a>
+									<a href="/roles/{!! $role->id !!}/remove" class="btn btn-danger">Remove <i class="fa fa-minus-square"></i></a>
 								</div>
 						</td>
 						<td class="sortable-handle"><span class="glyphicon glyphicon-sort"></span></td>
