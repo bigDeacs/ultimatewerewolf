@@ -184,12 +184,6 @@
 @endsection
 
 @section('scripts')
-      <script>
-            $('.name_list').select2({
-            	placeholder: 'Choose a name',
-            	tags: true
-            });
-      </script>
 	  <script>
 		$('.team').popover()
 	  </script>
