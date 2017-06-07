@@ -104,5 +104,10 @@ class PlayerController extends Controller {
       return redirect('/players');
   }
 
+   public function remove($id)
+   {
+        DB::table('players')->where('id', '=', $id)->delete();
+        return redirect('/players');
+   }
 
 }

@@ -23,8 +23,10 @@ Route::controllers([
 Route::resource('games', 'GameController');
 Route::resource('expansions', 'ExpansionController');
 Route::resource('roles', 'RoleController');
+Route::get('roles/{roles}/remove', ['as' => 'roles.remove', 'uses' => 'RoleController@remove']);
 Route::resource('recipes', 'RecipeController');
 Route::resource('players', 'PlayerController');
+Route::get('players/{players}/remove', ['as' => 'players.remove', 'uses' => 'PlayerController@remove']);
 Route::resource('scenarios', 'ScenarioController');
 Route::resource('teams', 'TeamController');
 Route::resource('statuses', 'StatusController');

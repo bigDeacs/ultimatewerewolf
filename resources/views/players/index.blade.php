@@ -26,13 +26,15 @@
 						    	<tr>
 						    		<th>Name</th>
 						    		<th></th>
+									<th></th>
 						    	</tr>
 						    </thead>
 						    <tbody>
 						    	@foreach($players as $player)
 							      <tr>
-                      <td scope="row">{{ $player->name }}</td>
-						    		  <td><a href="/players/{{ $player->id }}/edit" class="btn btn-warning">Edit <i class="fa fa-pencil-square-o"></i></a></td>
+										<td scope="row">{{ $player->name }}</td>
+										<td><a href="/players/{{ $player->id }}/edit" class="btn btn-warning">Edit <i class="fa fa-pencil-square-o"></i></a></td>
+										<td><a href="/players/{!! $player->id !!}/remove" class="btn btn-danger">Remove <i class="fa fa-minus-square"></i></a></td>
 						    	  </tr>
 						    	@endforeach
 						    </tbody>

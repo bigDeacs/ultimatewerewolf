@@ -136,6 +136,11 @@ class RoleController extends Controller {
       return redirect('/roles');
   }
 
+  public function remove($id)
+   {
+        DB::table('roles')->where('id', '=', $id)->delete();
+        return redirect('/roles');
+   }
 
 
 }

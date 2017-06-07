@@ -70,6 +70,7 @@
                         @endif
 						    		  <td><a href="/roles/{{ $role->id }}/edit" class="btn btn-warning">Edit <i class="fa fa-pencil-square-o"></i></a></td>
                       <td class="sortable-handle"><span class="glyphicon glyphicon-sort"></span></td>
+					  <td><a href="/roles/{!! $role->id !!}/remove" class="btn btn-danger">Remove <i class="fa fa-minus-square"></i></a></td>
 						    	  </tr>
 						    	@endforeach
 						    </tbody>
