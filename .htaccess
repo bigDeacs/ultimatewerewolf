@@ -1,17 +1,19 @@
+#
+# Custom error pages
+#
+ErrorDocument 404 /error/404.php
+ErrorDocument 403 /error/403.php
+
 <IfModule mod_rewrite.c>
-    <IfModule mod_negotiation.c>
-        Options -MultiViews
-    </IfModule>
-
     RewriteEngine On
-
-    # Redirect Trailing Slashes...
-    RewriteRule ^(.*)/$ /$1 [L,R=301]
-
-    # Handle Front Controller...
-    RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteCond %{REQUEST_FILENAME} !-f
-    RewriteRule ^ index.php [L]
+    RewriteBase /
+    RewriteRule ^(emails)($|/) - [L]
+    RewriteCond %{REQUEST_URI} !^/sitemap\.xml
+    RewriteRule ^(.*)$ /public/$1 [L]
+    RewriteCond %{HTTP_HOST} ^www\.werewolftoolkit\.com$
+    RewriteRule ^/?$ "http\:\/\/werewolftoolkit\.com\/" [R=301,L]
+    RewriteCond %{HTTP_HOST} ^128\.199\.183\.184
+    RewriteRule (.*) http://www.werewolftoolkit.com/$1 [R=301,L]
 </IfModule>
 
 ## EXPIRES CACHING ##
