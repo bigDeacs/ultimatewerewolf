@@ -84,7 +84,6 @@ class GameController extends Controller {
   	public function edit($id)
   	{
       	$game = Game::where('id', '=', $id)->firstOrFail();
-      	dd($game);
       	return view('games.edit', compact('game'));
   	}
 
