@@ -92,6 +92,7 @@
 						  </td>
                           <td>
                             <select name="name_list[{{ $key }}]" id="name_list_{{ $key }}" class="name_list" class="form-control" style="width:100%;" required>
+							  <option></option>
                               @foreach($players as $player)
                                 <option value="{{ $player->id }}">{{ $player->name }}</option>
                               @endforeach
