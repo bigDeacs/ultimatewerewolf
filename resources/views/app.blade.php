@@ -36,9 +36,15 @@
 				  <img src="/logo.png" class="img-responsive" alt="Werewolf Toolkit Logo" />
 				</a>
 				@if(Auth::check())
-					<a href="{{ url('/') }}" class="list-group-item text-center {{ Request::url() == 'http://werewolftoolkit.com' ||Request::url() == 'http://werewolftoolkit.com/home' ? 'active' : '' }}" style="font-size: 12px;">
-					  <i class="fa fa-trophy fa-2x"></i><br/>Games
-					</a>
+				    @if(Auth::user()->role == 'b')
+					    <a href="{{ url('/') }}" class="list-group-item text-center {{ Request::url() == 'http://werewolftoolkit.com' ||Request::url() == 'http://werewolftoolkit.com/home' ? 'active' : '' }}" style="font-size: 12px;">
+					      <i class="fa fa-trophy fa-2x"></i><br/>Games
+				 	    </a>
+				    @else
+					    <a href="{{ url('/games') }}" class="list-group-item text-center {{ Request::url() == 'http://werewolftoolkit.com' ||Request::url() == 'http://werewolftoolkit.com/home' ? 'active' : '' }}" style="font-size: 12px;">
+						  <i class="fa fa-trophy fa-2x"></i><br/>Games
+						</a>
+					@endif
 					<a href="{{ url('/players') }}" class="list-group-item text-center {{ Request::url() == 'http://werewolftoolkit.com/players' ? 'active' : '' }}" style="font-size: 12px;">
 					  <i class="fa fa-users fa-2x"></i><br/>Players
 					</a>

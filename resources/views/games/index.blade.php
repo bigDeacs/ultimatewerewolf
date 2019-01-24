@@ -38,7 +38,7 @@
                       				  <td>{{ $game->created_at }}</td>
 									  <td>
 											<div class="btn-group" role="group" aria-label="...">
-												<a href="/games/{{ $game->id }}/edit" class="btn btn-warning">View <i class="fa fa-pencil-square-o"></i></a>
+												<a href="/games/{{ $game->id }}" class="btn btn-warning">View <i class="fa fa-pencil-square-o"></i></a>
 												<a href="/games/{!! $game->id !!}/remove" class="btn btn-danger">Remove <i class="fa fa-minus-square"></i></a>
 											</div>
 										</td>
