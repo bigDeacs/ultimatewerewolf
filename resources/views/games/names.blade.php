@@ -192,8 +192,9 @@
           });
 	  </script>
 	  <script>
+          var previous;
           $('.name_list').on('focus', function () {
-              var previous = $(this).val();
+              previous = $(this).val();
           }).change(function() {
               var val = $(this).val();
               var thisId = $(this).attr('id');
