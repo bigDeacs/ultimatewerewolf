@@ -13,11 +13,11 @@ return [
 	| to have a conventional place to find your various credentials.
 	|
 	*/
-
-	'mailgun' => [
-		'domain' => 'ozboardgamer.com',
-		'secret' => 'key-17cd24ee7e04d9e750c57655300a8ad1',
-	],
+	
+    'mailgun' => [
+        'domain' => env('MAILGUN_DOMAIN'),
+        'secret' => env('MAILGUN_SECRET'),
+    ],
 
 	'mandrill' => [
 		'secret' => '',
