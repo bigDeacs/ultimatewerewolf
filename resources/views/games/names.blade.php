@@ -193,7 +193,7 @@
 	  </script>
 	  <script>
 		  $('.name_list').change(function(){
-		      console.log($(this));
+		      console.log($(this).data("selected"));
 		  	var val = $(this).val();
 		  	var sel = $(this);
 
