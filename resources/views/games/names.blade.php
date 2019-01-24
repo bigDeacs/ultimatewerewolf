@@ -192,6 +192,7 @@
 
           $(function(){
               $('.name_list').change(function(){
+                  console.log($(this));
                   var val = $(this).val();
                   var sel = $(this);
 
