@@ -195,12 +195,12 @@
           $('.name_list').on('focus', function () {
               var previous = $(this).val();
           }).change(function() {
-			  for (var i = 0; i < others.length; i++) {
-                  $(others[i]).find('option[value='+previous+']').removeAttr('disabled');
-              }
               var val = $(this).val();
               var thisId = $(this).attr('id');
               var others = $(".name_list").not('[id="'+thisId+'"]');
+			  for (var i = 0; i < others.length; i++) {
+                  $(others[i]).find('option[value='+previous+']').removeAttr('disabled');
+              }
               if(val != "")
               {
                   for (var i = 0; i < others.length; i++) {
