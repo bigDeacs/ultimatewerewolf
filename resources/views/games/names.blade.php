@@ -91,7 +91,7 @@
 							  </button>
 						  </td>
                           <td>
-                            <select name="name_list[{{ $key }}]" class="name_list" class="form-control" style="width:100%;" required>
+                            <select name="name_list[{{ $key }}]" class="name_list" class="form-control" style="width:100%;" onchange="updateNames()" required>
                               @foreach($players as $player)
                                 <option value="{{ $player->id }}">{{ $player->name }}</option>
                               @endforeach

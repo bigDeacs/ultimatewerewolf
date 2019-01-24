@@ -15,7 +15,7 @@ return [
 	|
 	*/
 
-	'driver' => env('MAIL_DRIVER', 'mailgun'),
+	'driver' => env('MAIL_DRIVER', 'mail'),
 
 	/*
 	|--------------------------------------------------------------------------
@@ -106,7 +106,7 @@ return [
 	|
 	*/
 
-	'sendmail' => '/usr/sbin/sendmail -bs',
+    'sendmail' => env('MAIL_SENDMAIL', '/usr/sbin/sendmail -bs'),
 
 	/*
 	|--------------------------------------------------------------------------
