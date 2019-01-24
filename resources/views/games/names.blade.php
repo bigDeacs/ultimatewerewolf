@@ -91,7 +91,7 @@
 							  </button>
 						  </td>
                           <td>
-                            <select name="name_list[{{ $key }}]" id="name_list_{{ $key }}" class="name_list" class="form-control" style="width:100%;" onchange="updateNames(name_list_{{ $key }})" required>
+                            <select name="name_list[{{ $key }}]" id="name_list_{{ $key }}" class="name_list" class="form-control" style="width:100%;" required>
                               @foreach($players as $player)
                                 <option value="{{ $player->id }}">{{ $player->name }}</option>
                               @endforeach
@@ -189,9 +189,41 @@
               placeholder: 'Choose a player',
               tags: true
           });
-          function updateNames(id) {
-              console.log($(".name_list:not(#"+id+")"));
-		  }
+
+          $(function(){
+              $('.name_list').change(function(){
+                  var val = $(this).val();
+                  var sel = $(this);
+
+                  if(val != "")
+                  {
+                      if(sel.data("selected"))
+                      {
+                          var oldval = sel.data("selected");
+                          sel
+                              .siblings('select')
+                              .append($('<option/>').attr("value", oldval).text(oldval));
+                      }
+
+                      sel
+                          .data("selected", val)
+                          .siblings('select')
+                          .children('option[value=' + val + ']')
+                          .remove();
+                  }
+                  else if(val == "")
+                  {
+                      if(sel.data("selected"))
+                      {
+                          var oldval = sel.data("selected");
+                          sel
+                              .removeData("selected")
+                              .siblings('select')
+                              .append($('<option/>').attr("value", oldval).text(oldval));
+                      }
+                  }
+              });
+          });
 	  </script>
 	  <script>
 		$('.team').popover()
