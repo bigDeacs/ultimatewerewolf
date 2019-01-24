@@ -37,11 +37,11 @@
 				</a>
 				@if(Auth::check())
 				    @if(Auth::user()->role == 'b')
-					    <a href="{{ url('/') }}" class="list-group-item text-center {{ Request::url() == 'http://werewolftoolkit.com' ||Request::url() == 'http://werewolftoolkit.com/home' ? 'active' : '' }}" style="font-size: 12px;">
+					    <a href="{{ url('/games') }}" class="list-group-item text-center {{ Request::url() == 'http://werewolftoolkit.com' ||Request::url() == 'http://werewolftoolkit.com/home' ? 'active' : '' }}" style="font-size: 12px;">
 					      <i class="fa fa-trophy fa-2x"></i><br/>Games
 				 	    </a>
 				    @else
-					    <a href="{{ url('/games') }}" class="list-group-item text-center {{ Request::url() == 'http://werewolftoolkit.com' ||Request::url() == 'http://werewolftoolkit.com/home' ? 'active' : '' }}" style="font-size: 12px;">
+					    <a href="{{ url('/') }}" class="list-group-item text-center {{ Request::url() == 'http://werewolftoolkit.com' ||Request::url() == 'http://werewolftoolkit.com/home' ? 'active' : '' }}" style="font-size: 12px;">
 						  <i class="fa fa-trophy fa-2x"></i><br/>Games
 						</a>
 					@endif
