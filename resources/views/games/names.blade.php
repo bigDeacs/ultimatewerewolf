@@ -192,15 +192,15 @@
           });
 	  </script>
 	  <script>
-          var previous;
+          var previous = [];
           $('.name_list').on('focus', function () {
-              previous = $(this).val();
+              previous[$(this).attr('id')] = $(this).val();
           }).change(function() {
               var val = $(this).val();
               var thisId = $(this).attr('id');
               var others = $(".name_list").not('[id="'+thisId+'"]');
 			  for (var i = 0; i < others.length; i++) {
-                  $(others[i]).find('option[value='+previous+']').removeAttr('disabled');
+                  $(others[i]).find('option[value='+previous[$(this).attr('id')]+']').removeAttr('disabled');
               }
               if(val != "")
               {
@@ -208,7 +208,7 @@
                       $(others[i]).find('option[value='+val+']').attr('disabled', 'disabled');
                   }
               }
-              previous = $(this).val();
+              previous[$(this).attr('id')] = $(this).val();
 		  });
 	  </script>
 	  <script>
