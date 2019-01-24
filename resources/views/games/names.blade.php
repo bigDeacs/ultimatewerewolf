@@ -190,7 +190,7 @@
               tags: true
           });
           function updateNames(id) {
-              console.log(id);
+              console.log($(".name_list:not(#"+id+")"));
 		  }
 	  </script>
 	  <script>
