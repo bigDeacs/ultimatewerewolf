@@ -193,38 +193,19 @@
 	  </script>
 	  <script>
 		  $('.name_list').change(function(){
-		      console.log($(this));
 		  	var val = $(this).val();
 		  	var thisId = $(this).attr('id');
 		  	var others = $(".name_list").not('[id="'+thisId+'"]');
-              console.log(others);
 
 		  	if(val != "")
 		  	{
-		  		if(sel.data("selected"))
-		  		{
-		  			var oldval = sel.data("selected");
-		  			sel
-		  			.siblings('select')
-		  			.append($('<option/>').attr("value", oldval).text(oldval));
-		  		}
-
-		  		sel
-				  .data("selected", val)
-				  .siblings('select')
-				  .children('option[value=' + val + ']')
-				  .remove();
-		  	}
-		  	else if(val == "")
-		  	{
-		  		if(sel.data("selected"))
-		  		{
-		  			var oldval = sel.data("selected");
-					  sel
-					  .removeData("selected")
-					  .siblings('select')
-					  .append($('<option/>').attr("value", oldval).text(oldval));
-		  		}
+                // loop trough all the selects
+                for (var i = 0; i < others.length; i++) {
+                    //re-enable all options before
+                    $(others[i]).find('option').removeAttr('disabled');
+                    // loop trough all the values
+                    $(others[i]).find('option[value='+val+']').attr('disabled', 'disabled');
+                }
 		  	}
 		  });
 	  </script>
