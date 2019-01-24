@@ -23,7 +23,9 @@
 						  <table class="table dataTable table-striped table-hover">
 						    <thead>
 						    	<tr>
+									<th>Id</th>
 						    		<th>Name</th>
+									<th>Email</th>
 						    		<th>Games</th>
 									<th></th>
 						    	</tr>
@@ -31,7 +33,9 @@
 						    <tbody>
 						    	@foreach($users as $user)
 									<tr>
+										<td scope="row">{{ $user->id }}</td>
 										<td scope="row">{{ $user->name }}</td>
+										<td scope="row">{{ $user->email }}</td>
 										<td><span class="badge" style="background-color: #e62929;">{{ $user->games->count() }}</span></td>
 										<td>
 											<div class="btn-group" role="group" aria-label="...">

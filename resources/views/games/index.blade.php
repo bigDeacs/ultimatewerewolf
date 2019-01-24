@@ -34,7 +34,7 @@
 						    	@foreach($games as $game)
 							      <tr>
                       				  <td scope="row">{{ $game->id }}</td>
-                      				  <td>{{ $game->name }} ({{ $game->user }})</td>
+                      				  <td>{{ $game->name }} ({{ $game->user->id }}: {{ $game->user->name }})</td>
                       				  <td>{{ $game->created_at }}</td>
 									  <td>
 											<div class="btn-group" role="group" aria-label="...">
