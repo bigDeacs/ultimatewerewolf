@@ -192,21 +192,22 @@
           });
 	  </script>
 	  <script>
-		  $('.name_list').change(function(){
-		  	var val = $(this).val();
-		  	var thisId = $(this).attr('id');
-		  	var others = $(".name_list").not('[id="'+thisId+'"]');
-
-		  	if(val != "")
-		  	{
-                // loop trough all the selects
-                for (var i = 0; i < others.length; i++) {
-                    //re-enable all options before
-                    $(others[i]).find('option').removeAttr('disabled');
-                    // loop trough all the values
-                    $(others[i]).find('option[value='+val+']').attr('disabled', 'disabled');
-                }
-		  	}
+          $('.name_list').on('focus', function () {
+              var previous = $(this).val();
+          }).change(function() {
+			  for (var i = 0; i < others.length; i++) {
+                  $(others[i]).find('option[value='+previous+']').removeAttr('disabled');
+              }
+              var val = $(this).val();
+              var thisId = $(this).attr('id');
+              var others = $(".name_list").not('[id="'+thisId+'"]');
+              if(val != "")
+              {
+                  for (var i = 0; i < others.length; i++) {
+                      $(others[i]).find('option[value='+val+']').attr('disabled', 'disabled');
+                  }
+              }
+              previous = $(this).val();
 		  });
 	  </script>
 	  <script>
