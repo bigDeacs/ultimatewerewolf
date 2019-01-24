@@ -189,42 +189,41 @@
               placeholder: 'Choose a player',
               tags: true
           });
+	  </script>
+	  <script>
+		  $('.name_list').change(function(){
+		      console.log($(this));
+		  	var val = $(this).val();
+		  	var sel = $(this);
 
-          $(function(){
-              $('.name_list').change(function(){
-                  console.log($(this));
-                  var val = $(this).val();
-                  var sel = $(this);
+		  	if(val != "")
+		  	{
+		  		if(sel.data("selected"))
+		  		{
+		  			var oldval = sel.data("selected");
+		  			sel
+		  			.siblings('select')
+		  			.append($('<option/>').attr("value", oldval).text(oldval));
+		  		}
 
-                  if(val != "")
-                  {
-                      if(sel.data("selected"))
-                      {
-                          var oldval = sel.data("selected");
-                          sel
-                              .siblings('select')
-                              .append($('<option/>').attr("value", oldval).text(oldval));
-                      }
-
-                      sel
-                          .data("selected", val)
-                          .siblings('select')
-                          .children('option[value=' + val + ']')
-                          .remove();
-                  }
-                  else if(val == "")
-                  {
-                      if(sel.data("selected"))
-                      {
-                          var oldval = sel.data("selected");
-                          sel
-                              .removeData("selected")
-                              .siblings('select')
-                              .append($('<option/>').attr("value", oldval).text(oldval));
-                      }
-                  }
-              });
-          });
+		  		sel
+				  .data("selected", val)
+				  .siblings('select')
+				  .children('option[value=' + val + ']')
+				  .remove();
+		  	}
+		  	else if(val == "")
+		  	{
+		  		if(sel.data("selected"))
+		  		{
+		  			var oldval = sel.data("selected");
+					  sel
+					  .removeData("selected")
+					  .siblings('select')
+					  .append($('<option/>').attr("value", oldval).text(oldval));
+		  		}
+		  	}
+		  });
 	  </script>
 	  <script>
 		$('.team').popover()
