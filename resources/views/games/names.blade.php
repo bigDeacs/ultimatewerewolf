@@ -196,8 +196,8 @@
 		      console.log($(this));
 		  	var val = $(this).val();
 		  	var thisId = $(this).attr('id');
-              console.log(thisId);
-		  	var sel = $(this);
+		  	var others = $(".name_list").not('[id="'+thisId+'"]');
+              console.log(others);
 
 		  	if(val != "")
 		  	{
