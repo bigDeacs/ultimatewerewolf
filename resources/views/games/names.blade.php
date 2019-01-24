@@ -91,7 +91,7 @@
 							  </button>
 						  </td>
                           <td>
-                            <select name="name_list[{{ $key }}]" class="name_list" class="form-control" style="width:100%;" onchange="updateNames()" required>
+                            <select name="name_list[{{ $key }}]" class="name_list" class="form-control" id="name_list" style="width:100%;" onchange="updateNames()" required>
                               @foreach($players as $player)
                                 <option value="{{ $player->id }}">{{ $player->name }}</option>
                               @endforeach
@@ -184,6 +184,12 @@
 @endsection
 
 @section('scripts')
+	  <script>
+          $('#name_list').select2({
+              placeholder: 'Choose a player',
+              tags: true
+          });
+	  </script>
 	  <script>
 		$('.team').popover()
 	  </script>
