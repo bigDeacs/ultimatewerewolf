@@ -195,6 +195,8 @@
 		  $('.name_list').change(function(){
 		      console.log($(this));
 		  	var val = $(this).val();
+		  	var thisId = $(this).data.id;
+              console.log(thisId);
 		  	var sel = $(this);
 
 		  	if(val != "")
