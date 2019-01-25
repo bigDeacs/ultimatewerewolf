@@ -69,7 +69,7 @@
             border-radius: 50%;
             background:#5a55a3;
         }
-        .select2-hidden-accessible .select2-container {
+        .select2-container {
             width: 100%!important;
         }
     </style>
@@ -112,7 +112,7 @@
 			</div>
 
 			<div class="form-group row">
-                <div class="col-sm-6 col-xs-12">
+                <div class="col-sm-4 col-xs-12">
                     <label for="name">Recipe or Expansions?</label>
                     <label class="radio">Recipes
                         <input type="radio" name="choice" value="recipe" required>
@@ -123,7 +123,7 @@
                         <span class="checkround"></span>
                     </label>
                 </div>
-              <div class="col-sm-6 col-xs-12 hidden">
+              <div class="col-sm-8 col-xs-12 hidden">
                   <label for="name">Chose a Recipe</label>
                   <select name="recipe" class="form-control">
                     <option></option>
@@ -132,7 +132,7 @@
                     @endforeach
                   </select>
               </div>
-              <div class="col-sm-6 col-xs-12 hidden">
+              <div class="col-sm-8 col-xs-12 hidden">
                 <label for="name">Chose expansions</label>
                 <select name="expansions[]" multiple class="form-control js-expansions">
                   <option></option>
