@@ -108,11 +108,8 @@
             </div>
           </div>
           <div class="row">
-				<div class="col-xs-12">
+				<div class="col-xs-12" style="margin-bottom: 10px;">
 					Do you want to use a premade list of roles? Or choose your own expansions and roles? 
-				</div>
-				<div class="col-xs-12">
-					<small>Only choose one of the fields below</small>
 				</div>
 			</div>
 
