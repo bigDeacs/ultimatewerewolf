@@ -36,7 +36,7 @@
             height: 20px;
             width: 20px;
             background-color: #fff ;
-            border-color:#f8204f;
+            border-color:#5a55a3;
             border-style:solid;
             border-width:2px;
             border-radius: 50%;
@@ -67,7 +67,10 @@
             width: 12px;
             height: 12px;
             border-radius: 50%;
-            background:#f8204f;
+            background:#5a55a3;
+        }
+        .select2-hidden-accessible .select2-container {
+            width: 100%!important;
         }
     </style>
 @endsection
