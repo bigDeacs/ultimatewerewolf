@@ -45,7 +45,7 @@
 			<div class="form-group row">
               <div class="col-sm-6 col-xs-12">
                   <label for="name">Chose a Recipe</label>
-                  <select name="recipe" class="form-control">
+                  <select name="recipe" class="form-control" required>
                     <option></option>
                     @foreach($recipes as $recipe)
                       <option value="{{ $recipe->id }}">{{ $recipe->name }}</option>
@@ -54,7 +54,7 @@
               </div>
               <div class="col-sm-6 col-xs-12">
                 <label for="name">Chose expansions</label>
-                <select name="expansions[]" multiple class="form-control js-expansions">
+                <select name="expansions[]" multiple class="form-control js-expansions" required>
                   <option></option>
                   @foreach($expansions as $expansion)
                     <option value="{{ $expansion->id }}">{{ $expansion->name }}</option>
@@ -76,5 +76,12 @@
 @section('scripts')
   <script type="text/javascript">
     $(".js-expansions").select2();
+    jQuery(function ($) {
+        var $selects = $('select[name=recipe],select[name=expansions]');
+        $selects.on('select', function () {
+            // Set the required property of the other input to false if this input is not empty.
+            $selects.not(this).prop('required', !$(this).val().length);
+        });
+    });
   </script>
 @endsection
