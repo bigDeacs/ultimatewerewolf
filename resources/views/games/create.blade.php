@@ -5,6 +5,71 @@
 @endsection
 
 @section('head')
+    <style>
+        .radio {
+
+            display: block;
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 12px;
+            cursor: pointer;
+            font-size: 20px;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none
+        }
+
+        /* Hide the browser's default radio button */
+        .radio input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        /* Create a custom radio button */
+        .checkround {
+
+            position: absolute;
+            top: 6px;
+            left: 0;
+            height: 20px;
+            width: 20px;
+            background-color: #fff ;
+            border-color:#f8204f;
+            border-style:solid;
+            border-width:2px;
+            border-radius: 50%;
+        }
+
+
+        /* When the radio button is checked, add a blue background */
+        .radio input:checked ~ .checkround {
+            background-color: #fff;
+        }
+
+        /* Create the indicator (the dot/circle - hidden when not checked) */
+        .checkround:after {
+            content: "";
+            position: absolute;
+            display: none;
+        }
+
+        /* Show the indicator (dot/circle) when checked */
+        .radio input:checked ~ .checkround:after {
+            display: block;
+        }
+
+        /* Style the indicator (dot/circle) */
+        .radio .checkround:after {
+            left: 2px;
+            top: 2px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background:#f8204f;
+        }
+    </style>
 @endsection
 
 @section('content')
@@ -42,11 +107,18 @@
 					<small>Only choose one of the fields below</small>
 				</div>
 			</div>
+
 			<div class="form-group row">
                 <div class="col-sm-6 col-xs-12">
-                    <label for="name">Recipe</label>
-                    <input type="radio" name="choice" value="recipe" required> Recipes<br>
-                    <input type="radio" name="choice" value="expansions"> Expansions<br>
+                    <label for="name">Recipe or Expansions?</label>
+                    <label class="radio">Recipes
+                        <input type="radio" name="choice" value="recipe" required>
+                        <span class="checkround"></span>
+                    </label>
+                    <label class="radio">Expansions
+                        <input type="radio" name="choice" value="expansions">
+                        <span class="checkround"></span>
+                    </label>
                 </div>
               <div class="col-sm-6 col-xs-12 hidden">
                   <label for="name">Chose a Recipe</label>
@@ -84,7 +156,7 @@
     $( document ).ready(function() {
         var choice = $('input:radio[name=choice]');
         var recipe = $('select[name="recipe"]').parent();
-        var expansions = $('select[name="expansions"]').parent();
+        var expansions = $('select[name="expansions[]"]').parent();
         var all=recipe.add(expansions);
         choice.change(function(){
             var value=this.value;
