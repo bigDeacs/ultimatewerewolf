@@ -43,18 +43,23 @@
 				</div>
 			</div>
 			<div class="form-group row">
-              <div class="col-sm-6 col-xs-12">
+                <div class="col-sm-6 col-xs-12">
+                    <label for="name">Recipe</label>
+                    <input type="radio" name="choice" value="recipe" required> Recipes<br>
+                    <input type="radio" name="choice" value="expansions"> Expansions<br>
+                </div>
+              <div class="col-sm-6 col-xs-12 hidden">
                   <label for="name">Chose a Recipe</label>
-                  <select name="recipe" class="form-control" required>
+                  <select name="recipe" class="form-control">
                     <option></option>
                     @foreach($recipes as $recipe)
                       <option value="{{ $recipe->id }}">{{ $recipe->name }}</option>
                     @endforeach
                   </select>
               </div>
-              <div class="col-sm-6 col-xs-12">
+              <div class="col-sm-6 col-xs-12 hidden">
                 <label for="name">Chose expansions</label>
-                <select name="expansions[]" multiple class="form-control js-expansions" required>
+                <select name="expansions[]" multiple class="form-control js-expansions">
                   <option></option>
                   @foreach($expansions as $expansion)
                     <option value="{{ $expansion->id }}">{{ $expansion->name }}</option>
@@ -76,11 +81,20 @@
 @section('scripts')
   <script type="text/javascript">
     $(".js-expansions").select2();
-    jQuery(function ($) {
-        var $selects = $('select[name=recipe],select[name=expansions]');
-        $selects.on('select', function () {
-            // Set the required property of the other input to false if this input is not empty.
-            $selects.not(this).prop('required', !$(this).val().length);
+    $( document ).ready(function() {
+        var choice = $('input:radio[name=choice]');
+        var recipe = $('select[name="recipe"]').parent();
+        var expansions = $('select[name="expansions"]').parent();
+        var all=recipe.add(expansions);
+        choice.change(function(){
+            var value=this.value;
+            all.addClass('hidden');
+            if (value == 'recipe'){
+                recipe.removeClass('hidden');
+            }
+            if (value == 'expansions'){
+                expansions.removeClass('hidden');
+            }
         });
     });
   </script>
