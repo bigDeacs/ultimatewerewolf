@@ -6,10 +6,15 @@
 
 @section('head')
     <style>
-        .radio {
-
+        .choice_label {
             display: block;
+        }
+        .radio {
             position: relative;
+            display: inline-block!important;
+            margin-right: 15px!important;
+            margin-bottom: 10px!important;
+            margin-top: 0!important;
             padding-left: 30px;
             margin-bottom: 12px;
             cursor: pointer;
@@ -113,7 +118,7 @@
 
 			<div class="form-group row">
                 <div class="col-sm-4 col-xs-12">
-                    <label for="name">Recipe or Expansions?</label>
+                    <label for="choice" class="choice_label">Recipe or Expansions?</label>
                     <label class="radio">Recipes
                         <input type="radio" name="choice" value="recipe" required>
                         <span class="checkround"></span>
