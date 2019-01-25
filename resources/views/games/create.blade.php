@@ -74,7 +74,7 @@
             border-radius: 50%;
             background:#5a55a3;
         }
-        .select2-container {
+        .expansions_select > .select2-container {
             width: 100%!important;
         }
     </style>
@@ -134,7 +134,7 @@
                     @endforeach
                   </select>
               </div>
-              <div class="col-sm-8 col-xs-12 hidden">
+              <div class="col-sm-8 col-xs-12 hidden expansions_select">
                 <label for="name">Chose expansions</label>
                 <select name="expansions[]" multiple class="form-control js-expansions">
                   <option></option>
