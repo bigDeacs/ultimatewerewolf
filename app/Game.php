@@ -16,7 +16,7 @@ class Game extends Model {
 	 *
 	 * @var array
 	 */
-	protected $fillable = ['name', 'total', 'balance', 'status', 'user_id'];
+	protected $fillable = ['name', 'total', 'balance', 'status', 'user_id', 'team_id'];
 
 	/**
 	 * One To Many Relationship

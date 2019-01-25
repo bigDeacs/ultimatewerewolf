@@ -329,6 +329,20 @@ class GameController extends Controller {
 			return redirect('/games/'.$game->id.'/'.$deaths);
 	}
 
+    public function winner($id)
+    {
+        $game = Game::where('id', '=', $id)->firstOrFail();
+        $roles = $game->roles;
+        foreach($roles as $role)
+        {
+            $roleIds[] = $role->id;
+        }
+        $statuses = Status::whereRaw("role_id IN (".implode(", ", $roleIds).")")->get();
+        $teams = Team::all();
+        $players = $game->players;
+        return view('games.winner', compact('game', 'roles', 'players', 'statuses', 'teams'));
+    }
+
 	public function end($id)
 	{
 			$game = Game::find($id);
