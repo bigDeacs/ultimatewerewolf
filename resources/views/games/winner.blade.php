@@ -168,6 +168,9 @@
 @endsection
 
 @section('scripts')
+    <script type="text/javascript">
+        $(".js-expansions").select2();
+    </script>
     <script>
         $(document).ready(function(){
             $("#show").hide();
