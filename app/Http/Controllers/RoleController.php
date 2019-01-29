@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use App\Role;
 use App\Expansion;
+use App\Team;
 use App\Response;
 
 class RoleController extends Controller {
