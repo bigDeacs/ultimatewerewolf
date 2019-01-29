@@ -34,6 +34,11 @@ class Team extends Model {
 			return $this->players->lists('id');
 	}
 
+    public function role()
+    {
+        return $this->belongsTo('App\Role');
+    }
+
 	/**
 	 * Many To Many Relationship
 	 * A Player can have many Statuses

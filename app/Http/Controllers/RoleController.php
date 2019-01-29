@@ -69,7 +69,8 @@ class RoleController extends Controller {
   public function create()
   {
 			$expansions = Expansion::all()->lists('name', 'id');
-			return view('roles.create', compact('expansions'));
+            $teams = Team::all()->lists('name', 'id');
+			return view('roles.create', compact('expansions', 'teams'));
   }
 
   /**
@@ -108,7 +109,8 @@ class RoleController extends Controller {
   {
       $role = Role::where('id', '=', $id)->firstOrFail();
 			$expansions = Expansion::all()->lists('name', 'id');
-			return view('roles.edit', compact('role', 'expansions'));
+            $teams = Team::all()->lists('name', 'id');
+			return view('roles.edit', compact('role', 'expansions', 'teams'));
   }
 
   /**

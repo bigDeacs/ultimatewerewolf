@@ -24,7 +24,7 @@ class Role extends Model {
 	 * night = which night they wake: 1, 2, 3, etc, -99, 0
 	 * admin panel, make this a live drag drop.
 	 */
-	protected $fillable = ['name', 'description', 'image', 'impact', 'position', 'night', 'max', 'expansion_id'];
+	protected $fillable = ['name', 'description', 'image', 'impact', 'position', 'night', 'max', 'expansion_id', 'team_id'];
 
 	/**
 	 * One To Many Relationship
@@ -90,5 +90,16 @@ class Role extends Model {
   {
       return $this->hasOne('App\Status');
   }
+
+    /**
+     * One To One Relationship
+     * A Game has one Time
+     *
+     * @var array
+     */
+    public function team()
+    {
+        return $this->hasOne('App\Team');
+    }
 
 }

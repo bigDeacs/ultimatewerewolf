@@ -17,6 +17,9 @@
             <input type="file" name="image" accept="image/*" onchange="loadImage(event)">
             <small>600px X 600px</small>
             <br />
+            <label for="team">Team</label>
+            {!! Form::select('team_id', $teams, null, ['id' => 'team_id', 'class' => 'form-control', 'style' => 'width: 100%']) !!}
+            <br />
             <label for="name">Expansion</label>
             {!! Form::select('expansion_id', $expansions, null, ['id' => 'expansion_id', 'class' => 'form-control', 'style' => 'width: 100%']) !!}
       </div>
