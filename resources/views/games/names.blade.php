@@ -133,8 +133,12 @@
 							  								</a>
                           									<select name="team_list[{{ $key }}]" class="form-control">
 																@foreach($teams as $team)
-                            										@if($team->name == 'Villagers')
-                              											<option value="{{ $team->id }}" selected="selected">{{ $team->name }}</option>
+                            										@if($role->team)
+																		@if($role->team->name == $team->name)
+                              												<option value="{{ $team->id }}" selected="selected">{{ $team->name }}</option>
+																		@else
+																			<option value="{{ $team->id }}">{{ $team->name }}</option>
+																		@endif
                             										@else
                               											<option value="{{ $team->id }}">{{ $team->name }}</option>
                             										@endif
