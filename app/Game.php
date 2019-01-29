@@ -16,7 +16,7 @@ class Game extends Model {
 	 *
 	 * @var array
 	 */
-	protected $fillable = ['name', 'total', 'balance', 'status', 'user_id', 'team_id'];
+	protected $fillable = ['name', 'total', 'balance', 'status', 'user_id'];
 
 	/**
 	 * One To Many Relationship
@@ -48,7 +48,7 @@ class Game extends Model {
  	 */
 	public function players()
 	{
-	 		return $this->belongsToMany('App\Player')->withPivot('position', 'status');
+	 		return $this->belongsToMany('App\Player')->withPivot('position', 'winner');
 	}
 
 	public function getPlayerListAttribute()
@@ -80,7 +80,7 @@ class Game extends Model {
 	 */
 	public function teams()
 	{
-			return $this->belongsToMany('App\Team')->withPivot('position');
+			return $this->belongsToMany('App\Team')->withPivot('position', 'status');
 	}
 
 	public function getTeamListAttribute()

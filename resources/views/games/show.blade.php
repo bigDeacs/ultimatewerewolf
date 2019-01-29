@@ -56,7 +56,8 @@
 				<button type="submit" class="btn btn-success">Next {{ $game->time->status == 'night' ? 'Day' : 'Night' }} <i class="fa fa-floppy-o"></i></button>
 				<a id="show" class="btn btn-info">Show Names</a>
 				<a id="hide" class="btn btn-info">Hide Names</a>
-                <a href="/games/{{ $game->id }}/end" class="btn btn-danger" onclick="return confirm('Is the game over?');return false;">Finish <i class="fa fa-hourglass-end"></i></a>
+                <!--<a href="/games/$game->id/end" class="btn btn-danger" onclick="return confirm('Is the game over?');return false;">Finish <i class="fa fa-hourglass-end"></i></a>-->
+                <a href="/games/{{ $game->id }}/winner" class="btn btn-danger">Finish <i class="fa fa-hourglass-end"></i></a>
               </div>
             @endif
           </div>

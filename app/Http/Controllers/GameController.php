@@ -165,7 +165,7 @@ class GameController extends Controller {
 					{
 						$total ++;
 						$balance += Role::find($key)->impact;
-	        }
+	                }
 			}
 			$players = Player::where('user_id', '=', \Auth::user()->id)->orderBy('name', 'asc')->get();
 			// Create a game
@@ -343,9 +343,10 @@ class GameController extends Controller {
         return view('games.winner', compact('game', 'roles', 'players', 'statuses', 'teams'));
     }
 
-	public function end($id)
+	public function end(Request $request)
 	{
-			$game = Game::find($id);
+	        dd($request);
+            $game = Game::find($request->input('game'));
 			$game->status = 'ended';
 			$game->save();
 
