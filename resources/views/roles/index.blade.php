@@ -39,8 +39,9 @@
                 <col width="5%">
                 <col width="20%">
                 <col width="10%">
+                <col width="5%">
                 <col width="10%">
-                <col width="20%">
+                <col width="10%">
                 <col width="10%">
                 <col width="20%">
                 <col width="5%">
@@ -50,6 +51,7 @@
 						    		<th>Name</th>
                     <th></th>
                     <th>Impact</th>
+                    <th>Team</th>
                     <th>Expansion</th>
                     <th>Status</th>
 						    		<th></th>
@@ -63,6 +65,7 @@
                       <td>{{ $role->name }}</td>
                       <td><img src="{{ $role->image }}" class="img-responsive" /></td>
                       <td>{{ $role->impact }}</td>
+                      <td>{{ $role->team }}</td>
                       <td>{{ $role->expansion->name }}</td>
                       <td>
                         @if($role->status)
