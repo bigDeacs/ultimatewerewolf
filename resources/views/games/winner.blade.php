@@ -68,7 +68,8 @@
                                 <p class="storyFont">Is the game over? Who won?</p>
                                 {!! Form::open(['url' => '/games/save']) !!}
                                     <input type="hidden" name="game" value="{{ $game->id }}">
-                                    <select name="team_list[]" class="form-control">
+                                    <select name="team_list[]" multiple class="form-control js-expansions">
+                                        <option></option>
                                         @foreach($teams as $team)
                                             <option value="{{ $team->id }}">{{ $team->name }}</option>
                                         @endforeach
