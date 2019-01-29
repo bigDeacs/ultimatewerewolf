@@ -34,9 +34,9 @@ class Team extends Model {
 			return $this->players->lists('id');
 	}
 
-    public function role()
+    public function roles()
     {
-        return $this->belongsTo('App\Role');
+        return $this->hasMany('App\Role');
     }
 
 	/**

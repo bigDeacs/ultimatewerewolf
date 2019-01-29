@@ -99,7 +99,7 @@ class Role extends Model {
      */
     public function team()
     {
-        return $this->hasOne('App\Team');
+        return $this->belongsTo('App\Team');
     }
 
 }
