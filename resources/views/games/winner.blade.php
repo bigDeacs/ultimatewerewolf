@@ -66,7 +66,7 @@
                         <div class="row">
                             <div class="col-sm-12">
                                 <p class="storyFont">Is the game over? Who won?</p>
-                                {!! Form::open(['url' => '/games/save']) !!}
+                                {!! Form::open(['url' => '/games/end']) !!}
                                     <input type="hidden" name="game" value="{{ $game->id }}">
                                     	<div class="form-group row">
                                             <div class="col-sm-8 col-xs-12">
