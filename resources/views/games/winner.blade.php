@@ -36,7 +36,6 @@
 @section('content')
     <div class="row">
         <div class="col-xs-12">
-            {!! Form::open(['url' => '/games/winners']) !!}
             <div class="panel panel-shadow panel-{{ $game->time->status }}">
                 <div class="panel-heading row" style="height: 55px;">
                     <h1 class="panel-title col-xs-12 col-sm-5 col-md-6">
@@ -169,7 +168,6 @@
                     </div><!-- /.modal-dialog -->
                 </div><!-- /.modal -->
             @endforeach
-            {!! Form::close() !!}
         </div>
     </div>
 @endsection
