@@ -65,7 +65,9 @@
                       <td>{{ $role->name }}</td>
                       <td><img src="{{ $role->image }}" class="img-responsive" /></td>
                       <td>{{ $role->impact }}</td>
-                      <td>{{ $role->team->name }}</td>
+                      <td>@if($role->team)
+                              {{ $role->team->name }}
+                      @endif</td>
                       <td>{{ $role->expansion->name }}</td>
                       <td>
                         @if($role->status)
