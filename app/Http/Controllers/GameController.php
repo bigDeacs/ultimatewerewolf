@@ -346,8 +346,8 @@ class GameController extends Controller {
 	public function end(Request $request)
 	{
             $game = Game::find($request->input('game'));
-			//$game->status = 'ended';
-			//$game->save();
+			$game->status = 'ended';
+			$game->save();
 
             if($request->input('team_list')){
                 foreach($request->input('team_list') as $key => $team)

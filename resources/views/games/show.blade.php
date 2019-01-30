@@ -312,7 +312,7 @@
                       </div>                      
                     </td>
                     <td>
-                        
+                        {{ $player->pivot->winner }}
                     </td>
                   </tr>
                 @endforeach
