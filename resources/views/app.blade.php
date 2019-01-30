@@ -112,19 +112,11 @@
 	<script src="/js/tinycolor-0.9.15.min.js"></script>
 	<script>
 		$(document).ready(function() {
-            var table = $('.dataTable').DataTable( {
+            $('.dataTable').DataTable( {
 			  stateSave: true,
 			  "pagingType": "full_numbers",
-			  "pageLength": 10,
+			  "pageLength": 10
 			});
-            $('a.toggle-vis').on( 'click', function (e) {
-                e.preventDefault();
-                // Get the column API object
-                var column = table.column( $(this).attr('data-column') );
-
-                // Toggle the visibility
-                column.visible( ! column.visible() );
-            } );
 		});
 		$(".pick-a-color").pickAColor({
 			showSavedColors : false,

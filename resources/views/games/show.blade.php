@@ -58,8 +58,6 @@
             @if($game->status == 'started')
               <div class="pull-right btn-group">
 				<button type="submit" class="btn btn-success">Next {{ $game->time->status == 'night' ? 'Day' : 'Night' }} <i class="fa fa-floppy-o"></i></button>
-				<a id="show" class="btn btn-info">Show Names</a>
-				<a id="hide" class="btn btn-info">Hide Names</a>
                 <a href="/games/{{ $game->id }}/winner" class="btn btn-danger">Finish <i class="fa fa-hourglass-end"></i></a>
               </div>
             @else
@@ -90,6 +88,22 @@
             </div>
           </div>
           <div class="row">
+            <div class="col-sm-12">
+               Hide/Show column:
+                    <a class="toggle-vis" data-column="0">Player</a> -
+                    <?php $counter = 1; ?>
+                    @foreach($statuses as $status)
+                        @if($status->icon)
+                            <a class="toggle-vis" data-column="{{ $counter }}">
+                                <i class="fa {{ $status->icon }} fa-1x" style="color: #{{ $status->colour }};" aria-hidden="true"></i>
+                            </a> -
+                            <?php $counter++; ?>
+                        @endif
+                    @endforeach
+                    <a class="toggle-vis" data-column="{{ $counter }}"><i class="fa fa-users fa-1x" style="color: #000000;" aria-hidden="true"></i></a>
+            </div>
+          </div>
+          <div class="row">
           <div class="col-sm-12">
             <div class="table-responsive" style="width: 20%;float: left;">
               <table class="table table-hover">
@@ -117,17 +131,8 @@
               </table>
             </div>
             <!-- Player side -->
-              <div>
-                  Toggle column:
-                  <a class="toggle-vis" data-column="0">Player</a> -
-                  <a class="toggle-vis" data-column="1"><i class="fa fa-user-times fa-1x" style="color: #c61515;" aria-hidden="true"></i></a> -
-                  <a class="toggle-vis" data-column="2"><i class="fa fa-frown-o fa-1x" style="color: #7700ff;" aria-hidden="true"></i></a> -
-                  <a class="toggle-vis" data-column="3"><i class="fa fa-paw fa-1x" style="color: #61abff;" aria-hidden="true"></i></a> -
-                  <a class="toggle-vis" data-column="4"><i class="fa fa-user-secret fa-1x" style="color: #d11500;" aria-hidden="true"></i></a> -
-                  <a class="toggle-vis" data-column="5"><i class="fa fa-user-secret fa-1x" style="color: #d11500;" aria-hidden="true"></i></a>
-              </div>
             <div class="table-responsive" style="width: 80%;float: left;">
-              <table class="table table-hover dataTable">
+              <table class="table table-hover gameTable">
 				<col width="20%" class="names">
 				<col width="{{ 60 / (count($statuses) + 1) }}%">
 				@foreach($statuses as $status)
@@ -373,17 +378,20 @@
   <script src="/js/flipclock.js"></script>
   <script>
 	$(document).ready(function(){
-		$("#show").hide();
-		$("#hide").click(function(){
-			$(".names").hide();
-			$("#hide").hide();
-			$("#show").show();
-		});
-		$("#show").click(function(){
-			$(".names").show();
-			$("#show").hide();
-			$("#hide").show();
-		});
+        $(document).ready(function() {
+            var table = $('.gameTable').DataTable( {
+                stateSave: true,
+                paging: false,
+                searching: false,
+            });
+            $('a.toggle-vis').on( 'click', function (e) {
+                e.preventDefault();
+                // Get the column API object
+                var column = table.column( $(this).attr('data-column') );
+                // Toggle the visibility
+                column.visible( ! column.visible() );
+            } );
+        });
 	});
   </script>
   <script type="text/javascript">
