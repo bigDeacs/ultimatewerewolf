@@ -312,7 +312,7 @@
                       </div>                      
                     </td>
                     <td>
-                        <?php var_dump($player->teams()->where('game_id', $game->id)->first()); ?>
+                        <?php var_dump($game->teams()->where('game_team.position', '=', $key)->first()); ?>
                         <?php var_dump($player); ?>
                     </td>
                   </tr>
