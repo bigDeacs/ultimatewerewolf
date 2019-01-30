@@ -63,7 +63,7 @@
                 <a href="/games/{{ $game->id }}/winner" class="btn btn-danger">Finish <i class="fa fa-hourglass-end"></i></a>
               </div>
             @else
-              <input type="hidden" name="game_id" value="{{ $game->id }}">
+              <input type="hidden" name="game" value="{{ $game->id }}">
               <div class="pull-right btn-group">
                   <button type="submit" class="btn btn-warning">Reroll <i class="fa fa-refresh"></i></button>
               </div>
