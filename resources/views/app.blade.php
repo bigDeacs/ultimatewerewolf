@@ -106,7 +106,7 @@
 	<script src="/js/jquery-ui.min.js"></script>
 	<script src="/js/jquery.ui.touch-punch.min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
-	<script src="https://cdn.datatables.net/1.10.10/js/jquery.dataTables.min.js"></script>
+	<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 	<script src="/js/select2.min.js"></script>
 	<script src="/js/pick-a-color-1.2.3.min.js"></script>
 	<script src="/js/tinycolor-0.9.15.min.js"></script>
@@ -119,7 +119,6 @@
 			});
             $('a.toggle-vis').on( 'click', function (e) {
                 e.preventDefault();
-
                 // Get the column API object
                 var column = table.column( $(this).attr('data-column') );
 

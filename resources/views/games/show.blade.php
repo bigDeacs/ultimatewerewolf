@@ -127,7 +127,7 @@
                   <a class="toggle-vis" data-column="5"><i class="fa fa-user-secret fa-1x" style="color: #d11500;" aria-hidden="true"></i></a>
               </div>
             <div class="table-responsive" style="width: 80%;float: left;">
-              <table class="table table-hover">
+              <table class="table table-hover dataTable">
 				<col width="20%" class="names">
 				<col width="{{ 60 / (count($statuses) + 1) }}%">
 				@foreach($statuses as $status)
