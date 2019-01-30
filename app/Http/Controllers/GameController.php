@@ -382,7 +382,7 @@ class GameController extends Controller {
         }
         $players = Player::where('user_id', '=', \Auth::user()->id)->orderBy('name', 'asc')->get();
         // Create a game
-        $game = Game::create(['total' => $total, 'balance' => $balance, 'user_id' => \Auth::user()->id, 'name' => $request->input('name')]);
+        $game = Game::create(['total' => $total, 'balance' => $balance, 'user_id' => \Auth::user()->id, 'name' => $old_game->name]);
         $time = Time::create(['round' => 1, 'status' => 'day', 'game_id' => $game->id]);
         $count = 0;
         foreach($old_game->roles()->get() as $key => $role)
