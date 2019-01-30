@@ -9,7 +9,7 @@
 	<meta name="description" content="A online tool for Ultimate Werewolf Moderators to use. It allows you track everything that happens throughout the game.">
 
 	<link rel="stylesheet" href="/css/pick-a-color-1.2.3.min.css">
-	<link href="{{ asset('/css/app.css') }}?v=18" rel="stylesheet">
+	<link href="{{ asset('/css/app.css') }}?v=20" rel="stylesheet">
 	<link href="{{ asset('/css/jquery-ui.min.css') }}" rel="stylesheet">
 
 	<link href="https://cdn.datatables.net/1.10.10/css/jquery.dataTables.min.css" rel="stylesheet">
