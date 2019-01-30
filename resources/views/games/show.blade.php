@@ -91,14 +91,14 @@
             <div class="col-sm-12">
                <div class="well">
                <span class="text-muted">Hide/Show column:</span>
-                    <a class="toggle-vis" data-column="0">Player</a> -
-                    <a class="toggle-vis" data-column="1"><i class="fa fa-user-times fa-1x" style="color: #c61515;" aria-hidden="true"></i></a> -
+                    <a class="toggle-vis" data-column="0">Player</a>
+                    <a class="toggle-vis" data-column="1"><i class="fa fa-user-times fa-1x" style="color: #c61515;" aria-hidden="true"></i></a>
                     <?php $counter = 2; ?>
                     @foreach($statuses as $status)
                         @if($status->icon)
                             <a class="toggle-vis" data-column="{{ $counter }}">
                                 <i class="fa {{ $status->icon }} fa-1x" style="color: #{{ $status->colour }};" aria-hidden="true"></i>
-                            </a> -
+                            </a>
                             <?php $counter++; ?>
                         @endif
                     @endforeach
