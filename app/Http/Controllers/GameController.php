@@ -354,7 +354,7 @@ class GameController extends Controller {
                 {
                     $teams = $game->teams()->where('game_team.team_id', '=', $team)->get();
                     foreach($teams as $team) {
-                        $team->sync([$team->id => ['position' => $team->position, 'winner' => 1]], false);
+                        $game->teams()->where('game_id', $game->id)->sync([$team->id => ['position' => $team->position, 'winner' => 1]], false);
                     }
                 }
             }
