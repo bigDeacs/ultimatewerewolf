@@ -294,6 +294,7 @@
                       <i class="fa fa-users fa-1x" style="color: #000000;" aria-hidden="true"></i>
                     </a>
                   </th>
+                  <th>Winner?</th>
                 </tr>
               </thead>
               <tbody>
@@ -309,6 +310,9 @@
                         <div class="input-group-addon"><i class="fa {{ $game->teams()->where('game_team.position', '=', $key)->first()->icon }}" style="color: #{{ $game->teams()->where('game_team.position', '=', $key)->first()->colour }};" aria-hidden="true"></i></div>
                         <input class="form-control" id="disabledInput" type="text" placeholder="{{ $game->teams()->where('game_team.position', '=', $key)->first()->name }}" disabled>
                       </div>                      
+                    </td>
+                    <td>
+                        {{ $game->teams()->where('game_team.position', '=', $key)->first()->name }}
                     </td>
                   </tr>
                 @endforeach

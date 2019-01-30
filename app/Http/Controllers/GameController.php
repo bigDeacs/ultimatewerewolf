@@ -345,12 +345,19 @@ class GameController extends Controller {
 
 	public function end(Request $request)
 	{
-	        dd($request);
             $game = Game::find($request->input('game'));
 			$game->status = 'ended';
 			$game->save();
 
-			return redirect('/games/'.$game->id);
+            if($request->input('team_list')){
+                foreach($game->teams() as $key => $team)
+                {
+                    $team = $game->teams()->where('game_team.position', '=', $key)->firstOrFail();
+                    $game->teams()->where('game_id', $game->id)->sync([$team->id => ['winner' => 1]], false);
+                }
+            }
+
+        return redirect('/games/'.$game->id);
 	}
 	
 	public function remove($id)
