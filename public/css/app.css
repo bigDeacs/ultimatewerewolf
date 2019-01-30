@@ -6245,17 +6245,18 @@ label,
 }
 
 a.toggle-vis {
-  padding: 5px;
+  padding: 5px!important;
 }
 
 a.toggle-vis:hover {
-  text-decoration: none;
-  background: #c8c8c8;
-  padding: 5px;
-  color: #ffffff;
+  text-decoration: none!important;
+  background: #c8c8c8!important;
+  padding: 5px!important;
+  color: #ffffff!important;
+  cursor: pointer!important;
 }
 a.toggle-vis:hover i {
-  color: #ffffff;
+  color: #ffffff!important;
 }
 
 .storyFont {

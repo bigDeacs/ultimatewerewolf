@@ -386,6 +386,7 @@
                 stateSave: true,
                 paging: false,
                 searching: false,
+                info: false
             });
             $('a.toggle-vis').on( 'click', function (e) {
                 e.preventDefault();
