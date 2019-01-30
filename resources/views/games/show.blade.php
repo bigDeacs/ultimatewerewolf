@@ -312,7 +312,7 @@
                       </div>                      
                     </td>
                     <td>
-                        {{ $game->teams()->where('game_team.position', '=', $key)->first()->name }}
+                        
                     </td>
                   </tr>
                 @endforeach
