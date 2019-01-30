@@ -371,6 +371,47 @@ class GameController extends Controller {
 
     public function reroll(Request $request)
     {
+        $game = Game::find($request->input('game'));
+        $teams = Team::all();
+        $total = 0;
+        $balance = 0;
+        dd($game->roles()->get());
+        foreach($request->input('role_list') as $key => $role)
+        {
+            for($x = 1; $x <= $role; $x++)
+            {
+                $total ++;
+                $balance += Role::find($key)->impact;
+            }
+        }
+        $players = Player::where('user_id', '=', \Auth::user()->id)->orderBy('name', 'asc')->get();
+        // Create a game
+        $game = Game::create(['total' => $total, 'balance' => $balance, 'user_id' => \Auth::user()->id, 'name' => $request->input('name')]);
+        $time = Time::create(['round' => 1, 'status' => 'day', 'game_id' => $game->id]);
+        $count = 0;
+        foreach($request->input('role_list') as $key => $role)
+        {
+            for($x = 1; $x <= $role; $x++)
+            {
+                $roleCollection[] = Role::find($key);
+                $game->roles()->attach($key, ['position' => $count]);
+                $count++;
+            }
+
+        }
+        if($total <= 0)
+        {
+            $roleCollection = null;
+        }
+        $roles = collect($roleCollection)->sortBy('position')->values();
+        foreach($roles as $role)
+        {
+            $roleIds[] = $role->id;
+        }
+        $statuses = Status::whereRaw("role_id IN (".implode(", ", $roleIds).")")->get();
+        $recipe = (object) ['description' => 'The Town of Salem was a prosperous village, children would laugh and play, families would gather together over delicious meals and for years now they have all lived in perfect harmony, until now. Everyone, close your eyes.'];
+        return view('games.names', compact('roles', 'players', 'game', 'teams', 'statuses', 'recipe'));
+
         dd($request);
     }
 
