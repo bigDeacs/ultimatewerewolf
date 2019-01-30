@@ -152,7 +152,7 @@ class GameController extends Controller {
   }
 
 	public function start(Request $request)
-  {
+    {
 			$teams = Team::all();
 			// has list of roles, and names.
 			// attach names to game.
@@ -372,23 +372,24 @@ class GameController extends Controller {
     public function reroll(Request $request)
     {
         $old_game = Game::find($request->input('game'));
+        $old_roles = $old_game->roles()->get();
         $teams = Team::all();
         $total = 0;
         $balance = 0;
-        foreach($old_game->roles()->get() as $key => $role)
+        foreach($old_roles as $role)
         {
             $total ++;
-            $balance += $role->impact;
+            $balance += Role::find($role->id)->impact;
         }
         $players = Player::where('user_id', '=', \Auth::user()->id)->orderBy('name', 'asc')->get();
         // Create a game
         $game = Game::create(['total' => $total, 'balance' => $balance, 'user_id' => \Auth::user()->id, 'name' => $old_game->name]);
         $time = Time::create(['round' => 1, 'status' => 'day', 'game_id' => $game->id]);
         $count = 0;
-        foreach($old_game->roles()->get() as $key => $role)
+        foreach($old_roles as $role)
         {
-            $roleCollection[] = $role;
-            $game->roles()->attach($key, ['position' => $count]);
+            $roleCollection[] = Role::find($role->id);
+            $game->roles()->attach($role, ['position' => $count]);
             $count++;
         }
         if($total <= 0)
