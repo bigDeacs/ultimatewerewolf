@@ -351,8 +351,8 @@ class GameController extends Controller {
                 foreach($request->input('team_list') as $key => $team)
                 {
                     $teams = $game->teams()->where('game_team.team_id', '=', $team)->get();
-                    dd($teams);
                     foreach($teams as $team) {
+                        dd($team->position);
                         $game->teams()->where('game_id', $game->id)->sync([$team->id => ['position' => $team->position, 'winner' => 1]], false);
                     }
                 }
