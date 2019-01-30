@@ -112,7 +112,7 @@
 	<script src="/js/tinycolor-0.9.15.min.js"></script>
 	<script>
 		$(document).ready(function() {
-			$('.dataTable').DataTable( {
+            var table = $('.dataTable').DataTable( {
 			  stateSave: true,
 			  "pagingType": "full_numbers",
 			  "pageLength": 10,
