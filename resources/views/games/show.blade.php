@@ -312,7 +312,7 @@
                       </div>                      
                     </td>
                     <td>
-                        <?php var_dump($player->teams()->where('game_id', $game->id)->pivot); ?>
+                        <?php var_dump($player->teams()->where('game_id', $game->id)->first()->pivot); ?>
                     </td>
                   </tr>
                 @endforeach
