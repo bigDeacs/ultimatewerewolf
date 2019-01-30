@@ -312,7 +312,7 @@
                       </div>                      
                     </td>
                     <td>
-                        {{ $player->pivot->winner }}
+                        {{ $player->teams()->where('game_id', $game->id)->pivot->winner }}
                     </td>
                   </tr>
                 @endforeach
