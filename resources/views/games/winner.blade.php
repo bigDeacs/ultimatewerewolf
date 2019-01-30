@@ -36,7 +36,6 @@
 @section('content')
     <div class="row">
         <div class="col-xs-12">
-            {!! Form::open(['url' => '/games/winners']) !!}
             <div class="panel panel-shadow panel-{{ $game->time->status }}">
                 <div class="panel-heading row" style="height: 55px;">
                     <h1 class="panel-title col-xs-12 col-sm-5 col-md-6">
@@ -66,14 +65,21 @@
                         <div class="row">
                             <div class="col-sm-12">
                                 <p class="storyFont">Is the game over? Who won?</p>
-                                {!! Form::open(['url' => '/games/save']) !!}
+                                {!! Form::open(['url' => '/games/end']) !!}
                                     <input type="hidden" name="game" value="{{ $game->id }}">
-                                    <select name="team_list[]" multiple class="form-control js-expansions">
-                                        <option></option>
-                                        @foreach($teams as $team)
-                                            <option value="{{ $team->id }}">{{ $team->name }}</option>
-                                        @endforeach
-                                    </select>
+                                    	<div class="form-group row">
+                                            <div class="col-sm-8 col-xs-12">
+                                            <select name="team_list[]" multiple class="form-control js-expansions">
+                                                <option></option>
+                                                @foreach($teams as $team)
+                                                    <option value="{{ $team->id }}">{{ $team->name }}</option>
+                                                @endforeach
+                                            </select>
+                                            </div>
+                                            <div class="col-sm-4 col-xs-12">
+                                                <button type="submit" class="btn btn-success btn-block">Submit</button>
+                                            </div>
+                                        </div>
                                 {!! Form::close() !!}
                                 <div class="table-responsive" style="width: 20%;float: left;">
                                     <table class="table table-hover">
@@ -162,12 +168,14 @@
                     </div><!-- /.modal-dialog -->
                 </div><!-- /.modal -->
             @endforeach
-            {!! Form::close() !!}
         </div>
     </div>
 @endsection
 
 @section('scripts')
+    <script type="text/javascript">
+        $(".js-expansions").select2();
+    </script>
     <script>
         $(document).ready(function(){
             $("#show").hide();

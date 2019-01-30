@@ -46,7 +46,6 @@ Route::post('games/start', 'GameController@start');
 Route::post('games/names', 'GameController@names');
 Route::post('games/save', 'GameController@save');
 Route::get('games/{id}/winner', 'GameController@winner');
-//Route::get('games/{id}/end', 'GameController@end');
 Route::post('games/end', 'GameController@end');
 Route::get('games/{id}/{deaths?}', 'GameController@show');
 
