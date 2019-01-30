@@ -312,7 +312,7 @@
                       </div>                      
                     </td>
                     <td>
-                        {{ $player->teams()->where('game_id', $game->id) }}
+                        <?php var_dump($player->teams()->where('game_id', $game->id)); ?>
                     </td>
                   </tr>
                 @endforeach
