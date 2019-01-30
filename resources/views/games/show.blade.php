@@ -89,9 +89,11 @@
           </div>
           <div class="row">
             <div class="col-sm-12">
-               Hide/Show column:
+               <div class="well">
+               <span class="text-muted">Hide/Show column:</span>
                     <a class="toggle-vis" data-column="0">Player</a> -
-                    <?php $counter = 1; ?>
+                    <a class="toggle-vis" data-column="1"><i class="fa fa-user-times fa-1x" style="color: #c61515;" aria-hidden="true"></i></a> -
+                    <?php $counter = 2; ?>
                     @foreach($statuses as $status)
                         @if($status->icon)
                             <a class="toggle-vis" data-column="{{ $counter }}">
@@ -101,6 +103,7 @@
                         @endif
                     @endforeach
                     <a class="toggle-vis" data-column="{{ $counter }}"><i class="fa fa-users fa-1x" style="color: #000000;" aria-hidden="true"></i></a>
+               </div>
             </div>
           </div>
           <div class="row">
