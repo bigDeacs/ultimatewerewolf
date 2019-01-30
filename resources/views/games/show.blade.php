@@ -312,7 +312,11 @@
                       </div>                      
                     </td>
                     <td>
-                        <?php var_dump($game->teams()->where('game_team.position', '=', $key)->first()->pivot->winner); ?>
+                        @if($game->teams()->where('game_team.position', '=', $key)->first()->pivot->winner == 1)
+                            <span class="label label-success">Won</span>
+                        @else
+                            <span class="label label-danger">Lost</span>
+                        @endif
                     </td>
                   </tr>
                 @endforeach
