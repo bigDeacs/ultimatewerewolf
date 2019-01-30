@@ -369,5 +369,10 @@ class GameController extends Controller {
 		return redirect('/');
    }
 
+    public function reroll(Request $request)
+    {
+        dd($request);
+    }
+
 
 }

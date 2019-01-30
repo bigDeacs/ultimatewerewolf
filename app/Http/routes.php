@@ -48,5 +48,6 @@ Route::post('games/save', 'GameController@save');
 Route::get('games/{id}/winner', 'GameController@winner');
 Route::post('games/end', 'GameController@end');
 Route::get('games/{id}/{deaths?}', 'GameController@show');
+Route::post('games/reroll', 'GameController@reroll');
 
 Route::get('nukacola', 'HomeController@nukacola');

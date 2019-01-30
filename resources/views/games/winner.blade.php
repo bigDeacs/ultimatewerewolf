@@ -48,16 +48,6 @@
                         @endif
                         <span style="font-size:30px;"><strong>Round {{ $game->time->round }}</strong></span>
                     </h1>
-                    <div class="col-xs-12 col-sm-7 col-md-6">
-                        @if($game->status == 'started')
-                            <div class="pull-right btn-group">
-                                <button type="submit" class="btn btn-success">Next {{ $game->time->status == 'night' ? 'Day' : 'Night' }} <i class="fa fa-floppy-o"></i></button>
-                                <a id="show" class="btn btn-info">Show Names</a>
-                                <a id="hide" class="btn btn-info">Hide Names</a>
-                                <a href="/games/{{ $game->id }}/end" class="btn btn-danger" onclick="return confirm('Is the game over?');return false;">Finish <i class="fa fa-hourglass-end"></i></a>
-                            </div>
-                        @endif
-                    </div>
                 </div>
                 <div class="panel-body">
                         <div class="pull-right btn-back-top"><a href="/" class="btn btn-primary"><i class="fa fa-arrow-circle-o-left"></i> Back</a></div>
@@ -66,6 +56,7 @@
                             <div class="col-sm-12">
                                 <p class="storyFont">Is the game over? Who won?</p>
                                 {!! Form::open(['url' => '/games/end']) !!}
+                                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                     <input type="hidden" name="game" value="{{ $game->id }}">
                                     	<div class="form-group row">
                                             <div class="col-sm-8 col-xs-12">

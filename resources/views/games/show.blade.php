@@ -37,7 +37,11 @@
 @section('content')  
 <div class="row">
   <div class="col-xs-12">
-    {!! Form::open(['url' => '/games/save']) !!}
+      @if($game->status == 'started')
+          {!! Form::open(['url' => '/games/save']) !!}
+      @else
+          {!! Form::open(['url' => '/games/reroll']) !!}
+      @endif
       <div class="panel panel-shadow panel-{{ $game->time->status }}">
         <div class="panel-heading row" style="height: 55px;">
           <h1 class="panel-title col-xs-12 col-sm-5 col-md-6">
@@ -56,8 +60,11 @@
 				<button type="submit" class="btn btn-success">Next {{ $game->time->status == 'night' ? 'Day' : 'Night' }} <i class="fa fa-floppy-o"></i></button>
 				<a id="show" class="btn btn-info">Show Names</a>
 				<a id="hide" class="btn btn-info">Hide Names</a>
-                <!--<a href="/games/$game->id/end" class="btn btn-danger" onclick="return confirm('Is the game over?');return false;">Finish <i class="fa fa-hourglass-end"></i></a>-->
                 <a href="/games/{{ $game->id }}/winner" class="btn btn-danger">Finish <i class="fa fa-hourglass-end"></i></a>
+              </div>
+            @else
+              <div class="pull-right btn-group">
+                  <button type="submit" class="btn btn-warning">Reroll <i class="fa fa-refresh"></i></button>
               </div>
             @endif
           </div>
@@ -294,7 +301,7 @@
                       <i class="fa fa-users fa-1x" style="color: #000000;" aria-hidden="true"></i>
                     </a>
                   </th>
-                  <th>Winner?</th>
+                  <th>Won/Lost</th>
                 </tr>
               </thead>
               <tbody>
