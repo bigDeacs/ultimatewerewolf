@@ -312,8 +312,7 @@
                       </div>                      
                     </td>
                     <td>
-                        <?php var_dump($game->teams()->where('game_team.position', '=', $key)->first()); ?>
-                        <?php var_dump($player); ?>
+                        <?php var_dump($game->teams()->where('game_team.position', '=', $key)->first()->pivot->winner); ?>
                     </td>
                   </tr>
                 @endforeach
