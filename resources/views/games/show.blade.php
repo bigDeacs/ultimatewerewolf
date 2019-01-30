@@ -117,6 +117,15 @@
               </table>
             </div>
             <!-- Player side -->
+              <div>
+                  Toggle column:
+                  <a class="toggle-vis" data-column="0">Player</a> -
+                  <a class="toggle-vis" data-column="1"><i class="fa fa-user-times fa-1x" style="color: #c61515;" aria-hidden="true"></i></a> -
+                  <a class="toggle-vis" data-column="2"><i class="fa fa-frown-o fa-1x" style="color: #7700ff;" aria-hidden="true"></i></a> -
+                  <a class="toggle-vis" data-column="3"><i class="fa fa-paw fa-1x" style="color: #61abff;" aria-hidden="true"></i></a> -
+                  <a class="toggle-vis" data-column="4"><i class="fa fa-user-secret fa-1x" style="color: #d11500;" aria-hidden="true"></i></a> -
+                  <a class="toggle-vis" data-column="5"><i class="fa fa-user-secret fa-1x" style="color: #d11500;" aria-hidden="true"></i></a>
+              </div>
             <div class="table-responsive" style="width: 80%;float: left;">
               <table class="table table-hover">
 				<col width="20%" class="names">
