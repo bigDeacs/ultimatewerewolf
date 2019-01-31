@@ -50,32 +50,18 @@
             <span style="font-size:30px;"><strong>Round {{ $game->time->round }}</strong></span>
           </h1>
           <div class="col-xs-12 col-sm-7 col-md-6">
-            @if($game->status == 'started')
               <div class="pull-right btn-group">
 				<button type="submit" class="btn btn-success">Next {{ $game->time->status == 'night' ? 'Day' : 'Night' }} <i class="fa fa-floppy-o"></i></button>
-                <a href="/games/{{ $game->id }}/winner" class="btn btn-danger">Finish <i class="fa fa-hourglass-end"></i></a>
+                <a href="#" class="btn btn-danger">Finish <i class="fa fa-hourglass-end"></i></a>
               </div>
-            @else
-              <input type="hidden" name="game" value="{{ $game->id }}">
-              <div class="pull-right btn-group">
-                  <button type="submit" class="btn btn-warning">Reroll <i class="fa fa-refresh"></i></button>
-              </div>
-            @endif
           </div>
         </div>
         <div class="panel-body">
-        @if($game->status == 'started')
           <input type="hidden" name="game" value="{{ $game->id }}">
           <div class="row">
             <div class="col-xs-12 col-md-6 col-lg-7">
               <p class="storyFont">
-                @if($game->time->round > 1)
-                  @if($scenarios !== '')
-                    {{ $scenarios->sortBy(DB::raw('RAND()'))->first()->description }}										 
-                  @else
-                    Everyone, close your eyes...
-                  @endif
-                @endif
+                    This is a demo, you can click around and see how a round works, however you cannot save...
               </p>
             </div>
             <div class="col-xs-12 col-md-6 col-lg-5">
@@ -265,88 +251,6 @@
             </div><!-- /.modal-dialog -->
           </div><!-- /.modal -->
         @endforeach
-      @else
-        <div class="pull-right btn-back-top"><a href="/" class="btn btn-primary"><i class="fa fa-arrow-circle-o-left"></i> Back</a></div>
-        <div style="clear:both;"></div>
-        <div class="row">
-        <div class="col-sm-12">
-          <p class="storyFont">The game is over</p>
-          <div class="table-responsive" style="width: 20%;float: left;">
-            <table class="table table-hover">
-              <thead>
-                <tr height="55px" style="background-color: #f5f5f5;">
-                  <th style="padding: 8px;line-height: 1.42857143;vertical-align: top;border-top: 1px solid #dddddd;">Role</th>
-                </tr>
-              </thead>
-              <tbody>
-                <?php $order = 0; ?>
-                @foreach($roles as $key => $role)
-                    @if($role->night == -99 || $role->night == $game->time->round)
-                      <tr style="background-color: #a17dd8;color:#fff;" height="55px">
-                    @else
-                      <tr style="background-color: #fff;color:#fff;" height="55px">
-                    @endif
-                      <td>
-                        <button type="button" class="btn btn-sm btn-warning btn-block" data-toggle="modal" data-target="#{{ camel_case($role->name) }}">
-                          {{ $role->name }}
-                        </button>
-                      </td>
-                    </tr>
-                @endforeach
-              </tbody>
-            </table>
-          </div>
-          <!-- Player side -->
-          <div class="table-responsive" style="width: 80%;float: left;">
-            <table class="table table-striped table-hover">
-              <thead>
-                <col width="50%">
-                <col width="50%">
-                <tr height="55px">
-                  <th>Player</th>
-                  <th class="text-center">
-                    <a tabindex="0" role="button" style="padding: 2px 5px;" class="btn btn-default" id="team"
-                        data-container="body"
-                        data-trigger="focus"
-                        data-toggle="popover"
-                        data-placement="top"
-                        data-content="Team affiliation">
-                      <i class="fa fa-users fa-1x" style="color: #000000;" aria-hidden="true"></i>
-                    </a>
-                  </th>
-                  <th>Won/Lost</th>
-                </tr>
-              </thead>
-              <tbody>
-                @foreach($players as $key => $player)
-                  @if($player->pivot->status == 'dead')
-                    <tr class="danger" height="55px">
-                  @else
-                    <tr class="success" height="55px">
-                  @endif
-                    <td>{{ $player->name }}</td>
-                    <td>
-                      <div class="input-group">
-                        <div class="input-group-addon"><i class="fa {{ $game->teams()->where('game_team.position', '=', $key)->first()->icon }}" style="color: #{{ $game->teams()->where('game_team.position', '=', $key)->first()->colour }};" aria-hidden="true"></i></div>
-                        <input class="form-control" id="disabledInput" type="text" placeholder="{{ $game->teams()->where('game_team.position', '=', $key)->first()->name }}" disabled>
-                      </div>                      
-                    </td>
-                    <td>
-                        @if($game->teams()->where('game_team.position', '=', $key)->first()->pivot->winner == 1)
-                            <span class="label label-success">Won</span>
-                        @else
-                            <span class="label label-danger">Lost</span>
-                        @endif
-                    </td>
-                  </tr>
-                @endforeach
-              </tbody>
-            </table>
-          </div>
-          <!-- End -->
-        </div>
-      </div>
-      @endif
       </div>
     </div>
     @foreach($roles as $key => $role)
@@ -380,6 +284,7 @@
                 stateSave: true,
                 paging: false,
                 searching: false,
+                ordering: false,
                 info: false
             });
             $('a.toggle-vis').on( 'click', function (e) {
