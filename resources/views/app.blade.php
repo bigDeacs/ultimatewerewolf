@@ -79,6 +79,9 @@
 					<a href="{{ url('/auth/register') }}" class="list-group-item text-center {{ Request::url() == 'http://werewolftoolkit.com/auth/register' ? 'active' : '' }}" style="font-size: 12px;">
 						<i class="fa fa-user-plus fa-2x"></i><br/>Sign Up
 					</a>
+				  	<a href="{{ url('/demo') }}" class="list-group-item text-center {{ Request::url() == 'http://werewolftoolkit.com/demo' ? 'active' : '' }}" style="font-size: 12px;">
+					  	<i class="fa fa-laptop fa-2x"></i><br/>Demo
+				  	</a>
 				@else
 					<a href="{{ url('/auth/logout') }}" class="list-group-item text-center" style="font-size: 12px;">
 						<i class="fa fa-sign-out fa-2x"></i><br/>Sign Out
