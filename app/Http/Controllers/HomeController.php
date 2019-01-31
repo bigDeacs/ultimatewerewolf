@@ -53,6 +53,7 @@ class HomeController extends Controller {
 		DB::table('game_role')->truncate();
 		DB::table('game_team')->truncate();
 		DB::table('player_status')->truncate();
+        DB::table('player_team')->truncate();
 		DB::table('games')->truncate();
 		//DB::table('players')->truncate();
 		DB::table('times')->truncate();
