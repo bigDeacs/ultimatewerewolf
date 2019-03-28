@@ -57,7 +57,7 @@
           <div class="col-xs-12 col-sm-7 col-md-6">
             @if($game->status == 'started')
               <div class="pull-right btn-group">
-				<button type="submit" class="btn btn-success">Next {{ $game->time->status == 'night' ? 'Day' : 'Night' }} <i class="fa fa-floppy-o"></i></button>
+				<button type="submit" class="btn btn-success" onclick="return confirm('Are you ready for the next {{ $game->time->status == "night" ? "Day" : "Night" }}?');return false;">Next {{ $game->time->status == 'night' ? 'Day' : 'Night' }} <i class="fa fa-floppy-o"></i></button>
                 <a href="/games/{{ $game->id }}/winner" class="btn btn-danger">Finish <i class="fa fa-hourglass-end"></i></a>
               </div>
             @else
